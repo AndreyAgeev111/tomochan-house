@@ -204,3 +204,216 @@ news: [
 ---
 
 ✅ これでセットアップは完了です！楽しいサイト構築を！🐱
+
+---
+
+---
+
+---
+
+# 🚀 Tomochan House - Setup Guide
+
+## Step 1: File Preparation
+
+All files are already in place!
+
+```
+tomochan-house/
+├── src/
+│   ├── components/
+│   ├── content/
+│   ├── layouts/
+│   ├── pages/
+│   ├── styles/
+│   └── utils/
+├── public/
+├── .github/workflows/
+├── astro.config.mjs
+├── tailwind.config.mjs
+├── tsconfig.json
+├── package.json
+└── README.md
+```
+
+## Step 2: Install Dependencies
+
+```bash
+# Check if Node.js is installed
+node --version
+
+# Install pnpm (if not already installed)
+npm install -g pnpm
+
+# Navigate to project directory
+cd tomochan-house
+
+# Install dependencies
+pnpm install
+```
+
+## Step 3: Run Locally
+
+```bash
+pnpm dev
+```
+
+Open `http://localhost:3000` in your browser to see the site.
+
+## Step 4: Customize Content
+
+All content is centralized in `src/content/siteContent.ts`.
+
+### Edit Business Information
+
+```typescript
+// src/content/siteContent.ts
+business: {
+  name: "Tomochan House",           // Store name
+  phone: "03-XXXX-XXXX",            // Phone number
+  address: "2-5-4 Ikebukuro, Toshima-ku, Tokyo", // Address
+  instagramHandle: "tomochan_house", // Instagram
+}
+```
+
+### Add Menu Items
+
+```typescript
+menu: {
+  items: [
+    {
+      category: "Dishes",
+      name: "Dish Name",
+      description: "Description",
+      price: "¥1,000",
+      icon: "🍲",
+    },
+  ],
+}
+```
+
+### Replace Images
+
+Place images in `public/images/`:
+
+- `gallery-1.jpg` ~ `gallery-12.jpg` (square images recommended)
+
+## Step 5: Deploy to GitHub Pages
+
+### 5.1 Push to GitHub
+
+```bash
+# Initialize Git
+git init
+git add .
+git commit -m "Initial commit - Tomochan House website"
+
+# Push to GitHub
+git remote add origin https://github.com/yourusername/tomochan-house.git
+git branch -M main
+git push -u origin main
+```
+
+### 5.2 Configure GitHub Pages
+
+1. Open your GitHub repository
+2. Go to **Settings** → **Pages**
+3. Set **Source** to "GitHub Actions"
+4. Save
+
+### 5.3 Auto-Deploy
+
+With `.github/workflows/deploy.yml`, pushing to `main` automatically deploys.
+
+After deployment completes, your site will be available at:
+
+```
+https://yourusername.github.io/tomochan-house
+```
+
+## Troubleshooting
+
+### Q: Dev server won't start
+
+**A:** Run:
+
+```bash
+pnpm clean
+pnpm install
+pnpm dev
+```
+
+### Q: Can't deploy to GitHub Pages
+
+**A:** Check:
+
+1. Repository is **public**
+2. `.github/workflows/deploy.yml` exists
+3. `astro.config.mjs` `base` is `/tomochan-house`
+4. Repository Settings → Pages
+
+### Q: Images not displaying
+
+**A:** Verify files are in `public/images/` and filenames are correct.
+
+### Q: Auto-deploy failed
+
+**A:** Check GitHub Actions logs:
+
+1. Open your repository's **Actions** tab
+2. Click the failed workflow
+3. Review the logs
+
+## Common Changes
+
+### Change business hours
+
+```typescript
+hours: [
+  { day: "Mon-Fri", time: "19:00-04:00" },
+  { day: "Sat-Sun/Holidays", time: "18:00-05:00" },
+]
+```
+
+### Change Instagram handle
+
+```typescript
+instagramHandle: "your_instagram_handle"
+```
+
+### Add FAQ
+
+```typescript
+faq: [
+  {
+    q: "New question",
+    a: "Answer text",
+  },
+]
+```
+
+### Add news
+
+```typescript
+news: [
+  {
+    id: 4,
+    date: "2024-01-25",
+    title: "Title",
+    content: "Content",
+    icon: "📱",
+  },
+]
+```
+
+---
+
+## 💡 Tips
+
+- Edit locally → save and auto-reloads
+- Test production build with `pnpm build` before deploying
+- Monitor auto-deployment in Actions tab
+- SEO optimized (title, meta descriptions, etc.)
+
+---
+
+✅ Setup complete! Enjoy building your site! 🐱

@@ -427,3 +427,439 @@ import YourComponent from "../components/YourInteractiveComponent";
 
 **最終更新**: 2024年1月
 **ステータス**: 🟢 本番対応
+
+---
+
+---
+
+---
+
+# Tomochan House
+
+🐱 Hidden Gem Izakaya in Ikebukuro | Karaoke & Homemade Cuisine
+
+## 📋 Overview
+
+Tomochan House is a modern, lightweight single-page website built with Astro + Tailwind CSS + React. It's hosted on GitHub Pages and completely static (serverless).
+
+### Features
+
+- 🚀 **Ultra-lightweight**: Astro static generation, minimal React
+- 📱 **Mobile-first**: Responsive design
+- ♿ **Accessible**: Semantic HTML, ARIA labels
+- 🎨 **Beautiful**: Tailwind CSS + Framer Motion animations
+- 🌍 **Full Japanese Support**: Complete Japanese UI
+- 🐱 **Cat-themed**: Adorable design featuring Tomochan
+
+---
+
+## 🛠️ Technology Stack
+
+| Technology | Version | Purpose |
+| --- | --- | --- |
+| Astro | 4.0+ | Static Site Generator |
+| React | 18.2+ | Interactive Features (Islands) |
+| Tailwind CSS | 3.4+ | Styling |
+| TypeScript | 5.3+ | Type Safety |
+| Framer Motion | 11.0+ | Animations |
+| lucide-react | Latest | Icons |
+
+---
+
+## 📁 File Structure
+
+```
+tomochan-house/
+├── src/
+│   ├── components/
+│   │   ├── layout/              # Header, Footer, etc.
+│   │   ├── sections/            # Page Sections (Hero, About, etc.)
+│   │   └── common/              # Shared Components
+│   ├── pages/
+│   │   └── index.astro          # Main Page
+│   ├── content/
+│   │   └── siteContent.ts       # 📝 Content Management File
+│   ├── styles/
+│   │   └── global.css           # Global Styles
+│   └── utils/
+│       └── animation.ts         # Animation Config
+├── public/
+│   └── images/                  # Image Assets
+├── .github/
+│   └── workflows/
+│       └── deploy.yml           # GitHub Pages Deployment
+├── astro.config.mjs
+├── tailwind.config.mjs
+├── tsconfig.json
+├── package.json
+└── README.md
+```
+
+---
+
+## 🚀 Quick Start
+
+### 1. Setup
+
+```bash
+# Clone repository
+git clone https://github.com/yourusername/tomochan-house.git
+cd tomochan-house
+
+# Install pnpm (if not already installed)
+npm install -g pnpm
+
+# Install dependencies
+pnpm install
+```
+
+### 2. Local Development
+
+```bash
+# Start dev server (http://localhost:3000)
+pnpm dev
+
+# Build for production
+pnpm build
+
+# Preview build
+pnpm preview
+```
+
+### 3. Edit Content
+
+All content is centralized in **`src/content/siteContent.ts`**.
+
+```typescript
+export const siteContent = {
+  business: {
+    name: "Tomochan House",
+    address: "2-5-4 Ikebukuro, Toshima-ku, Tokyo",
+    // ... other info
+  },
+  menu: {
+    items: [
+      {
+        category: "Dishes",
+        name: "Karaage",
+        description: "...",
+        price: "¥780",
+      },
+      // ...
+    ],
+  },
+  // ...
+};
+```
+
+**How to Edit:**
+
+- **Business Hours** → `siteContent.business.hours`
+- **Menu** → `siteContent.menu.items`
+- **News** → `siteContent.news`
+- **FAQ** → `siteContent.contact.faq`
+- **Events** → `siteContent.events.monthlyEvents`
+
+After saving, the dev server automatically reloads.
+
+### 4. Replace Images
+
+```
+public/images/
+├── gallery-1.jpg ~ gallery-12.jpg   # Gallery Images (12 images)
+└── (Other images)
+```
+
+Currently using placeholder gradients. Just replace with actual images and they'll display automatically.
+
+---
+
+## 🌐 Deploy to GitHub Pages
+
+### 1. Repository Setup
+
+1. Create repository on GitHub: `tomochan-house`
+2. Add remote to your local repository:
+
+```bash
+git remote add origin https://github.com/yourusername/tomochan-house.git
+git branch -M main
+git push -u origin main
+```
+
+### 2. GitHub Pages Configuration
+
+1. Go to your repository **Settings** → **Pages**
+2. Set **Source** to "GitHub Actions"
+3. Done!
+
+### 3. Auto-Deploy
+
+With `.github/workflows/deploy.yml`, pushing to `main` automatically builds and deploys.
+
+```bash
+git add .
+git commit -m "Update content"
+git push origin main
+```
+
+Check deployment status in your repository's **Actions** tab.
+
+---
+
+## 🎨 Design Customization
+
+### Color Palette
+
+Adjust colors in `tailwind.config.mjs` `colors` section:
+
+```javascript
+colors: {
+  warm: {
+    50: "#faf8f3",  // Light background
+    900: "#5d4a42", // Dark text
+  },
+  accent: {
+    light: "#fef3c7",  // Button highlight
+    DEFAULT: "#fcd34d",
+    dark: "#f59e0b",   // Hover state
+  },
+}
+```
+
+### Font
+
+Change in `tailwind.config.mjs` `fontFamily`:
+
+```javascript
+fontFamily: {
+  sans: ["Hiragino Maru Gothic ProN", "system-ui", "sans-serif"],
+}
+```
+
+### Animations
+
+Modify animation settings in `src/utils/animation.ts`.
+
+---
+
+## 📱 Responsive Design
+
+| Device | Breakpoint | Support |
+| --- | --- | --- |
+| Mobile | < 640px | ✅ Optimized |
+| Tablet | 640px - 1024px | ✅ Supported |
+| Desktop | > 1024px | ✅ Full Support |
+
+All sections are designed mobile-first.
+
+---
+
+## ♿ Accessibility
+
+- **Semantic HTML**: Headings, lists, landmarks
+- **ARIA Labels**: Buttons, form elements
+- **Keyboard Navigation**: All interactive elements supported
+- **Focus States**: Clear visual feedback
+- **prefers-reduced-motion**: Support for users with motion preferences
+
+---
+
+## 📊 SEO
+
+- **OG Tags**: Facebook, Twitter sharing support
+- **Meta Descriptions**: Display in search results
+- **Structured Data**: schema.org markup support
+- **Sitemap**: Auto-generated (`@astrojs/sitemap`)
+- **Favicon**: Display in browser tab
+
+---
+
+## ⚡ Performance
+
+- **Lighthouse Score**: 95+ (target)
+- **Bundle Size**: Minimal (React islands only)
+- **Caching**: GitHub Pages CDN caching
+- **Image Optimization**: CSS gradients + aspect ratio control
+
+---
+
+## 🐛 Troubleshooting
+
+### Dev server won't start
+
+```bash
+pnpm clean  # Clear cache
+pnpm install
+pnpm dev
+```
+
+### Build errors
+
+```bash
+# Check TypeScript errors
+pnpm check
+
+# Full clean rebuild
+rm -rf node_modules dist
+pnpm install
+pnpm build
+```
+
+### Not showing on GitHub Pages
+
+1. Verify repository is **public**
+2. Check `.github/workflows/deploy.yml` exists
+3. Verify **Settings** → **Pages** has "GitHub Actions" selected
+4. Check `astro.config.mjs` `base` path is correct (`/tomochan-house`)
+
+---
+
+## 📧 Content Update Guide
+
+### Change business hours
+
+```typescript
+// src/content/siteContent.ts
+business: {
+  hours: [
+    { day: "Mon-Fri", time: "19:00-04:00" },
+    { day: "Sat-Sun/Holidays", time: "18:00-05:00" },
+  ],
+}
+```
+
+### Add menu item
+
+```typescript
+menu: {
+  items: [
+    {
+      category: "Dishes",
+      name: "New Dish Name",
+      description: "Description",
+      price: "¥1,000",
+      icon: "🍲",
+    },
+    // ...
+  ],
+}
+```
+
+### Add FAQ
+
+```typescript
+contact: {
+  faq: [
+    {
+      q: "New question",
+      a: "Answer text",
+    },
+    // ...
+  ],
+}
+```
+
+### Add news
+
+```typescript
+news: [
+  {
+    id: 4,
+    date: "2024-02-01",
+    title: "News Title",
+    content: "Content",
+    icon: "📱",
+  },
+  // ...
+],
+```
+
+---
+
+## 🔐 Security
+
+- ✅ XSS Protection: Astro auto-escaping
+- ✅ CSRF Protection: No forms (static site)
+- ✅ HTTP Headers: GitHub Pages security settings
+- ✅ Dependency Management: Regular `pnpm update`
+
+---
+
+## 📄 License
+
+MIT License
+
+---
+
+## 👨‍💻 For Developers
+
+### Project Structure
+
+- **Astro**: Static HTML generation
+- **React**: Interactive UI (menu, FAQ, gallery, etc.)
+- **Tailwind**: Utility-based CSS
+- **TypeScript**: Type-safe development
+
+### Add new component
+
+```astro
+---
+// src/components/sections/YourSection.astro
+import SectionTitle from "../common/SectionTitle.astro";
+import ScrollReveal from "../common/ScrollReveal";
+import { siteContent } from "../../content/siteContent";
+
+const { yourData } = siteContent;
+---
+
+<section id="your-section" class="py-20 bg-white">
+  <SectionTitle title="Section Title" />
+  {/* Content */}
+</section>
+```
+
+### Use React islands
+
+```tsx
+// src/components/YourInteractiveComponent.tsx
+import React, { useState } from "react";
+
+export default function YourComponent() {
+  const [state, setState] = useState("");
+  return <div>{state}</div>;
+}
+```
+
+### Use in Astro page
+
+```astro
+import YourComponent from "../components/YourInteractiveComponent";
+
+<YourComponent client:load />
+```
+
+---
+
+## 🎯 Future Improvements
+
+- [ ] Multi-language support (English)
+- [ ] Reservation system integration (Stripe, etc.)
+- [ ] Headless CMS integration (Contentful)
+- [ ] Cloudinary image uploads
+- [ ] Dark mode support
+- [ ] PWA conversion
+
+---
+
+## 📞 Support
+
+If you encounter issues:
+
+1. Check GitHub Issues
+2. Create a new Issue with details
+
+---
+
+**Last Updated**: January 2024
+**Status**: 🟢 Production Ready

@@ -1,6 +1,7 @@
 ---
 import ScrollReveal from "../common/ScrollReveal";
 import SectionTitle from "../common/SectionTitle.astro";
+import MapWithMarker from "./MapWithMarker";
 import { siteContent } from "../../content/siteContent";
 
 const { access } = siteContent;
@@ -11,30 +12,21 @@ const { access } = siteContent;
     <SectionTitle title="アクセス" />
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      <!-- Map Placeholder -->
+      <!-- Map with Marker -->
       <ScrollReveal client:load>
-        <div class="bg-warm-100 rounded-xl overflow-hidden aspect-video shadow-soft">
-          <iframe
-            src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.7390649651644!2d139.70869!3d35.728924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d5a5a5a5a5d%3A0x${Math.random().toString(16).slice(2)}!2s${encodeURIComponent(access.address)}!5e0!3m2!1sja!2sjp!4v1000000000`}
-            width="100%"
-            height="100%"
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          >
-          </iframe>
-        </div>
+        <MapWithMarker
+          client:load
+          address={access.address}
+          latitude={access.latitude}
+          longitude={access.longitude}
+          mapUrl={access.mapUrl}
+          zoom={18}
+        />
       </ScrollReveal>
 
       <!-- Info -->
       <ScrollReveal client:load delay={0.1}>
         <div class="space-y-6">
-          <div>
-            <h3 class="text-2xl font-bold text-warm-900 mb-2">住所</h3>
-            <p class="text-lg text-warm-700">{access.address}</p>
-          </div>
-
           <div>
             <h3 class="text-2xl font-bold text-warm-900 mb-2">アクセス</h3>
             <p class="text-lg text-warm-700 mb-2">{access.transit}</p>
@@ -52,14 +44,10 @@ const { access } = siteContent;
             </ul>
           </div>
 
-          <a
-            href={access.mapUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-6 py-3 bg-accent-DEFAULT hover:bg-accent-dark text-warm-900 rounded-lg font-bold transition-colors"
-          >
-            🗺️ Google Mapsで開く
-          </a>
+          <div class="bg-accent-light rounded-lg p-4">
+            <p class="text-sm text-warm-600 mb-1">📍 住所</p>
+            <p class="font-bold text-warm-900">{access.address}</p>
+          </div>
         </div>
       </ScrollReveal>
     </div>
