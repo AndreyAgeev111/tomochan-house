@@ -492,6 +492,18 @@ export const siteContent = {
     ],
   },
 
+  reviews: {
+    title: "ご感想をお聞かせください",
+    subtitle: "くーちゃん一同、皆様からのご感想をお待ちしています！",
+    description: "ともちゃん家の雰囲気やお料理、スタッフの対応についてのご感想をお聞かせください。",
+    cta: {
+      text: "Google Mapで口コミを投稿する",
+      href: "https://maps.app.goo.gl/NGTcbHusn8XrZSbT8",
+      icon: "✍️",
+    },
+    mascotMessage: "くーちゃんより：お忙しい中、口コミを投稿していただきありがとうございます！皆様のご感想が、私たちのサービス向上の力になります。",
+  },
+
   news: [
     {
       id: 1,
