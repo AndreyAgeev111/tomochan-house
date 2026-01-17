@@ -30,6 +30,7 @@ export const siteContent = {
     { id: "gallery", label: "写真", href: "#gallery" },
     { id: "access", label: "アクセス", href: "#access" },
     { id: "contact", label: "お問い合わせ", href: "#contact" },
+    { id: "reviews", label: "ご感想", href: "#reviews" },
   ],
 
   hero: {
@@ -494,11 +495,41 @@ export const siteContent = {
 
   reviews: {
     title: "ご感想をお聞かせください",
-    subtitle: "くーちゃん一同、皆様からのご感想をお待ちしています！",
-    description: "ともちゃん家の雰囲気やお料理、スタッフの対応についてのご感想をお聞かせください。",
+    rating: 4.8,
+    totalReviews: 13,
+    testimonials: [
+      {
+        id: 1,
+        text: "アットホームなお店で安い！カラオケはみんなで楽しく歌えるから、ほんとにおすすめ！歌の上手いお兄さんもよく来てます！",
+        foodRating: 5,
+        serviceRating: 5,
+        atmosphereRating: 5,
+      },
+      {
+        id: 2,
+        text: "ご飯が美味しくてお酒も安価でのめます😆 フレンドリーなお店なのでまた来たくなります🥹",
+        foodRating: 5,
+        serviceRating: 5,
+        atmosphereRating: 5,
+      },
+      {
+        id: 3,
+        text: "何度も飲みに行かせてもらってます🍻\nママも素敵な方でいつも笑顔で優しく、話も面白い！そして何よりご飯が全部手作りで美味しい！\nその美味しいご飯と合わせて飲むお酒は最高でした😭✨\nカラオケもできるのでついつい長居してしまいます😂\nいつもありがとうございます🍀.*\nまたすぐ飲みに行きます🍻",
+        foodRating: 5,
+        serviceRating: 5,
+        atmosphereRating: 5,
+      },
+      {
+        id: 4,
+        text: "フードメニューもいっぱいだから一軒目からOK\nアットホームな感じでお一人様でも楽しく飲めました♪",
+        foodRating: 5,
+        serviceRating: 4,
+        atmosphereRating: 5,
+      },
+    ],
     cta: {
       text: "Google Mapで口コミを投稿する",
-      href: "https://maps.app.goo.gl/NGTcbHusn8XrZSbT8",
+      href: "https://www.google.com/maps/place/%E3%81%A8%E3%82%82%E3%81%A1%E3%82%83%E3%82%93%E5%AE%B6/@35.7324275,139.707879,18z/data=!3m1!5s0x60188d5e94418597:0xe284483c83d31038!4m8!3m7!1s0x60188d00480a9595:0xd8da6afeee921114!8m2!3d35.7324245!4d139.7079608!9m1!1b1!16s%2Fg%2F11m5npgvnk?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoASAFQAw%3D%3D",
       icon: "✍️",
     },
     mascotMessage: "くーちゃんより：お忙しい中、口コミを投稿していただきありがとうございます！皆様のご感想が、私たちのサービス向上の力になります。",

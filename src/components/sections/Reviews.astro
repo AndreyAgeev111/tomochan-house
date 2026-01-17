@@ -1,0 +1,108 @@
+---
+import ScrollReveal from "../common/ScrollReveal";
+import SectionTitle from "../common/SectionTitle.astro";
+import { siteContent } from "../../content/siteContent";
+
+const { reviews } = siteContent;
+
+// Generate star rating display
+const fullStars = Math.floor(reviews.rating);
+const hasHalfStar = reviews.rating % 1 !== 0;
+---
+
+<section id="reviews" class="py-20 bg-gradient-to-b from-warm-50 to-white">
+  <div class="max-w-6xl mx-auto px-4">
+    <SectionTitle title={reviews.title} />
+
+    <!-- Rating Header -->
+    <ScrollReveal client:load>
+      <div class="text-center mb-12">
+        <div class="inline-block">
+          <div class="flex items-center gap-3 mb-2 justify-center">
+            <div class="text-5xl font-bold text-warm-900">{reviews.rating}</div>
+            <div>
+              <div class="flex gap-1">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <span class={i < fullStars ? "text-2xl" : hasHalfStar && i === fullStars ? "text-2xl" : "text-2xl text-warm-200"}>
+                    {i < fullStars ? "★" : hasHalfStar && i === fullStars ? "⭐" : "☆"}
+                  </span>
+                ))}
+              </div>
+              <p class="text-sm text-warm-600 mt-1">{reviews.totalReviews}件の口コミ</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ScrollReveal>
+
+    <!-- Testimonials Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
+      {reviews.testimonials.map((testimonial) => (
+        <ScrollReveal client:load>
+          <div class="bg-white rounded-xl p-6 shadow-soft border-l-4 border-accent-DEFAULT hover:shadow-lg transition-shadow">
+            <!-- Stars -->
+            <div class="flex gap-1 mb-3">
+              {Array.from({ length: 5 }).map(() => (
+                <span class="text-lg">★</span>
+              ))}
+            </div>
+
+            <!-- Review Text -->
+            <p class="text-warm-800 mb-4 leading-relaxed">{testimonial.text}</p>
+
+            <!-- Ratings -->
+            <div class="space-y-2 text-sm mb-4 pb-4 border-b border-warm-100">
+              <div class="flex justify-between">
+                <span class="text-warm-600">料理</span>
+                <span class="font-semibold text-warm-900">{testimonial.foodRating}/5</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-warm-600">サービス</span>
+                <span class="font-semibold text-warm-900">{testimonial.serviceRating}/5</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-warm-600">雰囲気</span>
+                <span class="font-semibold text-warm-900">{testimonial.atmosphereRating}/5</span>
+              </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="flex justify-between text-xs text-warm-600">
+              <span>{testimonial.timeAgo || testimonial.priceRange}</span>
+            </div>
+          </div>
+        </ScrollReveal>
+      ))}
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Mascot with message -->
+      <ScrollReveal client:load>
+        <div class="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
+          <div class="text-9xl">🐱</div>
+          <div>
+            <p class="text-lg text-warm-700 italic">{reviews.mascotMessage}</p>
+          </div>
+        </div>
+      </ScrollReveal>
+
+      <!-- Review CTA Card -->
+      <ScrollReveal client:load delay={0.1}>
+        <div class="bg-gradient-to-br from-accent-light to-accent-DEFAULT rounded-xl p-8 shadow-soft hover:shadow-lg transition-shadow">
+          <div class="text-6xl mb-6 text-center">✍️</div>
+          <p class="text-warm-900 text-center mb-8 text-lg font-semibold">
+            あなたの感想をシェアしてください
+          </p>
+          <a
+            href={reviews.cta.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block w-full px-6 py-4 bg-warm-900 hover:bg-warm-800 text-white rounded-lg font-bold transition-colors text-center text-lg"
+          >
+            {reviews.cta.icon} {reviews.cta.text}
+          </a>
+        </div>
+      </ScrollReveal>
+    </div>
+  </div>
+</section>
