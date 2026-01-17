@@ -1,0 +1,55 @@
+---
+import ScrollReveal from "../common/ScrollReveal";
+import SectionTitle from "../common/SectionTitle.astro";
+import { siteContent } from "../../content/siteContent";
+
+const { instagram } = siteContent;
+---
+
+<section id="instagram" class="py-20 bg-warm-50">
+  <div class="max-w-6xl mx-auto px-4">
+    <SectionTitle title="インスタグラム" />
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Instagram Info -->
+      <ScrollReveal client:load>
+        <div class="space-y-6">
+          <div>
+            <h3 class="text-3xl font-bold text-warm-900 mb-2">
+              @{instagram.handle}
+            </h3>
+            <p class="text-lg text-warm-700">{instagram.bio}</p>
+          </div>
+
+          <p class="text-warm-600 leading-relaxed">{instagram.cta}</p>
+
+          <a
+            href={instagram.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-lg font-bold hover:shadow-lg transition-shadow"
+          >
+            <span>📱</span>
+            <span>Instagramをフォロー</span>
+          </a>
+        </div>
+      </ScrollReveal>
+
+      <!-- Sample Posts Grid -->
+      <ScrollReveal client:load delay={0.1}>
+        <div class="grid grid-cols-2 gap-4">
+          {
+            instagram.samplePosts.map((post) => (
+              <div class="aspect-square bg-gradient-to-br from-pink-200 via-rose-100 to-pink-100 rounded-lg shadow-softer hover:shadow-lg transition-shadow flex flex-col items-center justify-center gap-3">
+                <span class="text-4xl">{post.emoji}</span>
+                <p class="font-bold text-center text-sm text-warm-900 px-2">
+                  {post.caption}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </ScrollReveal>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,58 @@
+---
+import ScrollReveal from "../common/ScrollReveal";
+import SectionTitle from "../common/SectionTitle.astro";
+import { siteContent } from "../../content/siteContent";
+
+const { gallery } = siteContent;
+---
+
+<section id="gallery" class="py-20 bg-warm-50">
+  <div class="max-w-6xl mx-auto px-4">
+    <SectionTitle title="写真" subtitle={gallery.description} />
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        gallery.images.map((image, i) => (
+          <ScrollReveal
+            client:load
+            delay={i * 0.05}
+            className="group cursor-pointer"
+          >
+            <div class="relative bg-warm-200 rounded-lg overflow-hidden aspect-square shadow-softer hover:shadow-lg transition-shadow duration-300">
+              {/* Placeholder gradient */}
+              <div class="absolute inset-0 bg-gradient-to-br from-warm-300 to-warm-400 opacity-60" />
+
+              {/* Overlay content */}
+              <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/0 group-hover:bg-black/30 transition-colors duration-300">
+                <span class="text-4xl opacity-0 group-hover:opacity-100 transition-opacity">
+                  📷
+                </span>
+              </div>
+
+              {/* Caption */}
+              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4 translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
+                <p class="text-white font-semibold text-sm">{image.caption}</p>
+              </div>
+            </div>
+          </ScrollReveal>
+        ))
+      }
+    </div>
+
+    <!-- Note -->
+    <div class="text-center mt-12">
+      <p class="text-warm-600">
+        🐱 ともちゃん家の様子をもっと見たい方は、
+        <a
+          href={siteContent.business.instagramUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-bold text-accent-DEFAULT hover:text-accent-dark"
+        >
+          Instagramをフォロー
+        </a>
+        してください。
+      </p>
+    </div>
+  </div>
+</section>

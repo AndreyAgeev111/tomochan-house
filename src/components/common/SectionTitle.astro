@@ -1,0 +1,22 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+}
+
+const { title, subtitle } = Astro.props;
+---
+
+<div class="text-center mb-12">
+  <!-- Watermark background text -->
+  <div
+    class="text-6xl md:text-8xl font-black text-warm-100 absolute left-0 right-0 -z-10 pointer-events-none opacity-30"
+  >
+    {title}
+  </div>
+
+  <h2 class="section-title">{title}</h2>
+  {subtitle && <p class="text-lg text-warm-600">{subtitle}</p>}
+
+  <div class="section-divider" />
+</div>

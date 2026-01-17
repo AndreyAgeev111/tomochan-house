@@ -1,0 +1,33 @@
+---
+import ScrollReveal from "./common/ScrollReveal";
+import { siteContent } from "../content/siteContent";
+
+const { news } = siteContent;
+---
+
+<section class="py-12 bg-gradient-to-r from-accent-light to-warm-100">
+  <div class="max-w-6xl mx-auto px-4">
+    <h3 class="text-2xl font-bold text-warm-900 mb-8 text-center">お知らせ</h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {
+        news.map((item, i) => (
+          <ScrollReveal client:load delay={i * 0.1}>
+            <div class="bg-white rounded-lg p-6 shadow-softer hover:shadow-soft transition-shadow">
+              <div class="flex gap-4">
+                <span class="text-2xl flex-shrink-0">{item.icon}</span>
+                <div>
+                  <p class="text-xs text-warm-600 font-semibold mb-1">
+                    {new Date(item.date).toLocaleDateString("ja-JP")}
+                  </p>
+                  <h4 class="font-bold text-warm-900 mb-2">{item.title}</h4>
+                  <p class="text-sm text-warm-600">{item.content}</p>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+        ))
+      }
+    </div>
+  </div>
+</section>

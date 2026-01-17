@@ -1,0 +1,39 @@
+{
+  "name": "tomochan-house",
+  "version": "1.0.0",
+  "description": "Tomochan House - Cozy izakaya bar in Ikebukuro, Tokyo",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "keywords": [
+    "astro",
+    "izakaya",
+    "tokyo",
+    "cat",
+    "karaoke"
+  ],
+  "author": "Tomochan House",
+  "license": "MIT",
+  "dependencies": {
+    "framer-motion": "^11.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.6",
+    "@astrojs/react": "^3.0.0",
+    "@astrojs/sitemap": "^3.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "astro": "^4.0.0",
+    "autoprefixer": "^10.4.0",
+    "lucide-react": "^0.292.0",
+    "postcss": "^8.4.0",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.3.0"
+  }
+}

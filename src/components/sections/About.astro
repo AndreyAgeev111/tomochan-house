@@ -1,0 +1,47 @@
+---
+import ScrollReveal from "../common/ScrollReveal";
+import SectionTitle from "../common/SectionTitle.astro";
+import PawPrints from "../common/PawPrints.astro";
+import { siteContent } from "../../content/siteContent";
+
+const { about } = siteContent;
+---
+
+<section id="about" class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-4">
+    <SectionTitle title="お店について" subtitle="ともちゃん家のコンセプト" />
+
+    <!-- Main content -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+      {
+        about.sections.map((section, i) => (
+          <ScrollReveal delay={i * 0.1} client:load>
+            <div class="card h-full">
+              <h3 class="text-xl font-bold text-warm-900 mb-4">
+                {section.heading}
+              </h3>
+              <p class="text-warm-700 leading-relaxed">
+                {section.content}
+              </p>
+            </div>
+          </ScrollReveal>
+        ))
+      }
+    </div>
+
+    <PawPrints />
+
+    <!-- Mascot card -->
+    <ScrollReveal client:load className="mt-12">
+      <div class="bg-gradient-to-br from-accent-light to-warm-100 rounded-2xl p-8 text-center shadow-soft">
+        <div class="text-6xl mb-4">{about.mascot.emoji}</div>
+        <h3 class="text-2xl font-bold text-warm-900 mb-2">
+          {about.mascot.name}
+        </h3>
+        <p class="text-warm-700 text-lg">
+          {about.mascot.description}
+        </p>
+      </div>
+    </ScrollReveal>
+  </div>
+</section>

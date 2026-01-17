@@ -1,0 +1,25 @@
+---
+interface Props {
+  className?: string;
+}
+
+const { className = "mb-8" } = Astro.props;
+---
+
+<div class={`flex justify-center gap-2 ${className} opacity-60`}>
+  <span class="text-2xl">🐾</span>
+  <span class="text-2xl">🐾</span>
+  <span class="text-2xl">🐾</span>
+</div>
+
+<style>
+  @keyframes paw-float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+</style>

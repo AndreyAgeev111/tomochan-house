@@ -1,0 +1,54 @@
+---
+import SectionTitle from "../common/SectionTitle.astro";
+import ScrollReveal from "../common/ScrollReveal";
+import { siteContent } from "../../content/siteContent";
+
+const { events } = siteContent;
+---
+
+<section id="events" class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-4">
+    <SectionTitle title="営業カレンダー・イベント" subtitle={events.intro} />
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
+      <!-- Events list -->
+      <ScrollReveal client:load>
+        <div>
+          <h3 class="text-2xl font-bold text-warm-900 mb-6">今月のイベント</h3>
+          <div class="space-y-4">
+            {
+              events.monthlyEvents.map((event) => (
+                <div class="flex gap-4 p-4 bg-warm-50 rounded-lg hover:bg-warm-100 transition-colors">
+                  <span class="text-2xl flex-shrink-0">{event.icon}</span>
+                  <div>
+                    <p class="font-bold text-warm-900">{event.event}</p>
+                    <p class="text-sm text-warm-600">{event.date}</p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </ScrollReveal>
+
+      <!-- Calendar placeholder -->
+      <ScrollReveal client:load delay={0.1}>
+        <div class="bg-gradient-to-br from-warm-100 to-warm-50 rounded-xl p-8 aspect-square flex items-center justify-center border-2 border-dashed border-warm-300">
+          <div class="text-center">
+            <div class="text-5xl mb-4">📅</div>
+            <p class="text-warm-700 font-semibold">
+              カレンダー画像
+              <br />
+              <span class="text-sm text-warm-600">ここに月間カレンダーを表示</span>
+            </p>
+          </div>
+        </div>
+      </ScrollReveal>
+    </div>
+
+    <!-- Note -->
+    <div class="bg-accent-light rounded-lg p-6 text-center">
+      <p class="text-warm-900 font-semibold">{events.note}</p>
+    </div>
+  </div>
+</section>

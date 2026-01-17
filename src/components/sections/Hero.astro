@@ -1,0 +1,89 @@
+---
+import { siteContent } from "../../content/siteContent";
+
+const { hero, business } = siteContent;
+---
+
+<section
+  id="home"
+  class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-warm-100 via-warm-50 to-warm-100 overflow-hidden"
+>
+  <!-- Background decorative elements -->
+  <div
+    class="absolute top-10 right-10 w-72 h-72 bg-accent-light rounded-full opacity-20 blur-3xl animate-float"
+  />
+  <div
+    class="absolute bottom-10 left-10 w-96 h-96 bg-warm-200 rounded-full opacity-10 blur-3xl"
+  />
+
+  <!-- Hero overlay pattern -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute inset-0 bg-repeat" style="background-image: url('data:image/svg+xml,<svg width=60 height=60 xmlns=%22http://www.w3.org/2000/svg%22><circle cx=30 cy=30 r=3 fill=%22%23000%22/></svg>')"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 text-center px-4 pt-24 pb-12 max-w-4xl mx-auto">
+    <!-- Animated badge -->
+    <div
+      class="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full bg-accent-light shadow-soft animate-fade-in"
+    >
+      <span>🐱</span>
+      <span class="text-sm font-bold text-warm-900">{business.since} 年新しいお店</span>
+    </div>
+
+    <!-- Main title with staggered animation -->
+    <h1 class="hero-title mb-4 animate-fade-up">
+      {hero.title}
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="text-xl md:text-2xl text-warm-700 mb-8 animate-fade-up">
+      {hero.subtitle}
+    </p>
+
+    <!-- Feature badges -->
+    <div class="flex flex-wrap justify-center gap-3 mb-12">
+      {
+        hero.badges.map((badge, i) => (
+          <span
+            class="px-4 py-2 rounded-full bg-white shadow-softer text-sm font-semibold text-warm-800 animate-fade-up"
+            style={{ animationDelay: `${i * 0.1}s` }}
+          >
+            {badge}
+          </span>
+        ))
+      }
+    </div>
+
+    <!-- CTAs -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      {
+        hero.ctas.map((cta) => (
+          <a
+            href={cta.href}
+            class={`px-8 py-4 rounded-lg font-bold text-lg transition-all duration-300 ${
+              cta.primary
+                ? "bg-accent-DEFAULT hover:bg-accent-dark text-warm-900 shadow-soft hover:shadow-lg"
+                : "border-2 border-warm-800 text-warm-900 hover:bg-warm-100"
+            }`}
+          >
+            {cta.label}
+          </a>
+        ))
+      }
+    </div>
+
+    <!-- Floating cat emoji -->
+    <div class="absolute top-20 right-20 text-6xl opacity-40 animate-float hidden md:block">
+      🐱
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 md:bottom-8 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-2">
+    <span class="text-sm text-warm-600 font-medium">スクロール</span>
+    <div class="animate-bounce">
+      <span class="text-2xl">↓</span>
+    </div>
+  </div>
+</section>

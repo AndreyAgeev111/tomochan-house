@@ -1,0 +1,301 @@
+export const siteContent = {
+  business: {
+    name: "ともちゃん家",
+    nameRuby: "Tomochan House",
+    tagline: "池袋の隠れ家居酒屋 カラオケ＆手作り料理",
+    description: "ホスト『ともちゃん』の心からくつろげる居酒屋。マスコット『くーちゃん』があなたを出迎えします。",
+    since: "2024",
+    address: "東京都豊島区池袋2-5-4",
+    addressShort: "池袋駅 徒歩5分",
+    phone: "03-XXXX-XXXX",
+    instagramHandle: "tomochan_house",
+    instagramUrl: "https://instagram.com/tomochan_house",
+    hours: [
+      { day: "月〜金", time: "19:00〜4:00" },
+      { day: "土日祝", time: "18:00〜5:00" },
+    ],
+    closed: "不定休（SNSで確認ください）",
+  },
+
+  nav: [
+    { id: "home", label: "ホーム", href: "#home" },
+    { id: "about", label: "お店について", href: "#about" },
+    { id: "menu", label: "メニュー", href: "#menu" },
+    { id: "events", label: "営業カレンダー", href: "#events" },
+    { id: "gallery", label: "写真", href: "#gallery" },
+    { id: "access", label: "アクセス", href: "#access" },
+    { id: "contact", label: "お問い合わせ", href: "#contact" },
+  ],
+
+  hero: {
+    title: "ともちゃん家へようこそ",
+    subtitle: "くーちゃんがお迎えする、心がほっとする居酒屋",
+    badges: [
+      "🏮 池袋 カラオケ居酒屋",
+      "🍲 自家製料理",
+      "🐱 くーちゃんの世界観",
+      "since 2024",
+    ],
+    ctas: [
+      { label: "メニューを見る", href: "#menu", primary: true },
+      { label: "予約・お問い合わせ", href: "#contact", primary: false },
+    ],
+  },
+
+  about: {
+    title: "お店について",
+    sections: [
+      {
+        heading: "ともちゃん家とは",
+        content: "池袋の静かな路地にひっそりとたたずむ、隠れ家的な居酒屋です。ホスト『ともちゃん』がお出迎えする、心からくつろげる空間。手作り料理と厳選ドリンク、そしてカラオケで、仕事帰りの癒しを提供します。",
+      },
+      {
+        heading: "こんなお店です",
+        content: "小ぶりなカウンターと、ゆったりした座敷席。一人でも、グループでも、家族でも。毎日の「今日も頑張った」を、ここで一杯。お客さんも、スタッフも、みんなが笑える空間を目指しています。",
+      },
+      {
+        heading: "はじめての方へ",
+        content: "完全初心者大歓迎！予約なしのふらっと来店OK。カラオケは強制しません。ドリンク・フード共に一品から注文可。何かご不明な点は、お気軽にインスタで質問してください。",
+      },
+    ],
+    mascot: {
+      name: "くーちゃん",
+      description: "ともちゃん家のマスコット。愛らしい猫のキャラクターです。",
+      emoji: "🐱",
+    },
+  },
+
+  menu: {
+    title: "おすすめメニュー",
+    intro: "季節ごとに変わるメニュー。ここでは看板メニューをご紹介します。",
+    categories: ["料理", "おつまみ", "ドリンク"],
+    items: [
+      {
+        category: "料理",
+        name: "ともちゃん特製から揚げ",
+        description: "鶏もも肉を秘伝のタレで漬け込んだ、塩辛い一品。ビールに最高！",
+        price: "¥780",
+        icon: "🍗",
+      },
+      {
+        category: "料理",
+        name: "自家製焼き餃子",
+        description: "野菜とお肉のバランスが絶妙。カリカリの焼き目が特徴。",
+        price: "¥650",
+        icon: "🥟",
+      },
+      {
+        category: "料理",
+        name: "とり天丼",
+        description: "揚げたての鶏天を白飯にのせた、昭和の味わい。",
+        price: "¥890",
+        icon: "🍚",
+      },
+      {
+        category: "料理",
+        name: "マグロの漬け丼",
+        description: "築地仕入れの新鮮マグロ。週3回仕入れ。",
+        price: "¥1,200",
+        icon: "🍣",
+      },
+      {
+        category: "おつまみ",
+        name: "冷奴",
+        description: "シンプルだからこそ、豆腐の質が全て。自家製ダレ。",
+        price: "¥350",
+        icon: "🍲",
+      },
+      {
+        category: "おつまみ",
+        name: "枝豆",
+        description: "毎日塩加減を調整。塩辛すぎない、丁度いい塩加減。",
+        price: "¥400",
+        icon: "🫛",
+      },
+      {
+        category: "おつまみ",
+        name: "チーズ盛り",
+        description: "イタリアンチーズを3種類。ワインにも、ビールにも。",
+        price: "¥980",
+        icon: "🧀",
+      },
+      {
+        category: "おつまみ",
+        name: "ナッツミックス",
+        description: "塩焙煎したナッツ。無塩と塩辛、どちらでも選べます。",
+        price: "¥520",
+        icon: "🥜",
+      },
+      {
+        category: "ドリンク",
+        name: "生ビール",
+        description: "キンキンに冷えた樽生。毎日新しいタル。",
+        price: "¥580 / ¥880",
+        icon: "🍺",
+      },
+      {
+        category: "ドリンク",
+        name: "ハイボール",
+        description: "バーボン＋ソーダ。シンプルが一番。",
+        price: "¥600",
+        icon: "🥃",
+      },
+      {
+        category: "ドリンク",
+        name: "梅酒サワー",
+        description: "自家製梅酒を使った、甘すぎないサワー。",
+        price: "¥650",
+        icon: "🍹",
+      },
+      {
+        category: "ドリンク",
+        name: "ノンアルカクテル",
+        description: "運転手さんや妊婦さん向け。手作りシロップ使用。",
+        price: "¥500",
+        icon: "🧃",
+      },
+    ],
+  },
+
+  events: {
+    title: "営業カレンダー・イベント",
+    intro: "今月の営業状況とイベント情報です。",
+    note: "日曜・月曜も営業する日があります。最新情報はInstagramをご確認ください。",
+    monthlyEvents: [
+      {
+        date: "毎週金曜",
+        event: "金曜ナイト・カラオケタイム（21:00〜）",
+        icon: "🎤",
+      },
+      {
+        date: "第2土曜",
+        event: "ともちゃんの誕生日月（特別ドリンク有）",
+        icon: "🎂",
+      },
+      { date: "毎月末日", event: "特別メニュー登場", icon: "✨" },
+    ],
+    holidays: [
+      { date: "第1月曜", reason: "定休日" },
+      { date: "年末年始", reason: "要確認" },
+    ],
+  },
+
+  gallery: {
+    title: "写真",
+    description: "ともちゃん家の雰囲気をお楽しみください。",
+    images: Array.from({ length: 12 }, (_, i) => ({
+      id: i + 1,
+      src: `/tomochan-house/images/gallery-${i + 1}.jpg`,
+      alt: `ともちゃん家の店内写真 ${i + 1}`,
+      caption: ["カウンター席", "座敷席", "ともちゃん", "料理", "カラオケ", "夜景", "入口", "メニュー", "ドリンク", "スタッフ", "お客さん", "夜の路地"][i],
+    })),
+  },
+
+  access: {
+    title: "アクセス",
+    address: "東京都豊島区池袋2-5-4",
+    transit: "JR池袋駅 徒歩5分 / 東京メトロ池袋駅 徒歩5分",
+    mapUrl: "https://maps.google.com/maps/search/東京都豊島区池袋2-5-4/@35.728924,139.710033,16z",
+    directions: [
+      "JR池袋駅 東口を出て、明治通りを北へ",
+      "サンシャイン通りを東へ進む",
+      "池袋中央図書館の近く、左手の路地を入ると看板が見えます",
+    ],
+  },
+
+  instagram: {
+    title: "インスタグラム",
+    handle: "tomochan_house",
+    bio: "🐱 くーちゃんの世界観に浸る居酒屋 in 池袋 🍺",
+    cta: "フォローして最新情報をゲット！",
+    url: "https://instagram.com/tomochan_house",
+    samplePosts: [
+      { id: 1, caption: "本日のおすすめ", emoji: "🍲" },
+      { id: 2, caption: "ともちゃんのお昼寝タイム", emoji: "😴" },
+      { id: 3, caption: "金曜カラオケナイト", emoji: "🎤" },
+      { id: 4, caption: "新作ドリンク開発中", emoji: "🧪" },
+      { id: 5, caption: "店内の様子", emoji: "🏮" },
+      { id: 6, caption: "スタッフ募集中", emoji: "💼" },
+    ],
+  },
+
+  contact: {
+    title: "予約・お問い合わせ",
+    intro: "ご予約・ご不明な点は、お気軽にお問い合わせください。",
+    ctas: [
+      {
+        method: "インスタグラム DM",
+        description: "24時間以内に返信します",
+        href: "https://instagram.com/tomochan_house",
+        icon: "📱",
+      },
+      {
+        method: "電話",
+        description: "営業時間中のみ",
+        href: "tel:03XXXXXXXX",
+        icon: "☎️",
+      },
+    ],
+    hours: "営業時間：月〜金 19:00〜4:00 / 土日祝 18:00〜5:00",
+    faq: [
+      {
+        q: "初めてでも大丈夫？",
+        a: "もちろんです！初心者大歓迎。何か不安なことあれば、遠慮なくDMしてください。雰囲気をお伝えします。",
+      },
+      {
+        q: "カラオケは絶対ですか？",
+        a: "いいえ。カラオケは強制しません。飲むだけ、食べるだけでもOK。あくまで『したい人』のための施設です。",
+      },
+      {
+        q: "予約は必要ですか？",
+        a: "必須ではありませんが、特に土日祝・21時以降はお席が満席になることがあります。予約推奨。",
+      },
+      {
+        q: "支払い方法は？",
+        a: "現金、クレジットカード（VISA・MasterCard・JCB）、PayPay、LINE Pay対応。",
+      },
+      {
+        q: "くーちゃんのグッズはありますか？",
+        a: "ホスト『ともちゃん』が丁寧にお作りした、限定グッズがございます。詳細はお店でお聞きください。",
+      },
+      {
+        q: "一人飲みでも大丈夫ですか？",
+        a: "大歓迎です。むしろ一人客率が高い。カウンター席もあり、スタッフと気軽に話せます。",
+      },
+      {
+        q: "貸し切りはできますか？",
+        a: "可能です。詳細はインスタのDMでお問い合わせください。",
+      },
+      {
+        q: "食べ物の持ち込みはOK？",
+        a: "申し訳ありませんが、原則禁止です。ただし、お子さんのための粉ミルク・おやつ等は相談ください。",
+      },
+    ],
+  },
+
+  news: [
+    {
+      id: 1,
+      date: "2024-01-15",
+      title: "オープンしました！",
+      content: "ともちゃん家がオープンしました。皆さんのご来店をお待ちしています。",
+      icon: "🎉",
+    },
+    {
+      id: 2,
+      date: "2024-01-20",
+      title: "スタッフ募集中",
+      content: "ホール・キッチンスタッフを募集中。詳細はDMまで。",
+      icon: "💼",
+    },
+    {
+      id: 3,
+      date: "2024-01-25",
+      title: "Instagram始めました",
+      content: "最新情報・毎日のおすすめメニューを配信中。フォローお願いします！",
+      icon: "📱",
+    },
+  ],
+};
+
+export type SiteContent = typeof siteContent;
