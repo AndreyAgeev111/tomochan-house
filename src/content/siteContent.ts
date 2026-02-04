@@ -4,7 +4,7 @@ export const siteContent = {
     nameRuby: "Tomochan House",
     tagline: "池袋の隠れ家居酒屋 カラオケ＆手作り料理",
     description: "ホスト『ともちゃん』の心からくつろげる居酒屋。マスコット『くーちゃん』があなたを出迎えします。",
-    since: "2024",
+    since: "",
     address: "東京都豊島区池袋2-5-4 壱ビル301号",
     addressShort: "池袋駅 徒歩5分",
     phone: "03-XXXX-XXXX",
@@ -35,12 +35,12 @@ export const siteContent = {
 
   hero: {
     title: "ともちゃん家へようこそ",
-    subtitle: "くーちゃんがお迎えする、心がほっとする居酒屋",
+    subtitle: "時間無制限、カラオケ無料、お客様が落ち着けるアットホームなお店",
     badges: [
       "🏮 池袋 カラオケ居酒屋",
-      "🍲 自家製料理",
-      "🐱 くーちゃんの世界観",
-      "since 2024",
+      "🍲 ママの美味しい自家製料理",
+      "🐱 カラオケ歌い放題",
+      "フリータイム",
     ],
     ctas: [
       { label: "メニューを見る", href: "#menu", primary: true },
@@ -382,6 +382,12 @@ export const siteContent = {
         icon: "🎂",
       },
       { date: "毎月末日", event: "特別メニュー登場", icon: "✨" },
+      {
+        date: "2026年3月9日",
+        event: "ゴルフコンペ開催",
+        icon: "⛳",
+        isSpecial: true,
+      },
     ],
     holidays: [
       { date: "第1月曜", reason: "定休日" },
@@ -394,6 +400,35 @@ export const siteContent = {
       specialDates: [
         { date: 9, label: "成人の日", emoji: "🎂" },
       ],
+    },
+    specialEvent: {
+      title: "ゴルフコンペ 2026年3月9日（月）",
+      date: "2026年3月9日（月）",
+      description: "ともちゃん家関連企画でゴルフコンペを開催します。ゴールド佐野カントリークラブにて、楽しいイベントをお楽しみください。",
+      image: "/tomochan-house/images/golf-tournament.jpg",
+      details: [
+        {
+          icon: "📍",
+          label: "会場",
+          value: "ゴールド佐野カントリークラブ（栃木県佐野市）",
+        },
+        { icon: "🕐", label: "時間", value: "集合 8時15分 / スタート 8時35分" },
+        { icon: "⏱️", label: "プレー形式", value: "前半終了後 表彰式、新ぺリ" },
+        {
+          icon: "💰",
+          label: "会費",
+          value: "1,000円 + スタートフェア外(L500円割引あり)",
+        },
+        {
+          icon: "🏆",
+          label: "特典",
+          value: "1位2位3位 ネービー賞あり、入場者全員に賞品あり",
+        },
+      ],
+      cta: {
+        label: "詳細・申込はInstagramへ",
+        href: "https://instagram.com/tomochan_house",
+      },
     },
   },
 
