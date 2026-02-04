@@ -425,7 +425,16 @@ import YourComponent from "../components/YourInteractiveComponent";
 
 ---
 
-**最終更新**: 2024年1月
+## 🎯 最近の更新
+
+- ✨ **ゴルフセクション** - 新しいゴルフイベント情報を追加
+- 📝 **レビューシステム** - ユーザーレビューの表示機能
+- 📅 **カレンダーと地図** - 営業日程と店舗位置を表示
+- 🍽️ **メニュー改善** - UI/UXを改善しました
+
+---
+
+**最終更新**: 2026年2月
 **ステータス**: 🟢 本番対応
 
 ---
@@ -861,5 +870,14 @@ If you encounter issues:
 
 ---
 
-**Last Updated**: January 2024
+## 🎯 Recent Updates
+
+- ✨ **Golf Section** - New golf event information added
+- 📝 **Review System** - User review display functionality
+- 📅 **Calendar & Map** - Business schedule and store location display
+- 🍽️ **Menu Improvements** - Enhanced UI/UX
+
+---
+
+**Last Updated**: February 2026
 **Status**: 🟢 Production Ready
