@@ -394,12 +394,10 @@ export const siteContent = {
       { date: "年末年始", reason: "要確認" },
     ],
     calendar: {
-      month: 1,
+      month: 2,
       year: 2026,
-      closedDates: [1, 2, 3, 10, 11, 12, 25],
-      specialDates: [
-        { date: 9, label: "成人の日", emoji: "🎂" },
-      ],
+      closedDates: [1, 2, 5, 11, 23],
+      specialDates: [],
     },
     specialEvent: {
       title: "ゴルフコンペ 2026年3月9日（月）",
