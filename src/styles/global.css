@@ -11,6 +11,10 @@ body {
   @apply bg-warm-50 text-warm-900 font-sans;
 }
 
+main {
+  @apply pb-28 md:pb-0;
+}
+
 /* Custom components */
 @layer components {
   .hero-title {
@@ -84,4 +88,65 @@ a:focus-visible {
 /* Smooth transitions */
 * {
   @apply transition-colors duration-200;
+}
+
+/* Mobile menu animations */
+@keyframes slideInMenu {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutMenu {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes fadeInBackdrop {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOutBackdrop {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Mobile menu base states */
+@media (max-width: 767px) {
+  #mobile-menu {
+    will-change: transform;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  #mobile-menu:not(.hidden) {
+    transform: translateX(0);
+  }
+
+  #menu-backdrop {
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+  }
+
+  #menu-backdrop:not(.hidden) {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }

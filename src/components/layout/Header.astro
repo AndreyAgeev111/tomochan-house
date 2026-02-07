@@ -4,6 +4,68 @@ import { siteContent } from "../../content/siteContent";
 const { nav } = siteContent;
 ---
 
+<script is:inline>
+  function initMobileMenu() {
+    const hamburger = document.getElementById("hamburger-btn");
+    const menu = document.getElementById("mobile-menu");
+    const backdrop = document.getElementById("menu-backdrop");
+    const closeBtn = document.getElementById("close-btn");
+
+    if (!hamburger || !menu || !backdrop || !closeBtn) {
+      return;
+    }
+
+    function toggleMenu() {
+      const wasHidden = menu.classList.contains("hidden");
+
+      if (wasHidden) {
+        // Open menu
+        menu.classList.remove("hidden");
+        backdrop.classList.remove("hidden");
+        hamburger.setAttribute("aria-expanded", "true");
+        document.body.style.overflow = "hidden";
+        const stickyNav = document.querySelector("nav.sticky-nav");
+        if (stickyNav) stickyNav.classList.add("hidden");
+      } else {
+        // Close menu
+        menu.classList.add("hidden");
+        backdrop.classList.add("hidden");
+        hamburger.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
+        const stickyNav = document.querySelector("nav.sticky-nav");
+        if (stickyNav) stickyNav.classList.remove("hidden");
+      }
+    }
+
+    function closeMenu() {
+      menu.classList.add("hidden");
+      backdrop.classList.add("hidden");
+      hamburger.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+      const stickyNav = document.querySelector("nav.sticky-nav");
+      if (stickyNav) stickyNav.classList.remove("hidden");
+    }
+
+    hamburger.addEventListener("click", toggleMenu);
+    backdrop.addEventListener("click", closeMenu);
+    closeBtn.addEventListener("click", closeMenu);
+
+    // Close on link click
+    const links = menu.querySelectorAll("a[href^='#']");
+    links.forEach(link => {
+      link.addEventListener("click", closeMenu);
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initMobileMenu);
+  } else {
+    initMobileMenu();
+  }
+
+  document.addEventListener("astro:after-swap", initMobileMenu);
+</script>
+
 <header
   class="fixed top-0 left-0 right-0 z-50 bg-warm-50/95 backdrop-blur-sm border-b border-warm-200 shadow-softer"
 >
@@ -13,7 +75,7 @@ const { nav } = siteContent;
       <span class="text-2xl">🐱</span>
       <div class="flex flex-col">
         <h1 class="font-bold text-warm-900 leading-none">ともちゃん家</h1>
-        <p class="text-xs text-warm-600">Tomochan House</p>
+        <p class="text-xs text-warm-700">Tomochan House</p>
       </div>
     </a>
 
@@ -36,10 +98,72 @@ const { nav } = siteContent;
       href={siteContent.business.instagramUrl}
       target="_blank"
       rel="noopener noreferrer"
-      class="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg bg-accent-light hover:bg-accent-DEFAULT transition-colors text-sm font-bold"
+      class="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg bg-accent-light hover:bg-accent-DEFAULT transition-colors text-sm font-bold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-DEFAULT"
     >
       <span>📱</span>
       <span class="hidden sm:inline">@{siteContent.business.instagramHandle}</span>
     </a>
+
+    <!-- Mobile Menu Button -->
+    <button
+      id="hamburger-btn"
+      class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg hover:bg-warm-100 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-DEFAULT"
+      aria-label="メニューを開く"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span class="text-2xl">☰</span>
+    </button>
   </div>
 </header>
+
+<!-- Mobile Menu Backdrop -->
+<div id="menu-backdrop" class="hidden md:hidden fixed inset-0 bg-black/50 z-30"></div>
+
+<!-- Mobile Menu -->
+<div
+  id="mobile-menu"
+  role="navigation"
+  aria-label="モバイルナビゲーション"
+  class="hidden md:hidden fixed left-0 top-0 bottom-0 z-40 bg-white overflow-y-auto flex flex-col pt-6 shadow-lg"
+  style="width: 75%; max-width: 28rem;"
+>
+  <!-- Menu Header with Close Button -->
+  <div class="flex justify-between items-center px-6 mb-8">
+    <span class="text-2xl">🐱</span>
+    <button
+      id="close-btn"
+      class="text-2xl text-warm-500 hover:text-warm-900 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-DEFAULT rounded p-1"
+      aria-label="メニューを閉じる"
+    >
+      ✕
+    </button>
+  </div>
+
+  <!-- Navigation Items -->
+  <nav class="flex flex-col space-y-1 px-2 flex-1">
+    {
+      nav.map((item) => (
+        <a
+          href={item.href}
+          class="px-6 py-4 text-lg font-medium text-warm-900 hover:bg-warm-50 transition-colors rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-DEFAULT"
+        >
+          {item.label}
+        </a>
+      ))
+    }
+  </nav>
+
+  <!-- Instagram Link -->
+  <div class="px-6 py-4 border-t border-warm-100">
+    <a
+      href={siteContent.business.instagramUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="block w-full px-4 py-3 bg-accent-light hover:bg-accent-DEFAULT transition-colors rounded-lg font-bold text-accent-DEFAULT flex items-center justify-center gap-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-DEFAULT"
+    >
+      <span>📱</span>
+      <span>@{siteContent.business.instagramHandle}</span>
+    </a>
+  </div>
+</div>

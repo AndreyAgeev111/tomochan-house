@@ -7,7 +7,7 @@ import { siteContent } from "../../content/siteContent";
 const { access } = siteContent;
 ---
 
-<section id="access" class="py-20 bg-white">
+<section id="access" class="py-12 md:py-20 bg-white">
   <div class="max-w-6xl mx-auto px-4">
     <SectionTitle title="アクセス" />
 
@@ -37,7 +37,7 @@ const { access } = siteContent;
                     <span class="font-bold text-accent-DEFAULT min-w-fit">
                       {i + 1}.
                     </span>
-                    <span class="text-warm-600">{dir}</span>
+                    <span class="text-warm-700">{dir}</span>
                   </li>
                 ))
               }
@@ -45,7 +45,7 @@ const { access } = siteContent;
           </div>
 
           <div class="bg-accent-light rounded-lg p-4">
-            <p class="text-sm text-warm-600 mb-1">📍 住所</p>
+            <p class="text-sm text-warm-700 mb-1">📍 住所</p>
             <p class="font-bold text-warm-900">{access.address}</p>
           </div>
         </div>

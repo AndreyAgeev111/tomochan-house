@@ -7,12 +7,12 @@ import { siteContent } from "../../content/siteContent";
 const { about } = siteContent;
 ---
 
-<section id="about" class="py-20 bg-white">
+<section id="about" class="py-12 md:py-20 bg-white">
   <div class="max-w-6xl mx-auto px-4">
     <SectionTitle title="お店について" subtitle="ともちゃん家のコンセプト" />
 
     <!-- Main content -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-8 mb-8 md:mb-16">
       {
         about.sections.map((section, i) => (
           <ScrollReveal delay={i * 0.1} client:load>
@@ -32,13 +32,13 @@ const { about } = siteContent;
     <PawPrints />
 
     <!-- Mascot card -->
-    <ScrollReveal client:load className="mt-12">
-      <div class="bg-gradient-to-br from-accent-light to-warm-100 rounded-2xl p-8 text-center shadow-soft">
-        <div class="text-6xl mb-4">{about.mascot.emoji}</div>
-        <h3 class="text-2xl font-bold text-warm-900 mb-2">
+    <ScrollReveal client:load className="mt-8 md:mt-12">
+      <div class="bg-gradient-to-br from-accent-light to-warm-100 rounded-xl md:rounded-2xl p-5 md:p-8 text-center shadow-soft">
+        <div class="text-5xl md:text-6xl mb-3 md:mb-4">{about.mascot.emoji}</div>
+        <h3 class="text-lg md:text-2xl font-bold text-warm-900 mb-1 md:mb-2">
           {about.mascot.name}
         </h3>
-        <p class="text-warm-700 text-lg">
+        <p class="text-warm-700 text-sm md:text-lg">
           {about.mascot.description}
         </p>
       </div>

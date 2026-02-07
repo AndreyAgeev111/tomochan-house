@@ -46,7 +46,7 @@ export default function Calendar({
         {weekDays.map((day) => (
           <div
             key={day}
-            className="text-center py-2 font-bold text-warm-600 text-sm"
+            className="text-center py-2 font-bold text-warm-700 text-sm"
           >
             {day}
           </div>

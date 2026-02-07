@@ -7,17 +7,17 @@ import { siteContent } from "../../content/siteContent";
 const { menu } = siteContent;
 ---
 
-<section id="menu" class="py-20 bg-warm-50">
+<section id="menu" class="py-12 md:py-20 bg-warm-50">
   <div class="max-w-6xl mx-auto px-4">
     <SectionTitle title="おすすめメニュー" subtitle={menu.intro} />
 
     <MenuFilter client:load />
 
-    <PawPrints className="mt-16" />
+    <PawPrints className="mt-8 md:mt-16" />
 
     <!-- Menu note -->
-    <div class="text-center mt-8">
-      <p class="text-warm-600 text-sm">
+    <div class="text-center mt-6 md:mt-8">
+      <p class="text-warm-700 text-xs md:text-sm">
         ※ メニューは季節ごとに変わります。詳細はInstagramをご覧ください。
       </p>
     </div>

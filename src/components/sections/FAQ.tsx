@@ -23,7 +23,7 @@ export default function FAQ({ faqItems }: FAQProps) {
         >
           <button
             onClick={() => setOpenId(openId === i ? null : i)}
-            className="w-full px-6 py-4 flex items-center justify-between bg-white hover:bg-warm-50 transition-colors text-left"
+            className="w-full px-6 py-4 flex items-center justify-between bg-white hover:bg-warm-50 transition-colors text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-DEFAULT"
           >
             <span className="font-bold text-warm-900 flex-1">{item.q}</span>
             <motion.div

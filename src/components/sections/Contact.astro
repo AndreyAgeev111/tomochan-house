@@ -8,7 +8,7 @@ import { siteContent } from "../../content/siteContent";
 const { contact } = siteContent;
 ---
 
-<section id="contact" class="py-20 bg-white">
+<section id="contact" class="py-12 md:py-20 bg-white">
   <div class="max-w-6xl mx-auto px-4">
     <SectionTitle title="予約・お問い合わせ" subtitle={contact.intro} />
 
@@ -21,13 +21,13 @@ const { contact } = siteContent;
               href={cta.href}
               target="_blank"
               rel="noopener noreferrer"
-              class="block p-8 bg-gradient-to-br from-warm-100 to-warm-50 rounded-xl shadow-soft hover:shadow-lg transition-shadow border-2 border-warm-200 hover:border-accent-DEFAULT"
+              class="block p-6 md:p-8 bg-gradient-to-br from-warm-100 to-warm-50 rounded-xl shadow-softer hover:shadow-soft transition-shadow border-2 border-warm-200 hover:border-accent-DEFAULT focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-DEFAULT"
             >
               <div class="text-4xl mb-4">{cta.icon}</div>
               <h3 class="text-2xl font-bold text-warm-900 mb-2">
                 {cta.method}
               </h3>
-              <p class="text-warm-600">{cta.description}</p>
+              <p class="text-warm-700">{cta.description}</p>
             </a>
           </ScrollReveal>
         ))
