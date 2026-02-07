@@ -34,9 +34,7 @@ const { access } = siteContent;
               {
                 access.directions.map((dir, i) => (
                   <li class="flex gap-3">
-                    <span class="font-bold text-accent-DEFAULT min-w-fit">
-                      {i + 1}.
-                    </span>
+                    <span class="font-bold text-accent-DEFAULT min-w-fit">{i + 1}.</span>
                     <span class="text-warm-700">{dir}</span>
                   </li>
                 ))

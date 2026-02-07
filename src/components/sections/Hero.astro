@@ -11,14 +11,18 @@ const { hero, business } = siteContent;
   <!-- Background decorative elements -->
   <div
     class="absolute top-10 right-10 w-72 h-72 bg-accent-light rounded-full opacity-20 blur-3xl animate-float"
-  />
-  <div
-    class="absolute bottom-10 left-10 w-96 h-96 bg-warm-200 rounded-full opacity-10 blur-3xl"
-  />
+  >
+  </div>
+  <div class="absolute bottom-10 left-10 w-96 h-96 bg-warm-200 rounded-full opacity-10 blur-3xl">
+  </div>
 
   <!-- Hero overlay pattern -->
   <div class="absolute inset-0 opacity-5">
-    <div class="absolute inset-0 bg-repeat" style="background-image: url('data:image/svg+xml,<svg width=60 height=60 xmlns=%22http://www.w3.org/2000/svg%22><circle cx=30 cy=30 r=3 fill=%22%23000%22/></svg>')"></div>
+    <div
+      class="absolute inset-0 bg-repeat"
+      style="background-image: url('data:image/svg+xml,<svg width=60 height=60 xmlns=%22http://www.w3.org/2000/svg%22><circle cx=30 cy=30 r=3 fill=%22%23000%22/></svg>')"
+    >
+    </div>
   </div>
 
   <!-- Content -->
@@ -74,13 +78,13 @@ const { hero, business } = siteContent;
     </div>
 
     <!-- Floating cat emoji -->
-    <div class="absolute top-20 right-20 text-6xl opacity-40 animate-float hidden md:block">
-      🐱
-    </div>
+    <div class="absolute top-20 right-20 text-6xl opacity-40 animate-float hidden md:block">🐱</div>
   </div>
 
   <!-- Scroll indicator -->
-  <div class="absolute bottom-8 md:bottom-8 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-2">
+  <div
+    class="absolute bottom-8 md:bottom-8 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-2"
+  >
     <span class="text-sm text-warm-700 font-medium">スクロール</span>
     <div class="animate-bounce">
       <span class="text-2xl">↓</span>

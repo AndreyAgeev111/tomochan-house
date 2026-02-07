@@ -1,25 +1,86 @@
 # Build output
 dist/
+build/
 .astro/
+.next/
+out/
 
 # Node dependencies
 node_modules/
+
+# Lock files (keep pnpm-lock.yaml committed, exclude others if using single package manager)
+# package-lock.json
+# yarn.lock
+# Uncomment above if you're using npm or yarn instead of pnpm
 
 # Environment variables
 .env
 .env.local
 .env.*.local
+.env.prod.local
+.env.test.local
 
-# IDE
+# IDE & Editor
 .vscode/
 .idea/
+.vs/
 *.swp
 *.swo
 *~
 .DS_Store
+.AppleDouble
+.LSOverride
+*.sublime-project
+*.sublime-workspace
+.project
+.pydevproject
+.settings/
+*.code-workspace
 
-# Dependencies
+# OS files
+Thumbs.db
+ehthumbs.db
+*.log
+
+# Debug logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+lerna-debug.log*
+
+# Testing
+coverage/
+.nyc_output/
+*.lcov
+
+# Cache
+.cache/
+.eslintcache
+.stylelintcache
+*.tsbuildinfo
+
+# Local development
+.env.development.local
+.env.development
+
+# IDE specific files
+.editorconfig.swp
+.prettierignore.swp
+.eslintrc.json.swp
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+~*
+
+# OS generated files
+*.DS_Store
+.AppleDouble
+.LSOverride
+*.thumbs
+
+# Pre-commit hook cache
+.pre-commit-framework/
+.husky/_/

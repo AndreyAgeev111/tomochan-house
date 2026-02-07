@@ -16,7 +16,9 @@ export default function MapWithMarker({
   mapUrl,
 }: MapProps) {
   // Use provided mapUrl or fallback to Google Maps search
-  const googleMapsUrl = mapUrl || `https://www.google.com/maps/search/${encodeURIComponent(address)}/@${latitude},${longitude},${zoom}z`;
+  const googleMapsUrl =
+    mapUrl ||
+    `https://www.google.com/maps/search/${encodeURIComponent(address)}/@${latitude},${longitude},${zoom}z`;
 
   // Create simple embed URL using coordinates
   const embedUrl = `https://maps.google.com?q=${latitude},${longitude}&z=${zoom}&output=embed`;

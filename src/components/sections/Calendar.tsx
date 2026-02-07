@@ -7,19 +7,14 @@ interface CalendarProps {
   specialDates?: Array<{ date: number; label: string; emoji: string }>;
 }
 
-export default function Calendar({
-  month,
-  year,
-  closedDates,
-  specialDates = [],
-}: CalendarProps) {
+export default function Calendar({ month, year, closedDates, specialDates = [] }: CalendarProps) {
   // Get first day of month and total days
   const firstDay = new Date(year, month - 1, 1).getDay();
   const daysInMonth = new Date(year, month, 0).getDate();
 
   // Create array of calendar days
   const days = Array.from({ length: daysInMonth }, (_, i) => i + 1);
-  const emptyDays = Array.from({ length: firstDay }, (_, i) => null);
+  const emptyDays = Array.from({ length: firstDay }, () => null);
 
   const monthName = new Date(year, month - 1).toLocaleString("ja-JP", {
     month: "long",
@@ -44,10 +39,7 @@ export default function Calendar({
       {/* Weekday headers */}
       <div className="grid grid-cols-7 gap-1 mb-2">
         {weekDays.map((day) => (
-          <div
-            key={day}
-            className="text-center py-2 font-bold text-warm-700 text-sm"
-          >
+          <div key={day} className="text-center py-2 font-bold text-warm-700 text-sm">
             {day}
           </div>
         ))}
@@ -75,9 +67,7 @@ export default function Calendar({
               }`}
             >
               <div>{day}</div>
-              {specialDate && (
-                <div className="text-xs mt-0.5">{specialDate.emoji}</div>
-              )}
+              {specialDate && <div className="text-xs mt-0.5">{specialDate.emoji}</div>}
               {isClosed && <div className="text-xs mt-0.5">休</div>}
             </div>
           );

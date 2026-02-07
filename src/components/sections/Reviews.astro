@@ -14,7 +14,6 @@ const hasHalfStar = reviews.rating % 1 !== 0;
   <div class="max-w-6xl mx-auto px-4">
     <SectionTitle title={reviews.title} />
 
-    <!-- Rating Header -->
     <ScrollReveal client:load>
       <div class="text-center mb-12">
         <div class="inline-block">
@@ -22,11 +21,21 @@ const hasHalfStar = reviews.rating % 1 !== 0;
             <div class="text-5xl font-bold text-warm-900">{reviews.rating}</div>
             <div>
               <div class="flex gap-1">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <span class={i < fullStars ? "text-2xl" : hasHalfStar && i === fullStars ? "text-2xl" : "text-2xl text-warm-200"}>
-                    {i < fullStars ? "★" : hasHalfStar && i === fullStars ? "⭐" : "☆"}
-                  </span>
-                ))}
+                {
+                  Array.from({ length: 5 }).map((_, i) => (
+                    <span
+                      class={
+                        i < fullStars
+                          ? "text-2xl"
+                          : hasHalfStar && i === fullStars
+                            ? "text-2xl"
+                            : "text-2xl text-warm-200"
+                      }
+                    >
+                      {i < fullStars ? "★" : hasHalfStar && i === fullStars ? "⭐" : "☆"}
+                    </span>
+                  ))
+                }
               </div>
               <p class="text-sm text-warm-700 mt-1">{reviews.totalReviews}件の口コミ</p>
             </div>
@@ -35,50 +44,50 @@ const hasHalfStar = reviews.rating % 1 !== 0;
       </div>
     </ScrollReveal>
 
-    <!-- Testimonials Grid -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
-      {reviews.testimonials.map((testimonial, index) => (
-        <div class={index >= 2 ? "hidden lg:block" : ""}>
-          <ScrollReveal client:load>
-            <div class="bg-white rounded-xl p-4 md:p-6 shadow-softer hover:shadow-soft transition-shadow border-l-4 border-accent-DEFAULT">
-              <!-- Stars -->
-              <div class="flex gap-1 mb-3">
-                {Array.from({ length: 5 }).map(() => (
-                  <span class="text-lg">★</span>
-                ))}
-              </div>
-
-              <!-- Review Text -->
-              <p class="text-warm-800 mb-4 leading-relaxed text-sm md:text-base line-clamp-4 md:line-clamp-none">{testimonial.text}</p>
-
-              <!-- Ratings -->
-              <div class="space-y-2 text-xs md:text-sm mb-4 pb-4 border-b border-warm-100">
-                <div class="flex justify-between">
-                  <span class="text-warm-700">料理</span>
-                  <span class="font-semibold text-warm-900">{testimonial.foodRating}/5</span>
+      {
+        reviews.testimonials.map((testimonial, index) => (
+          <div class={index >= 2 ? "hidden lg:block" : ""}>
+            <ScrollReveal client:load>
+              <div class="bg-white rounded-xl p-4 md:p-6 shadow-softer hover:shadow-soft transition-shadow border-l-4 border-accent-DEFAULT">
+                <div class="flex gap-1 mb-3">
+                  {Array.from({ length: 5 }).map(() => (
+                    <span class="text-lg">★</span>
+                  ))}
                 </div>
-                <div class="flex justify-between">
-                  <span class="text-warm-700">サービス</span>
-                  <span class="font-semibold text-warm-900">{testimonial.serviceRating}/5</span>
-                </div>
-                <div class="flex justify-between">
-                  <span class="text-warm-700">雰囲気</span>
-                  <span class="font-semibold text-warm-900">{testimonial.atmosphereRating}/5</span>
-                </div>
-              </div>
 
-              <!-- Footer -->
-              <div class="flex justify-between text-xs text-warm-700">
-                <span>{testimonial.timeAgo || testimonial.priceRange}</span>
+                <p class="text-warm-800 mb-4 leading-relaxed text-sm md:text-base line-clamp-4 md:line-clamp-none">
+                  {testimonial.text}
+                </p>
+
+                <div class="space-y-2 text-xs md:text-sm mb-4 pb-4 border-b border-warm-100">
+                  <div class="flex justify-between">
+                    <span class="text-warm-700">料理</span>
+                    <span class="font-semibold text-warm-900">{testimonial.foodRating}/5</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-warm-700">サービス</span>
+                    <span class="font-semibold text-warm-900">{testimonial.serviceRating}/5</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-warm-700">雰囲気</span>
+                    <span class="font-semibold text-warm-900">
+                      {testimonial.atmosphereRating}/5
+                    </span>
+                  </div>
+                </div>
+
+                <div class="flex justify-between text-xs text-warm-700">
+                  <span>{testimonial.timeAgo || testimonial.priceRange}</span>
+                </div>
               </div>
-            </div>
-          </ScrollReveal>
-        </div>
-      ))}
+            </ScrollReveal>
+          </div>
+        ))
+      }
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      <!-- Mascot with message -->
       <ScrollReveal client:load>
         <div class="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
           <div class="text-9xl">🐱</div>
@@ -88,9 +97,10 @@ const hasHalfStar = reviews.rating % 1 !== 0;
         </div>
       </ScrollReveal>
 
-      <!-- Review CTA Card -->
       <ScrollReveal client:load delay={0.1}>
-        <div class="bg-gradient-to-br from-accent-light to-accent-DEFAULT rounded-xl p-8 shadow-soft hover:shadow-lg transition-shadow">
+        <div
+          class="bg-gradient-to-br from-accent-light to-accent-DEFAULT rounded-xl p-8 shadow-soft hover:shadow-lg transition-shadow"
+        >
           <div class="text-6xl mb-6 text-center">✍️</div>
           <p class="text-warm-900 text-center mb-8 text-lg font-semibold">
             あなたの感想をシェアしてください
@@ -101,7 +111,8 @@ const hasHalfStar = reviews.rating % 1 !== 0;
             rel="noopener noreferrer"
             class="block w-full px-6 py-4 bg-warm-900 hover:bg-warm-800 text-white rounded-lg font-bold transition-colors text-center text-lg"
           >
-            {reviews.cta.icon} {reviews.cta.text}
+            {reviews.cta.icon}
+            {reviews.cta.text}
           </a>
         </div>
       </ScrollReveal>

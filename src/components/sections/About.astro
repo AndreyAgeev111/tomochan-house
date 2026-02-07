@@ -17,12 +17,8 @@ const { about } = siteContent;
         about.sections.map((section, i) => (
           <ScrollReveal delay={i * 0.1} client:load>
             <div class="card h-full">
-              <h3 class="text-xl font-bold text-warm-900 mb-4">
-                {section.heading}
-              </h3>
-              <p class="text-warm-700 leading-relaxed">
-                {section.content}
-              </p>
+              <h3 class="text-xl font-bold text-warm-900 mb-4">{section.heading}</h3>
+              <p class="text-warm-700 leading-relaxed">{section.content}</p>
             </div>
           </ScrollReveal>
         ))
@@ -33,7 +29,9 @@ const { about } = siteContent;
 
     <!-- Mascot card -->
     <ScrollReveal client:load className="mt-8 md:mt-12">
-      <div class="bg-gradient-to-br from-accent-light to-warm-100 rounded-xl md:rounded-2xl p-5 md:p-8 text-center shadow-soft">
+      <div
+        class="bg-gradient-to-br from-accent-light to-warm-100 rounded-xl md:rounded-2xl p-5 md:p-8 text-center shadow-soft"
+      >
         <div class="text-5xl md:text-6xl mb-3 md:mb-4">{about.mascot.emoji}</div>
         <h3 class="text-lg md:text-2xl font-bold text-warm-900 mb-1 md:mb-2">
           {about.mascot.name}

@@ -24,9 +24,7 @@ const { contact } = siteContent;
               class="block p-6 md:p-8 bg-gradient-to-br from-warm-100 to-warm-50 rounded-xl shadow-softer hover:shadow-soft transition-shadow border-2 border-warm-200 hover:border-accent-DEFAULT focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-DEFAULT"
             >
               <div class="text-4xl mb-4">{cta.icon}</div>
-              <h3 class="text-2xl font-bold text-warm-900 mb-2">
-                {cta.method}
-              </h3>
+              <h3 class="text-2xl font-bold text-warm-900 mb-2">{cta.method}</h3>
               <p class="text-warm-700">{cta.description}</p>
             </a>
           </ScrollReveal>
@@ -44,9 +42,7 @@ const { contact } = siteContent;
     <!-- FAQ Section -->
     <ScrollReveal client:load>
       <div>
-        <h3 class="text-3xl font-bold text-warm-900 mb-8 text-center">
-          よくある質問
-        </h3>
+        <h3 class="text-3xl font-bold text-warm-900 mb-8 text-center">よくある質問</h3>
         <FAQ client:load faqItems={contact.faq} />
       </div>
     </ScrollReveal>

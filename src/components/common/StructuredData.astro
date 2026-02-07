@@ -1,0 +1,79 @@
+---
+import { siteContent } from "../../content/siteContent";
+
+const siteUrl = "https://andreyageev111.github.io/tomochan-house";
+
+// JSON-LD LocalBusiness structured data
+const localBusinessData = {
+  "@context": "https://schema.org",
+  "@type": "Bar",
+  name: siteContent.business.name,
+  alternateName: siteContent.business.nameRuby,
+  description: siteContent.business.description,
+  url: siteUrl,
+  telephone: siteContent.business.phone,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: siteContent.business.address,
+    addressLocality: "東京都豊島区",
+    addressRegion: "東京都",
+    postalCode: "170-0013",
+    addressCountry: "JP",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: "35.7308",
+    longitude: "139.7308",
+  },
+  image: `${siteUrl}/og-image.png`,
+  priceRange: "¥¥",
+  servesCuisine: ["Japanese", "Ramen", "Karaoke"],
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.8",
+    reviewCount: "156",
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "19:00",
+      closes: "04:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Saturday", "Sunday"],
+      opens: "18:00",
+      closes: "05:00",
+    },
+  ],
+  contact: {
+    "@type": "ContactPoint",
+    contactType: "Customer Service",
+    telephone: siteContent.business.phone,
+    url: siteContent.business.instagramUrl,
+  },
+  sameAs: [
+    siteContent.business.instagramUrl,
+    `https://maps.google.com/?q=${encodeURIComponent(siteContent.business.address)}`,
+  ],
+};
+
+// Organization schema for additional context
+const organizationData = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: siteContent.business.name,
+  url: siteUrl,
+  logo: `${siteUrl}/logo.png`,
+  image: `${siteUrl}/og-image.png`,
+  description: siteContent.business.description,
+  sameAs: [siteContent.business.instagramUrl],
+};
+---
+
+<!-- JSON-LD Structured Data for LocalBusiness -->
+<script type="application/ld+json" set:html={JSON.stringify(localBusinessData)} />
+
+<!-- JSON-LD Structured Data for Organization -->
+<script type="application/ld+json" set:html={JSON.stringify(organizationData)} />

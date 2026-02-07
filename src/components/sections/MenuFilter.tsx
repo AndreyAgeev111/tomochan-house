@@ -19,9 +19,7 @@ export default function MenuFilter() {
   const { menu } = siteContent;
   const [activeCategory, setActiveCategory] = useState(menu.categories[0]);
 
-  const filteredItems = menu.items.filter(
-    (item) => item.category === activeCategory
-  );
+  const filteredItems = menu.items.filter((item) => item.category === activeCategory);
 
   return (
     <div>

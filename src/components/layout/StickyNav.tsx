@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { siteContent } from "../../content/siteContent";
 
 export default function StickyNav() {
   const [isMobile, setIsMobile] = useState(false);

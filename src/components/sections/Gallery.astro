@@ -14,11 +14,7 @@ const { gallery } = siteContent;
     <div class="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
       {
         gallery.images.map((image, i) => (
-          <ScrollReveal
-            client:load
-            delay={i * 0.05}
-            className="group cursor-pointer"
-          >
+          <ScrollReveal client:load delay={i * 0.05} className="group cursor-pointer">
             <div class="relative bg-warm-200 rounded-lg overflow-hidden aspect-square shadow-softer hover:shadow-lg transition-shadow duration-300">
               {/* Placeholder gradient */}
               <div class="absolute inset-0 bg-gradient-to-br from-warm-300 to-warm-400 opacity-60" />
