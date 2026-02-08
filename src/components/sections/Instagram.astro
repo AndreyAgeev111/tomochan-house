@@ -40,9 +40,13 @@ const { instagram } = siteContent;
         <div class="grid grid-cols-2 gap-4">
           {
             instagram.samplePosts.map((post) => (
-              <div class="aspect-square bg-gradient-to-br from-pink-200 via-rose-100 to-pink-100 rounded-lg shadow-softer hover:shadow-lg transition-shadow flex flex-col items-center justify-center gap-3">
-                <span class="text-4xl">{post.emoji}</span>
-                <p class="font-bold text-center text-sm text-warm-900 px-2">{post.caption}</p>
+              <div class="relative rounded-lg overflow-hidden aspect-square shadow-softer hover:shadow-lg transition-shadow group cursor-pointer">
+                <img src={post.src} alt={post.alt} class="w-full h-full object-cover" />
+                <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/0 group-hover:bg-black/30 transition-colors duration-300">
+                  <p class="text-white font-bold text-center text-sm px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {post.caption}
+                  </p>
+                </div>
               </div>
             ))
           }

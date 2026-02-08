@@ -408,7 +408,7 @@ export const siteContent = {
       date: "2026年3月9日（月）",
       description:
         "ともちゃん家関連企画でゴルフコンペを開催します。ゴールド佐野カントリークラブにて、楽しいイベントをお楽しみください。",
-      image: "/tomochan-house/images/golf-tournament.jpg",
+      image: "/tomochan-house/images/events/golf-tournament.jpg",
       details: [
         {
           icon: "📍",
@@ -440,7 +440,7 @@ export const siteContent = {
     description: "ともちゃん家の雰囲気をお楽しみください。",
     images: Array.from({ length: 12 }, (_, i) => ({
       id: i + 1,
-      src: `/tomochan-house/images/gallery-${i + 1}.jpg`,
+      src: `/tomochan-house/images/gallery/gallery-${i + 1}.jpg`,
       alt: `ともちゃん家の店内写真 ${i + 1}`,
       caption: [
         "カウンター席",
@@ -480,14 +480,19 @@ export const siteContent = {
     bio: "🐱 くーちゃんの世界観に浸る居酒屋 in 池袋 🍺",
     cta: "フォローして最新情報をゲット！",
     url: "https://instagram.com/tomochan_house",
-    samplePosts: [
-      { id: 1, caption: "本日のおすすめ", emoji: "🍲" },
-      { id: 2, caption: "ともちゃんのお昼寝タイム", emoji: "😴" },
-      { id: 3, caption: "金曜カラオケナイト", emoji: "🎤" },
-      { id: 4, caption: "新作ドリンク開発中", emoji: "🧪" },
-      { id: 5, caption: "店内の様子", emoji: "🏮" },
-      { id: 6, caption: "スタッフ募集中", emoji: "💼" },
-    ],
+    samplePosts: Array.from({ length: 6 }, (_, i) => ({
+      id: i + 1,
+      src: `/tomochan-house/images/instagram/instagram-${i + 1}.jpg`,
+      alt: `ともちゃん家のInstagram投稿 ${i + 1}`,
+      caption: [
+        "本日のおすすめ",
+        "ともちゃんのお昼寝タイム",
+        "金曜カラオケナイト",
+        "新作ドリンク開発中",
+        "店内の様子",
+        "スタッフ募集中",
+      ][i],
+    })),
   },
 
   contact: {
