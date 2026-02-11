@@ -4,7 +4,7 @@ interface CalendarProps {
   month: number;
   year: number;
   closedDates: number[];
-  specialDates?: Array<{ date: number; label: string; emoji: string }>;
+  specialDates?: Array<{ date: number; label: string; emoji: string; color?: "pink" | "yellow" | "blue" | "green" | "purple" | "orange" }>;
 }
 
 export default function Calendar({ month, year, closedDates, specialDates = [] }: CalendarProps) {
@@ -25,6 +25,18 @@ export default function Calendar({ month, year, closedDates, specialDates = [] }
 
   const getSpecialDate = (day: number) => {
     return specialDates.find((sd) => sd.date === day);
+  };
+
+  const getColorClasses = (color?: string) => {
+    const colorMap: Record<string, string> = {
+      pink: "bg-pink-100 text-pink-700 border-pink-300",
+      yellow: "bg-yellow-100 text-yellow-700 border-yellow-300",
+      blue: "bg-blue-100 text-blue-700 border-blue-300",
+      green: "bg-green-100 text-green-700 border-green-300",
+      purple: "bg-purple-100 text-purple-700 border-purple-300",
+      orange: "bg-orange-100 text-orange-700 border-orange-300",
+    };
+    return colorMap[color || "yellow"] || colorMap.yellow;
   };
 
   return (
@@ -60,10 +72,12 @@ export default function Calendar({ month, year, closedDates, specialDates = [] }
           return (
             <div
               key={day}
-              className={`aspect-square rounded-lg flex flex-col items-center justify-center text-sm font-semibold transition-all ${
+              className={`aspect-square rounded-lg flex flex-col items-center justify-center text-sm font-semibold transition-all border-2 ${
                 isClosed
-                  ? "bg-red-100 text-red-700 border-2 border-red-300"
-                  : "bg-warm-50 text-warm-900 border-2 border-transparent hover:border-accent-DEFAULT hover:bg-warm-100"
+                  ? "bg-red-100 text-red-700 border-red-300"
+                  : specialDate
+                    ? `${getColorClasses(specialDate.color)}`
+                    : "bg-warm-50 text-warm-900 border-transparent hover:border-accent-DEFAULT hover:bg-warm-100"
               }`}
             >
               <div>{day}</div>
@@ -80,12 +94,15 @@ export default function Calendar({ month, year, closedDates, specialDates = [] }
           <div className="w-4 h-4 bg-red-100 border-2 border-red-300 rounded"></div>
           <span className="text-sm text-warm-700">営業していない日</span>
         </div>
-        {specialDates.length > 0 && (
-          <div className="flex items-center gap-2">
-            <div className="text-lg">{specialDates[0].emoji}</div>
-            <span className="text-sm text-warm-700">{specialDates[0].label}</span>
+        {specialDates.map((specialDate) => (
+          <div key={`legend-${specialDate.date}`} className="flex items-center gap-2">
+            <div className={`w-4 h-4 border-2 rounded ${getColorClasses(specialDate.color).split(" ").filter(c => c.includes("bg-") || c.includes("border-")).join(" ")}`}></div>
+            <div className="flex items-center gap-1">
+              <span className="text-lg">{specialDate.emoji}</span>
+              <span className="text-sm text-warm-700">{specialDate.label}</span>
+            </div>
           </div>
-        )}
+        ))}
       </div>
     </div>
   );
