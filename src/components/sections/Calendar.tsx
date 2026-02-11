@@ -4,7 +4,12 @@ interface CalendarProps {
   month: number;
   year: number;
   closedDates: number[];
-  specialDates?: Array<{ date: number; label: string; emoji: string; color?: "pink" | "yellow" | "blue" | "green" | "purple" | "orange" }>;
+  specialDates?: Array<{
+    date: number;
+    label: string;
+    emoji: string;
+    color?: "pink" | "yellow" | "blue" | "green" | "purple" | "orange";
+  }>;
 }
 
 export default function Calendar({ month, year, closedDates, specialDates = [] }: CalendarProps) {
@@ -96,7 +101,12 @@ export default function Calendar({ month, year, closedDates, specialDates = [] }
         </div>
         {specialDates.map((specialDate) => (
           <div key={`legend-${specialDate.date}`} className="flex items-center gap-2">
-            <div className={`w-4 h-4 border-2 rounded ${getColorClasses(specialDate.color).split(" ").filter(c => c.includes("bg-") || c.includes("border-")).join(" ")}`}></div>
+            <div
+              className={`w-4 h-4 border-2 rounded ${getColorClasses(specialDate.color)
+                .split(" ")
+                .filter((c) => c.includes("bg-") || c.includes("border-"))
+                .join(" ")}`}
+            ></div>
             <div className="flex items-center gap-1">
               <span className="text-lg">{specialDate.emoji}</span>
               <span className="text-sm text-warm-700">{specialDate.label}</span>

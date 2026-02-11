@@ -332,10 +332,6 @@ export const siteContent = {
         price: "¥350",
         icon: "🥤",
       },
-
-
-
-
     ],
   },
 
