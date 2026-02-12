@@ -10,48 +10,37 @@ const { instagram } = siteContent;
   <div class="max-w-6xl mx-auto px-4">
     <SectionTitle title="インスタグラム" />
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      <!-- Instagram Info -->
-      <ScrollReveal client:load>
-        <div class="space-y-6">
+    <ScrollReveal client:load>
+      <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-softer p-6 md:p-12">
+        <!-- Instagram Info -->
+        <div class="space-y-6 text-center md:text-left">
           <div>
-            <h3 class="text-3xl font-bold text-warm-900 mb-2">
-              @{instagram.handle}
+            <h3
+              class="text-3xl md:text-4xl font-bold text-warm-900 mb-3 flex items-center justify-center md:justify-start gap-2 flex-wrap"
+            >
+              <span>📱</span>
+              <span class="break-words">@{instagram.handle}</span>
             </h3>
-            <p class="text-lg text-warm-700">{instagram.bio}</p>
+            <p class="text-base md:text-lg text-warm-700 break-words">{instagram.bio}</p>
           </div>
 
-          <p class="text-warm-700 leading-relaxed">{instagram.cta}</p>
+          <div class="h-px bg-gradient-to-r from-pink-200 to-rose-200"></div>
 
-          <a
-            href={instagram.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-lg font-bold hover:shadow-lg transition-shadow"
-          >
-            <span>📱</span>
-            <span>Instagramをフォロー</span>
-          </a>
-        </div>
-      </ScrollReveal>
+          <p class="text-warm-700 leading-relaxed text-lg">{instagram.cta}</p>
 
-      <!-- Sample Posts Grid -->
-      <ScrollReveal client:load delay={0.1}>
-        <div class="grid grid-cols-2 gap-4">
-          {
-            instagram.samplePosts.map((post) => (
-              <div class="relative rounded-lg overflow-hidden aspect-square shadow-softer hover:shadow-lg transition-shadow group cursor-pointer">
-                <img src={post.src} alt={post.alt} class="w-full h-full object-cover" />
-                <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/0 group-hover:bg-black/30 transition-colors duration-300">
-                  <p class="text-white font-bold text-center text-sm px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {post.caption}
-                  </p>
-                </div>
-              </div>
-            ))
-          }
+          <div class="flex justify-center md:justify-start">
+            <a
+              href={instagram.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-lg font-bold hover:shadow-lg transition-shadow hover:scale-105 transform duration-300"
+            >
+              <span class="text-xl">📱</span>
+              <span>Instagramをフォロー</span>
+            </a>
+          </div>
         </div>
-      </ScrollReveal>
-    </div>
+      </div>
+    </ScrollReveal>
   </div>
 </section>

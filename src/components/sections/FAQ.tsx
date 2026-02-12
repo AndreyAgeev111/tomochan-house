@@ -44,7 +44,9 @@ export default function FAQ({ faqItems }: FAQProps) {
                 transition={{ duration: 0.3 }}
                 className="overflow-hidden bg-warm-50 border-t border-warm-200"
               >
-                <p className="px-6 py-4 text-warm-700 leading-relaxed">{item.a}</p>
+                <p className="px-6 py-4 text-warm-700 leading-relaxed whitespace-pre-line">
+                  {item.a}
+                </p>
               </motion.div>
             )}
           </AnimatePresence>

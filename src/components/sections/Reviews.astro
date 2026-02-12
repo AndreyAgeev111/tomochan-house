@@ -56,7 +56,7 @@ const hasHalfStar = reviews.rating % 1 !== 0;
                   ))}
                 </div>
 
-                <p class="text-warm-800 mb-4 leading-relaxed text-sm md:text-base line-clamp-4 md:line-clamp-none">
+                <p class="text-warm-800 mb-4 leading-relaxed text-sm md:text-base line-clamp-4 md:line-clamp-none whitespace-pre-line">
                   {testimonial.text}
                 </p>
 
@@ -92,7 +92,7 @@ const hasHalfStar = reviews.rating % 1 !== 0;
         <div class="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
           <div class="text-9xl">🐱</div>
           <div>
-            <p class="text-lg text-warm-700 italic">{reviews.mascotMessage}</p>
+            <p class="text-lg text-warm-700 italic whitespace-pre-line">{reviews.mascotMessage}</p>
           </div>
         </div>
       </ScrollReveal>

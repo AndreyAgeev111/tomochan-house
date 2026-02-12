@@ -60,7 +60,7 @@ export const siteContent = {
       {
         heading: "こんなお店です",
         content:
-          "カウンター６席と、ボックス席が１つ。\n 一人でも、グループでも楽しめます。\nカラオケ無料で時間も無制限のため時間を気にせず楽しむことができます。",
+          "カウンター６席と、ボックス席が１つ。\n一人でも、グループでも楽しめます。\nカラオケ無料で時間も無制限のため時間を気にせず楽しむことができます。",
       },
       {
         heading: "はじめての方へ",
@@ -398,25 +398,20 @@ export const siteContent = {
   gallery: {
     title: "写真",
     description: "ともちゃん家の雰囲気をお楽しみください。",
-    images: Array.from({ length: 12 }, (_, i) => ({
+    images: Array.from({ length: 3 }, (_, i) => ({
       id: i + 1,
       src: `/images/gallery/gallery-${i + 1}.jpg`,
       alt: `ともちゃん家の店内写真 ${i + 1}`,
-      caption: [
-        "カウンター席",
-        "座敷席",
-        "ともちゃん",
-        "料理",
-        "カラオケ",
-        "夜景",
-        "入口",
-        "メニュー",
-        "ドリンク",
-        "スタッフ",
-        "お客さん",
-        "夜の路地",
-      ][i],
+      caption: ["カウンター席", "座敷席", "ともちゃん"][i],
     })),
+  },
+
+  instagram: {
+    title: "インスタグラム",
+    handle: "tomochan_house",
+    bio: "🐱 くーちゃんの世界観に浸る居酒屋 in 池袋 🍺",
+    cta: "フォローして最新情報をゲット！",
+    url: "https://instagram.com/tomochan_house",
   },
 
   access: {
@@ -432,27 +427,6 @@ export const siteContent = {
       "池袋中央図書館の近く、左手の路地を入ると看板が見えます",
       "壱ビル301号（3階）です",
     ],
-  },
-
-  instagram: {
-    title: "インスタグラム",
-    handle: "tomochan_house",
-    bio: "🐱 くーちゃんの世界観に浸る居酒屋 in 池袋 🍺",
-    cta: "フォローして最新情報をゲット！",
-    url: "https://instagram.com/tomochan_house",
-    samplePosts: Array.from({ length: 6 }, (_, i) => ({
-      id: i + 1,
-      src: `/images/instagram/instagram-${i + 1}.jpg`,
-      alt: `ともちゃん家のInstagram投稿 ${i + 1}`,
-      caption: [
-        "本日のおすすめ",
-        "ともちゃんのお昼寝タイム",
-        "金曜カラオケナイト",
-        "新作ドリンク開発中",
-        "店内の様子",
-        "スタッフ募集中",
-      ][i],
-    })),
   },
 
   contact: {

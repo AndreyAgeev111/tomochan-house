@@ -1,0 +1,23 @@
+{
+  "name": "ともちゃん家",
+  "short_name": "ともちゃん家",
+  "description": "池袋の隠れ家居酒屋 カラオケ＆手作り料理",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#faf8f3",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [],
+  "categories": ["food", "restaurant"],
+  "screenshots_mobile": [],
+  "screenshots_desktop": []
+}

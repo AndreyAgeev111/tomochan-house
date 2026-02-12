@@ -60,7 +60,7 @@ export default function MenuFilter() {
                 <h4 className="font-bold text-warm-900 text-base md:text-lg mb-1 md:mb-2 break-words">
                   {item.name}
                 </h4>
-                <p className="text-xs md:text-sm text-warm-700 mb-2 md:mb-3 line-clamp-2">
+                <p className="text-xs md:text-sm text-warm-700 mb-2 md:mb-3 line-clamp-2 whitespace-pre-line">
                   {item.description}
                 </p>
                 <p className="font-bold text-accent-DEFAULT text-sm md:text-base">{item.price}</p>
