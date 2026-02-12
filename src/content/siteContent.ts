@@ -358,7 +358,7 @@ export const siteContent = {
       { date: "年末年始", reason: "要確認" },
     ],
     calendar: {
-      month: 3,
+      month: 2,
       year: 2026,
       closedDates: [1, 2, 5, 11, 23],
       specialDates: [],
