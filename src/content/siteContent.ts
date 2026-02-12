@@ -368,7 +368,7 @@ export const siteContent = {
       date: "2026年3月9日（月）",
       description:
         "ともちゃん家関連企画でゴルフコンペを開催します。ゴールド佐野カントリークラブにて、楽しいイベントをお楽しみください。",
-      image: "/tomochan-house/images/events/golf-tournament.jpg",
+      image: "/images/events/golf-tournament.jpg",
       details: [
         {
           icon: "📍",
@@ -400,7 +400,7 @@ export const siteContent = {
     description: "ともちゃん家の雰囲気をお楽しみください。",
     images: Array.from({ length: 12 }, (_, i) => ({
       id: i + 1,
-      src: `/tomochan-house/images/gallery/gallery-${i + 1}.jpg`,
+      src: `/images/gallery/gallery-${i + 1}.jpg`,
       alt: `ともちゃん家の店内写真 ${i + 1}`,
       caption: [
         "カウンター席",
@@ -442,7 +442,7 @@ export const siteContent = {
     url: "https://instagram.com/tomochan_house",
     samplePosts: Array.from({ length: 6 }, (_, i) => ({
       id: i + 1,
-      src: `/tomochan-house/images/instagram/instagram-${i + 1}.jpg`,
+      src: `/images/instagram/instagram-${i + 1}.jpg`,
       alt: `ともちゃん家のInstagram投稿 ${i + 1}`,
       caption: [
         "本日のおすすめ",
