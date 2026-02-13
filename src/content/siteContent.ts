@@ -28,6 +28,7 @@ export const siteContent = {
     { id: "menu", label: "メニュー", href: "#menu" },
     { id: "events", label: "営業カレンダー", href: "#events" },
     { id: "gallery", label: "写真", href: "#gallery" },
+    { id: "youtube", label: "YouTube", href: "#youtube" },
     { id: "access", label: "アクセス", href: "#access" },
     { id: "contact", label: "お問い合わせ", href: "#contact" },
     { id: "reviews", label: "ご感想", href: "#reviews" },
@@ -512,6 +513,31 @@ export const siteContent = {
     },
     mascotMessage:
       "くーちゃんより：お忙しい中、口コミを投稿していただきありがとうございます！皆様のご感想が、私たちのサービス向上の力になります。",
+  },
+
+  youtube: {
+    title: "YouTube",
+    subtitle: "ともちゃん家の雰囲気をチェック！",
+    channelName: "夜に咲くひとたち。",
+    channelDescription:
+      "スナックのママ、常連のお客さん、夜にしか現れない風景たち。夜の街に漂う人間模様を追いかけるドキュメンタリー",
+    description:
+      "ドキュメンタリーチャンネル「夜に咲くひとたち。」でともちゃん家が紹介されました。朋子ママとお客さまの温かい人間模様、そしてアットホームなお店の魅力をぜひご覧ください",
+    url: "https://youtu.be/WRQENEdDQcs?si=aowxS6SG354t-i4u",
+    embedUrl: "https://www.youtube.com/embed/WRQENEdDQcs",
+    highlights: [
+      {
+        icon: "👩",
+        title: "朋子ママの人生と想い",
+        content:
+          "さまざまな業界での経験を経て、友人たちが集まれるお店を創業した想いをお聞きください。",
+      },
+      {
+        icon: "👥",
+        title: "常連様との温かい繋がり",
+        content: "低価格でカラオケ無制限、お客さまとの深い絆が生まれるお店の雰囲気。",
+      },
+    ],
   },
 
   news: [

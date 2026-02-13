@@ -2,14 +2,14 @@
 import ScrollReveal from "./common/ScrollReveal";
 import { siteContent } from "../content/siteContent";
 
-const { news } = siteContent;
+const { news, instagram } = siteContent;
 ---
 
 <section class="py-12 bg-gradient-to-r from-accent-light to-warm-100">
   <div class="max-w-6xl mx-auto px-4">
     <h3 class="text-2xl font-bold text-warm-900 mb-8 text-center">お知らせ</h3>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
       {
         news.map((item, i) => (
           <ScrollReveal client:load delay={i * 0.1}>
@@ -29,5 +29,27 @@ const { news } = siteContent;
         ))
       }
     </div>
+
+    <!-- Instagram Follow CTA -->
+    <ScrollReveal client:load>
+      <div class="bg-gradient-to-r from-pink-100 to-rose-100 rounded-lg p-8 text-center">
+        <div class="flex items-center justify-center gap-3 mb-4">
+          <span class="text-3xl">📱</span>
+          <h4 class="text-2xl font-bold text-warm-900">Instagramをフォローしてね！</h4>
+        </div>
+        <p class="text-warm-700 mb-6 max-w-2xl mx-auto">
+          最新情報や毎日のおすすめメニュー、店舗の最新ニュースはInstagramで配信中。フォローして、ともちゃん家の最新情報をチェックしてください。
+        </p>
+        <a
+          href={instagram.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-lg font-bold hover:shadow-lg transition-shadow hover:scale-105 transform duration-300"
+        >
+          <span class="text-xl">📱</span>
+          <span>@{instagram.handle}をフォロー</span>
+        </a>
+      </div>
+    </ScrollReveal>
   </div>
 </section>
