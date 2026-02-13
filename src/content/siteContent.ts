@@ -517,12 +517,12 @@ export const siteContent = {
 
   youtube: {
     title: "YouTube",
-    subtitle: "ともちゃん家の雰囲気をチェック！",
-    channelName: "夜に咲くひとたち。",
+    subtitle: "ともちゃん家の雰囲気をご覧ください。",
+    channelName: "夜に咲くひとたち",
     channelDescription:
-      "スナックのママ、常連のお客さん、夜にしか現れない風景たち。夜の街に漂う人間模様を追いかけるドキュメンタリー",
+      "スナックのママ、常連のお客さん、夜にしか現れない風景たち。夜の街に漂う人間模様を追いかけるドキュメンタリー。",
     description:
-      "ドキュメンタリーチャンネル「夜に咲くひとたち。」でともちゃん家が紹介されました。朋子ママとお客さまの温かい人間模様、そしてアットホームなお店の魅力をぜひご覧ください",
+      "ドキュメンタリーチャンネル「夜に咲くひとたち」でともちゃん家が紹介されました。朋子ママとお客さまの温かい人間模様、そしてアットホームなお店の魅力をぜひご覧ください。",
     url: "https://youtu.be/WRQENEdDQcs?si=aowxS6SG354t-i4u",
     embedUrl: "https://www.youtube.com/embed/WRQENEdDQcs",
     highlights: [
@@ -535,7 +535,7 @@ export const siteContent = {
       {
         icon: "👥",
         title: "常連様との温かい繋がり",
-        content: "低価格でカラオケ無制限、お客さまとの深い絆が生まれるお店の雰囲気。",
+        content: "低価格でカラオケ無制限、お客さまとの深い絆が生まれるお店の雰囲気をお感じください。",
       },
     ],
   },
