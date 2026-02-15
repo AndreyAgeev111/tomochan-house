@@ -100,6 +100,18 @@ export const siteContent = {
       },
       {
         category: "料理",
+        name: "茄子揚げ",
+        price: "500",
+        icon: "🎞️",
+      },
+      {
+        category: "料理",
+        name: "フライドポテト",
+        price: "550",
+        icon: "🎞️",
+      },
+      {
+        category: "料理",
         name: "揚げ餅と茄子のお浸し",
         price: "¥480",
         icon: "🍆",
@@ -110,6 +122,13 @@ export const siteContent = {
         price: "¥600",
         icon: "🍖",
       },
+      {
+        category: "料理",
+        name: "かつ煮",
+        price: "¥750",
+        icon: "🎞️",
+      },
+
       {
         category: "料理",
         name: "焼きそば",
@@ -124,10 +143,23 @@ export const siteContent = {
       },
       {
         category: "料理",
+        name: "焼きそばピザ",
+        price: "¥1000",
+        icon: "🎞️",
+      },
+      {
+        category: "料理",
         name: "ポップコーン",
         price: "¥680",
         icon: "🎞️",
       },
+      {
+        category: "料理",
+        name: "アスパラと生ハムのクリームチーズ春巻き",
+        price: "680",
+        icon: "🎞️",
+      },
+
       {
         category: "ドリンク",
         name: "アサヒスーパードライ",
@@ -404,7 +436,7 @@ export const siteContent = {
       id: i + 1,
       src: `/images/gallery/gallery-${i + 1}.jpg`,
       alt: `ともちゃん家の店内写真 ${i + 1}`,
-      caption: ["カウンター席", "座敷席", "ともちゃん"][i],
+      caption: ["ボックス席", "カウンター", "ともちゃん"][i],
     })),
   },
 
