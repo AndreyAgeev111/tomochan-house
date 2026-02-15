@@ -60,7 +60,7 @@ export const siteContent = {
       {
         heading: "こんなお店です",
         content:
-          "カウンター６席と、ボックス席が１つ。\n一人でも、グループでも楽しめます。\nカラオケ無料で時間も無制限のため時間を気にせず楽しむことができます。",
+          "カウンター4席と、ボックス席が１つ。\n一人でも、グループでも楽しめます。\nカラオケ無料で時間も無制限のため時間を気にせず楽しむことができます。",
       },
       {
         heading: "はじめての方へ",
@@ -215,7 +215,7 @@ export const siteContent = {
       },
       {
         category: "ドリンク",
-        description: "焼酎ボトル",
+        name: "赤霧島",
         price: "¥5,000",
         icon: "🥃",
       },
@@ -294,35 +294,35 @@ export const siteContent = {
         category: "ドリンク",
         name: "コーラ",
         description: "ソフトドリンク",
-        price: "¥350",
+        price: "¥500",
         icon: "🥤",
       },
       {
         category: "ドリンク",
         name: "ジンジャエール",
         description: "ソフトドリンク",
-        price: "¥350",
+        price: "¥500",
         icon: "🥤",
       },
       {
         category: "ドリンク",
         name: "ウーロン茶",
         description: "ソフトドリンク",
-        price: "¥350",
+        price: "¥500",
         icon: "🥤",
       },
       {
         category: "ドリンク",
         name: "カテキン茶",
         description: "ソフトドリンク",
-        price: "¥350",
+        price: "¥500",
         icon: "🥤",
       },
       {
         category: "ドリンク",
         name: "グレープフルーツジュース",
         description: "ソフトドリンク",
-        price: "¥400",
+        price: "¥500",
         icon: "🥤",
       },
       {
