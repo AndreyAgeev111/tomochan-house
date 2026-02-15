@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { siteContent } from "../../content/siteContent";
+import { siteContent } from "../../../content/siteContent";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -42,7 +42,7 @@ export default function MenuFilter() {
 
       {/* Menu Items Grid */}
       <motion.div
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6"
+        className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6"
         variants={containerVariants}
         initial="hidden"
         animate="visible"

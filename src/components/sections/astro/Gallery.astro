@@ -1,7 +1,7 @@
 ---
-import ScrollReveal from "../common/ScrollReveal";
-import SectionTitle from "../common/SectionTitle.astro";
-import { siteContent } from "../../content/siteContent";
+import ScrollReveal from "../../common/react/ScrollReveal";
+import SectionTitle from "../../common/astro/SectionTitle.astro";
+import { siteContent } from "../../../content/siteContent";
 
 const { gallery } = siteContent;
 ---
@@ -47,22 +47,6 @@ const { gallery } = siteContent;
         </div>
       </div>
       <p class="text-center text-xs text-warm-700 mt-2">← スワイプして閲覧 →</p>
-    </div>
-
-    <!-- Note -->
-    <div class="text-center mt-12">
-      <p class="text-warm-700">
-        🐱 ともちゃん家の様子をもっと見たい方は、
-        <a
-          href={siteContent.business.instagramUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="font-bold text-accent-DEFAULT hover:text-accent-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-DEFAULT"
-        >
-          Instagramをフォロー
-        </a>
-        してみてね！
-      </p>
     </div>
   </div>
 </section>

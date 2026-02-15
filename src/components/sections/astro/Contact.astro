@@ -1,9 +1,9 @@
 ---
-import SectionTitle from "../common/SectionTitle.astro";
-import FAQ from "./FAQ";
-import ScrollReveal from "../common/ScrollReveal";
-import PawPrints from "../common/PawPrints.astro";
-import { siteContent } from "../../content/siteContent";
+import SectionTitle from "../../common/astro/SectionTitle.astro";
+import FAQ from "../react/FAQ";
+import ScrollReveal from "../../common/react/ScrollReveal";
+import PawPrints from "../../common/astro/PawPrints.astro";
+import { siteContent } from "../../../content/siteContent";
 
 const { contact } = siteContent;
 ---
@@ -25,7 +25,6 @@ const { contact } = siteContent;
             >
               <div class="text-4xl mb-4">{cta.icon}</div>
               <h3 class="text-2xl font-bold text-warm-900 mb-2">{cta.method}</h3>
-              <p class="text-warm-700 whitespace-pre-line">{cta.description}</p>
             </a>
           </ScrollReveal>
         ))
