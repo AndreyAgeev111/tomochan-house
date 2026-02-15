@@ -1,6 +1,7 @@
 ---
 import ScrollReveal from "../../common/react/ScrollReveal";
 import SectionTitle from "../../common/astro/SectionTitle.astro";
+import GalleryLightbox from "../react/GalleryLightbox";
 import { siteContent } from "../../../content/siteContent";
 
 const { gallery } = siteContent;
@@ -10,43 +11,8 @@ const { gallery } = siteContent;
   <div class="max-w-6xl mx-auto px-4">
     <SectionTitle title="写真" subtitle={gallery.description} />
 
-    <!-- Desktop grid -->
-    <div class="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-      {
-        gallery.images.map((image, i) => (
-          <ScrollReveal client:load delay={i * 0.05} className="group cursor-pointer">
-            <div class="relative rounded-lg overflow-hidden aspect-square shadow-softer hover:shadow-lg transition-shadow duration-300">
-              <img src={image.src} alt={image.alt} class="w-full h-full object-cover" />
-
-              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4 translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
-                <p class="text-white font-semibold text-sm">{image.caption}</p>
-              </div>
-            </div>
-          </ScrollReveal>
-        ))
-      }
-    </div>
-
-    <!-- Mobile slider -->
-    <div class="md:hidden">
-      <div class="overflow-x-auto scrollbar-hide pb-4">
-        <div class="flex gap-3 snap-x snap-mandatory" style="width: fit-content;">
-          {
-            gallery.images.map((image) => (
-              <div class="flex-shrink-0 w-72 snap-center">
-                <div class="relative rounded-lg overflow-hidden aspect-square shadow-soft">
-                  <img src={image.src} alt={image.alt} class="w-full h-full object-cover" />
-
-                  <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
-                    <p class="text-white font-semibold text-sm">{image.caption}</p>
-                  </div>
-                </div>
-              </div>
-            ))
-          }
-        </div>
-      </div>
-      <p class="text-center text-xs text-warm-700 mt-2">← スワイプして閲覧 →</p>
-    </div>
+    <ScrollReveal client:load>
+      <GalleryLightbox client:load images={gallery.images} />
+    </ScrollReveal>
   </div>
 </section>
