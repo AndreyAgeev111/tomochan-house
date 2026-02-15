@@ -101,13 +101,13 @@ export const siteContent = {
       {
         category: "料理",
         name: "茄子揚げ",
-        price: "500",
+        price: "¥500",
         icon: "🎞️",
       },
       {
         category: "料理",
         name: "フライドポテト",
-        price: "550",
+        price: "¥550",
         icon: "🎞️",
       },
       {
@@ -132,7 +132,7 @@ export const siteContent = {
       {
         category: "料理",
         name: "焼きそば",
-        price: "700",
+        price: "¥700",
         icon: "🍜",
       },
       {
@@ -156,7 +156,7 @@ export const siteContent = {
       {
         category: "料理",
         name: "アスパラと生ハムのクリームチーズ春巻き",
-        price: "680",
+        price: "¥680",
         icon: "🎞️",
       },
 
