@@ -60,7 +60,7 @@ export const siteContent = {
       {
         heading: "こんなお店です",
         content:
-          "カウンター4席と、ボックス席が１つ。\n一人でも、グループでも楽しめます。\nカラオケ無料で時間も無制限のため時間を気にせず楽しむことができます。",
+          "カウンター4席と、ボックス席が１つ。\n一人でも、グループでも楽しめます。\nカラオケ無料で時間も無制限のため時間を気にせず楽しむことができます。 \n飲み放題食事付きもご予算に応じて承っています。",
       },
       {
         heading: "はじめての方へ",
@@ -443,7 +443,7 @@ export const siteContent = {
   instagram: {
     title: "インスタグラム",
     handle: "tomochan_house",
-    bio: "🐱 くーちゃんの世界観に浸る居酒屋 in 池袋 🍺",
+    bio: "🐱 飲んで歌って楽しめる居酒屋 in 池袋 🍺",
     cta: "フォローして最新情報をゲット！",
     url: "https://instagram.com/tomochan_house",
   },
