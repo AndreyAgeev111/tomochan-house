@@ -64,6 +64,12 @@ main {
   @apply absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/40;
 }
 
+/* Hero pattern overlay */
+.hero-pattern {
+  @apply absolute inset-0 bg-repeat;
+  background-image: url("data:image/svg+xml,<svg width=60 height=60 xmlns=%22http://www.w3.org/2000/svg%22><circle cx=30 cy=30 r=3 fill=%22%23000%22/></svg>");
+}
+
 /* Paw print animation */
 .paw-print {
   @apply inline-block text-2xl opacity-60 pointer-events-none;
@@ -72,6 +78,26 @@ main {
 /* Sticky nav styling */
 .sticky-nav {
   @apply fixed right-6 bottom-6 md:bottom-auto md:top-1/2 md:-translate-y-1/2 flex flex-row md:flex-col gap-2 z-40;
+}
+
+/* Sticky nav tooltip */
+.sticky-nav a {
+  @apply relative;
+}
+
+.sticky-nav a::after {
+  content: attr(title);
+  @apply absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-warm-900 text-white px-3 py-2 rounded whitespace-nowrap text-xs font-semibold pointer-events-none opacity-0 transition-opacity duration-200;
+}
+
+.sticky-nav a:hover::after {
+  @apply opacity-100;
+}
+
+@media (max-width: 767px) {
+  .sticky-nav a::after {
+    @apply hidden;
+  }
 }
 
 /* Floating element */

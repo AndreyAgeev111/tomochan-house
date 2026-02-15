@@ -596,6 +596,6 @@ export const siteContent = {
       icon: "🎉",
     },
   ],
-};
+} as const;
 
 export type SiteContent = typeof siteContent;

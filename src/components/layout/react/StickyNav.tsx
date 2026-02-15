@@ -25,6 +25,7 @@ export default function StickyNav() {
             <a
               key={link.href}
               href={link.href}
+              title={link.label}
               className="flex flex-col items-center gap-1 text-xs font-bold text-warm-700 hover:text-accent-DEFAULT transition-colors flex-shrink-0 px-2 py-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-DEFAULT rounded"
             >
               <span className="text-xl">{link.icon}</span>
