@@ -4,7 +4,6 @@ export const siteContent = {
     nameRuby: "Tomochan House",
     tagline: "池袋の隠れ家居酒屋 カラオケ＆手作り料理",
     description: "アットホームで心からくつろげるカラオケ居酒屋。飲んで歌って楽しみましょう",
-    since: "",
     address: "東京都豊島区池袋2-5-4 壱ビル301号",
     addressShort: "池袋駅 徒歩5分",
     phone: "090-7422-1877",
