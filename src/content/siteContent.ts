@@ -7,7 +7,7 @@ export const siteContent = {
     since: "",
     address: "東京都豊島区池袋2-5-4 壱ビル301号",
     addressShort: "池袋駅 徒歩5分",
-    phone: "03-XXXX-XXXX",
+    phone: "090-7422-1877",
     instagramHandle: "tomochan_house",
     instagramUrl: "https://instagram.com/tomochan_house",
     hours: [
@@ -442,8 +442,7 @@ export const siteContent = {
       },
       {
         method: "電話",
-        description: "営業時間中のみ",
-        href: "tel:03XXXXXXXX",
+        href: "tel:090-7422-1877",
         icon: "☎️",
       },
     ],
@@ -544,21 +543,14 @@ export const siteContent = {
   news: [
     {
       id: 1,
-      date: "2024-01-15",
+      date: "2024-12-13",
       title: "オープンしました！",
       content: "ともちゃん家がオープンしました。皆さんのご来店をお待ちしています。",
       icon: "🎉",
     },
     {
       id: 2,
-      date: "2024-01-20",
-      title: "スタッフ募集中",
-      content: "ホール・キッチンスタッフを募集中。詳細はDMまで。",
-      icon: "💼",
-    },
-    {
-      id: 3,
-      date: "2024-01-25",
+      date: "2024-12-13",
       title: "Instagram始めました",
       content: "最新情報・毎日のおすすめメニューを配信中。フォローお願いします！",
       icon: "📱",
