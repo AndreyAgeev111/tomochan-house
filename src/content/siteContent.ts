@@ -435,7 +435,7 @@ export const siteContent = {
       id: i + 1,
       src: `/images/gallery/gallery-${i + 1}.jpg`,
       alt: `ともちゃん家の店内写真 ${i + 1}`,
-      caption: ["ボックス席", "カウンター", "ともちゃん"][i],
+      caption: ["ボックス席", "カウンター", "浴衣イベント"][i],
     })),
   },
 
