@@ -62,6 +62,10 @@ const siteUrl = "https://tomochan-house.jp";
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
+    <!-- Optimize CSS loading - preload critical CSS -->
+    <link rel="preload" as="style" href="/@astrojs/hoisted.css" />
+    <link rel="preload" as="style" href="/styles/global.css" />
+
     <!-- Google Search Console Verification -->
     <!-- TODO: Replace with your GSC verification code after adding site to GSC -->
     {/* <meta name="google-site-verification" content="YOUR_GSC_VERIFICATION_CODE_HERE" /> */}

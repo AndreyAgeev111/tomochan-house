@@ -31,7 +31,13 @@ export default function GalleryLightbox({ images }: GalleryLightboxProps) {
             className="group cursor-pointer text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-DEFAULT rounded-lg"
           >
             <div className="relative rounded-lg overflow-hidden aspect-square shadow-softer hover:shadow-lg transition-shadow duration-300">
-              <img src={image.src} alt={image.alt} className="w-full h-full object-cover" />
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
 
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4 translate-y-8 group-hover:translate-y-0 transition-transform duration-300">
                 <p className="text-white font-semibold text-sm">{image.caption}</p>
@@ -55,7 +61,13 @@ export default function GalleryLightbox({ images }: GalleryLightboxProps) {
                 className="flex-shrink-0 w-72 snap-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-DEFAULT rounded-lg"
               >
                 <div className="relative rounded-lg overflow-hidden aspect-square shadow-soft">
-                  <img src={image.src} alt={image.alt} className="w-full h-full object-cover" />
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
 
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
                     <p className="text-white font-semibold text-sm">{image.caption}</p>
