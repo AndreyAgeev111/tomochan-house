@@ -8,9 +8,7 @@ export default defineConfig({
   integrations: [
     react(),
     sitemap({
-      // Использовать sitemap для SPA с якорями
       filter: (page) => !page.includes("#"),
-      // Включить все страницы
       lastmod: new Date(),
     }),
   ],
