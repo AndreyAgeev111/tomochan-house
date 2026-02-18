@@ -23,67 +23,67 @@ const siteUrl = "https://tomochan-house.jp";
 
 <!doctype html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title}</title>
-  <meta name="description" content={description} />
-  <meta name="theme-color" content="#faf8f3" />
-  <meta name="color-scheme" content="light" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#faf8f3" />
+    <meta name="color-scheme" content="light" />
 
-  <!-- Open Graph Meta Tags (Facebook, LINE, etc.) -->
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:type" content="business.business" />
-  <meta property="og:url" content={siteUrl} />
-  <meta property="og:image" content={new URL(image, siteUrl).href} />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:locale" content="ja_JP" />
-  <meta property="business:contact_data:street_address" content={siteContent.business.address} />
-  <meta property="business:contact_data:locality" content="東京都豊島区" />
-  <meta property="business:contact_data:postal_code" content="171-0014" />
-  <meta property="business:contact_data:country_name" content="Japan" />
+    <!-- Open Graph Meta Tags (Facebook, LINE, etc.) -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="business.business" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:image" content={new URL(image, siteUrl).href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="business:contact_data:street_address" content={siteContent.business.address} />
+    <meta property="business:contact_data:locality" content="東京都豊島区" />
+    <meta property="business:contact_data:postal_code" content="171-0014" />
+    <meta property="business:contact_data:country_name" content="Japan" />
 
-  <!-- Additional Meta Tags -->
-  <meta name="apple-mobile-web-app-capable" content="true" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content={siteContent.business.name} />
+    <!-- Additional Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="true" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content={siteContent.business.name} />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <link rel="manifest" href="/manifest.json" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
 
-  <!-- Preconnect to Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <!-- Google Search Console Verification -->
-  <meta name="google-site-verification" content="googlee04c37db590cfa6c" />
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="googlee04c37db590cfa6c" />
 
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-H1ME30V6CS"></script>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H1ME30V6CS"></script>
 
-  <script is:inline>
-    window.dataLayer = window.dataLayer || [];
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-      dataLayer.push(arguments);
-    }
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
 
-    gtag("js", new Date());
-    gtag("config", "G-H1ME30V6CS");
-  </script>
+      gtag("js", new Date());
+      gtag("config", "G-H1ME30V6CS");
+    </script>
 
-  <StructuredData />
-</head>
-<body>
-<Header />
-<StickyNav client:load />
-<main>
-  <slot />
-</main>
-<Footer />
-</body>
+    <StructuredData />
+  </head>
+  <body>
+    <Header />
+    <StickyNav client:load />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
 </html>
