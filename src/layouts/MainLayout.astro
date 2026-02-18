@@ -64,11 +64,9 @@ const siteUrl = "https://tomochan-house.jp";
 
   <!-- Google Analytics 4 -->
   {
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-H1ME30V6CS"
-      ></script>
-    <script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H1ME30V6CS"></script>
+
+    <script is:inline>
       window.dataLayer = window.dataLayer || [];
 
       function gtag() {
@@ -76,12 +74,8 @@ const siteUrl = "https://tomochan-house.jp";
       }
 
       gtag("js", new Date());
-      gtag(
-        "config", "G-H1ME30V6CS", {
-          page_path: window.location.pathname,
-        },
-      );
-      </script>
+      gtag("config", "G-H1ME30V6CS");
+    </script>
   }
 
   <StructuredData />
