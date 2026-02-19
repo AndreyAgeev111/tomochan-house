@@ -8,7 +8,8 @@ export default defineConfig({
   integrations: [
     react(),
     sitemap({
-      filter: (page) => !page.includes("#"),
+      changefreq: "weekly",
+      priority: 0.7,
       lastmod: new Date(),
     }),
   ],

@@ -28,8 +28,8 @@ importers:
         specifier: ^3.0.0
         version: 3.6.3(@types/react-dom@18.3.7(@types/react@18.3.27))(@types/react@18.3.27)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@astrojs/sitemap':
-        specifier: ^3.0.0
-        version: 3.6.1
+        specifier: ^3.5.0
+        version: 3.5.0
       '@eslint/js':
         specifier: ^8.56.0
         version: 8.57.1
@@ -134,8 +134,8 @@ packages:
       react: ^17.0.2 || ^18.0.0 || ^19.0.0-beta
       react-dom: ^17.0.2 || ^18.0.0 || ^19.0.0-beta
 
-  '@astrojs/sitemap@3.6.1':
-    resolution: {integrity: sha512-+o+TbxXqQJAOd+HxCjz/5RdAMrRFGjeuO+U6zddUuTO59WqMqXnsc8uveRiEr2Ff+3McZiEne7iG4J5cnuI6kA==}
+  '@astrojs/sitemap@3.5.0':
+    resolution: {integrity: sha512-ldOvoBxuRgpcdndzksskOTzU55g76tkHC/POpejUbPGz6zR4rJKiXh8thX4WEPWDhCTZUafhJ1qf7k1muStHfg==}
 
   '@astrojs/telemetry@3.1.0':
     resolution: {integrity: sha512-/ca/+D8MIKEC8/A9cSaPUqQNZm+Es/ZinRv0ZAzvu2ios7POQSsVD+VOj7/hypWNsNM3T7RpfgNq7H2TU1KEHA==}
@@ -3235,7 +3235,7 @@ snapshots:
       - supports-color
       - terser
 
-  '@astrojs/sitemap@3.6.1':
+  '@astrojs/sitemap@3.5.0':
     dependencies:
       sitemap: 8.0.2
       stream-replace-string: 2.0.0
