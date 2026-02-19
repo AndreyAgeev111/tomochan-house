@@ -5,6 +5,7 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://tomochan-house.jp",
   base: "/",
+  output: "static",
   integrations: [
     react(),
     sitemap({
