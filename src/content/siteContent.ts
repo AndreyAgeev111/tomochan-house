@@ -64,12 +64,12 @@ export const siteContent = {
       {
         heading: "はじめての方へ",
         content:
-          "ともちゃん家が初めての方も緊張しなくても大丈夫です。一度行ったら居心地の良さにハマるはず！！わからないことがあればインスタのDMに気軽に連絡してください。",
+          "ともちゃん家が初めての方も緊張しなくても大丈夫です。一度行ったら居心地の良さにハマるはず！！\nわからないことがあればインスタのDMに気軽に連絡してください。",
       },
     ],
     mascot: {
       name: "くーちゃん",
-      description: "ともちゃんの家族の一員。Instagramのストーリーに登場率高め！",
+      description: "ともちゃんの家族の一員。\nInstagramのストーリーに登場率高め！",
       emoji: "🐱",
     },
   },
@@ -444,6 +444,8 @@ export const siteContent = {
     handle: "tomochan_house",
     bio: "🐱 飲んで歌って楽しめる居酒屋 in 池袋 🍺",
     cta: "フォローして最新情報をゲット！",
+    ctaTitle: "Instagramをフォローしてね！",
+    ctaDescription: "最新情報や毎日のおすすめメニュー、店舗の最新ニュースはInstagramで配信中。\nフォローして、ともちゃん家の最新情報をチェックしてください。",
     url: "https://instagram.com/tomochan_house",
   },
 
