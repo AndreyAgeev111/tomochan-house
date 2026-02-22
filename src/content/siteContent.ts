@@ -369,7 +369,7 @@ export const siteContent = {
   events: {
     title: "営業カレンダー・イベント",
     intro: "今月の営業状況とイベント情報です。",
-    note: "日曜・月曜も営業する日があります。最新情報はInstagramをご確認ください。",
+    note: "日曜・月曜も営業する日があります。\n最新情報はInstagramをご確認ください。",
     monthlyEvents: [
       {
         date: "毎週火曜",
