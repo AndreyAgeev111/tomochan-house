@@ -401,7 +401,7 @@ export const siteContent = {
       date: "2026年3月9日（月）",
       description:
         "ともちゃん家関連企画でゴルフコンペを開催します。ゴールド佐野カントリークラブにて、楽しいイベントをお楽しみください。",
-      image: "/images/events/golf-tournament.jpg",
+      image: "/images/events/golf-tournament.webp",
       details: [
         {
           icon: "📍",
@@ -433,7 +433,7 @@ export const siteContent = {
     description: "ともちゃん家の雰囲気をお楽しみください。",
     images: Array.from({ length: 3 }, (_, i) => ({
       id: i + 1,
-      src: `/images/gallery/gallery-${i + 1}.jpg`,
+      src: `/images/gallery/gallery-${i + 1}.webp`,
       alt: `ともちゃん家の店内写真 ${i + 1}`,
       caption: ["ボックス席", "カウンター", "浴衣イベント"][i],
     })),
