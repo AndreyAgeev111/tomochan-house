@@ -74,5 +74,23 @@ const { youtube } = siteContent;
         </div>
       </ScrollReveal>
     </div>
+
+    {
+      youtube.promotion && (
+        <ScrollReveal client:load delay={0.3}>
+          <div class="mt-12 p-4 bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-300 rounded-lg">
+            <div class="flex gap-3 items-start justify-center text-center">
+              <span class="text-3xl flex-shrink-0">{youtube.promotion.icon}</span>
+              <div>
+                <p class="font-bold text-warm-900 text-lg">{youtube.promotion.text}</p>
+                {youtube.promotion.subtext && (
+                  <p class="text-sm text-warm-700 mt-2">{youtube.promotion.subtext}</p>
+                )}
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+      )
+    }
   </div>
 </section>

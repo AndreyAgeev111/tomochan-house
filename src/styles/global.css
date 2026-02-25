@@ -231,7 +231,8 @@ h4 {
 }
 
 /* Small text and buttons scale more conservatively */
-button, a, span {
+button,
+a,
+span {
   font-size: clamp(0.95rem, 1.8vw, 1rem);
 }
-

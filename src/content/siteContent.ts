@@ -445,7 +445,8 @@ export const siteContent = {
     bio: "🐱 飲んで歌って楽しめる居酒屋 in 池袋 🍺",
     cta: "フォローして最新情報をゲット！",
     ctaTitle: "Instagramをフォローしてね！",
-    ctaDescription: "最新情報や毎日のおすすめメニュー、店舗の最新ニュースはInstagramで配信中。\nフォローして、ともちゃん家の最新情報をチェックしてください。",
+    ctaDescription:
+      "最新情報や毎日のおすすめメニュー、店舗の最新ニュースはInstagramで配信中。\nフォローして、ともちゃん家の最新情報をチェックしてください。",
     url: "https://instagram.com/tomochan_house",
   },
 
@@ -571,6 +572,12 @@ export const siteContent = {
           "低価格でカラオケ無制限、お客さまとの深い絆が生まれるお店の雰囲気をお感じください。",
       },
     ],
+    promotion: {
+      text: "3月までにスナックナビチャンネル登録した人はボトル10%割引します",
+      subtext: "ともちゃんに登録したの見してね",
+      icon: "🎁",
+      highlight: true,
+    },
   },
 
   news: [
