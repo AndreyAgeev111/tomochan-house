@@ -69,7 +69,7 @@ const { nav } = siteContent;
 <header
   class="fixed top-0 left-0 right-0 z-50 bg-warm-50/95 backdrop-blur-sm border-b border-warm-200 shadow-softer"
 >
-  <div class="max-w-6xl mx-auto px-4 py-4 flex items-center gap-8">
+  <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
     <!-- Logo -->
     <a href="#" class="flex items-center gap-2 group flex-shrink-0">
       <span class="text-lg">🐱</span>
@@ -80,7 +80,7 @@ const { nav } = siteContent;
     </a>
 
     <!-- Desktop Navigation -->
-    <nav class="hidden md:flex items-center gap-6 flex-nowrap flex-1 justify-center">
+    <nav class="hidden md:flex items-center gap-6 flex-nowrap justify-center flex-1 mx-8">
       {
         nav.map((item) => (
           <a
