@@ -389,11 +389,11 @@ export const siteContent = {
       { date: "年末年始", reason: "要確認" },
     ],
     calendar: {
-      month: 2,
+      month: 3,
       year: 2026,
-      closedDates: [1, 2, 5, 11, 23],
+      closedDates: [1, 2, 8, 9,],
       specialDates: [
-        //  {date: 9, label: "ゴルフコンペ開催", emoji: "⛳", color: "yellow"}
+         {date: 9, label: "ゴルフコンペ開催", emoji: "⛳", color: "yellow"}
       ],
     },
     specialEvent: {
