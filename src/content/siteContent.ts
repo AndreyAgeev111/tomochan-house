@@ -391,10 +391,8 @@ export const siteContent = {
     calendar: {
       month: 3,
       year: 2026,
-      closedDates: [1, 2, 8, 9,],
-      specialDates: [
-         {date: 9, label: "ゴルフコンペ開催", emoji: "⛳", color: "yellow"}
-      ],
+      closedDates: [1, 2, 8, 9],
+      specialDates: [{ date: 9, label: "ゴルフコンペ開催", emoji: "⛳" }],
     },
     specialEvent: {
       title: "ゴルフコンペ 2026年3月9日（月）",
@@ -507,8 +505,8 @@ export const siteContent = {
 
   reviews: {
     title: "ご感想をお聞かせください",
-    rating: 4.8,
-    totalReviews: 13,
+    rating: 4.9,
+    totalReviews: 15,
     testimonials: [
       {
         id: 1,

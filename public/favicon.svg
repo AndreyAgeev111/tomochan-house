@@ -10,23 +10,51 @@
   <!-- Background -->
   <rect width="200" height="200" fill="url(#catGrad)" rx="40"/>
 
-  <!-- Cat head -->
-  <circle cx="100" cy="110" r="50" fill="#5d4a42"/>
+  <!-- Cat head black -->
+  <circle cx="100" cy="110" r="50" fill="#1a1a1a"/>
 
   <!-- Ears -->
-  <polygon points="70,50 60,20 80,40" fill="#5d4a42"/>
-  <polygon points="130,50 140,20 120,40" fill="#5d4a42"/>
+  <polygon points="70,50 60,20 80,40" fill="#1a1a1a"/>
+  <polygon points="130,50 140,20 120,40" fill="#1a1a1a"/>
 
-  <!-- Inner ears -->
-  <polygon points="70,50 65,30 75,45" fill="#d4bfa8"/>
-  <polygon points="130,50 135,30 125,45" fill="#d4bfa8"/>
+  <!-- Inner ears pink -->
+  <polygon points="70,50 65,30 75,45" fill="#ffb3ba"/>
+  <polygon points="130,50 135,30 125,45" fill="#ffb3ba"/>
 
-  <!-- Eyes -->
-  <circle cx="85" cy="100" r="6" fill="#fff"/>
-  <circle cx="115" cy="100" r="6" fill="#fff"/>
-  <circle cx="85" cy="102" r="3" fill="#000"/>
-  <circle cx="115" cy="102" r="3" fill="#000"/>
+  <!-- White face/muzzle (tuxedo) -->
+  <ellipse cx="100" cy="125" rx="28" ry="20" fill="#ffffff"/>
+
+  <!-- Left eye white -->
+  <circle cx="82" cy="100" r="7" fill="#fff"/>
+
+  <!-- Right eye white -->
+  <circle cx="118" cy="100" r="7" fill="#fff"/>
+
+  <!-- Left pupil -->
+  <circle cx="82" cy="100" r="4" fill="#000"/>
+
+  <!-- Right pupil -->
+  <circle cx="118" cy="100" r="4" fill="#000"/>
 
   <!-- Nose -->
-  <polygon points="100,115 95,125 105,125" fill="#f59e0b"/>
+  <ellipse cx="100" cy="118" rx="4" ry="3" fill="#ffb3ba"/>
+
+  <!-- Mouth line -->
+  <line x1="100" y1="122" x2="100" y2="128" stroke="#1a1a1a" stroke-width="1.2" stroke-linecap="round"/>
+
+  <!-- Left mouth curve -->
+  <path d="M 100 125 Q 90 128 82 125" stroke="#1a1a1a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+
+  <!-- Right mouth curve -->
+  <path d="M 100 125 Q 110 128 118 125" stroke="#1a1a1a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+
+  <!-- Left whiskers -->
+  <line x1="70" y1="110" x2="50" y2="108" stroke="#ffffff" stroke-width="1" stroke-linecap="round"/>
+  <line x1="70" y1="115" x2="48" y2="117" stroke="#ffffff" stroke-width="1" stroke-linecap="round"/>
+  <line x1="70" y1="120" x2="50" y2="125" stroke="#ffffff" stroke-width="1" stroke-linecap="round"/>
+
+  <!-- Right whiskers -->
+  <line x1="130" y1="110" x2="150" y2="108" stroke="#ffffff" stroke-width="1" stroke-linecap="round"/>
+  <line x1="130" y1="115" x2="152" y2="117" stroke="#ffffff" stroke-width="1" stroke-linecap="round"/>
+  <line x1="130" y1="120" x2="150" y2="125" stroke="#ffffff" stroke-width="1" stroke-linecap="round"/>
 </svg>
