@@ -391,7 +391,7 @@ export const siteContent = {
     calendar: {
       month: 3,
       year: 2026,
-      closedDates: [1, 2, 8, 9],
+      closedDates: [1, 2, 8, 9,15,19,22],
       specialDates: [{ date: 9, label: "ゴルフコンペ開催", emoji: "⛳" }],
     },
     specialEvent: {
