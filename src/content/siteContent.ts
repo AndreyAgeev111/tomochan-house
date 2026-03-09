@@ -378,7 +378,7 @@ export const siteContent = {
       },
       { date: "毎月末日", event: "特別メニュー登場", icon: "✨" },
       {
-        date: "2026年3月9日",
+        date: "2026年5月12日",
         event: "ゴルフコンペ開催",
         icon: "⛳",
         isSpecial: true,
