@@ -17,12 +17,19 @@ main {
 
 /* Custom components */
 @layer components {
+  /* Japanese text line breaking */
   .hero-title {
     @apply text-5xl md:text-6xl font-bold text-warm-900 leading-tight;
+    line-break: strict;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   .section-title {
-    @apply text-4xl md:text-5xl font-bold text-warm-900 mb-8;
+    @apply text-3xl md:text-4xl font-bold text-warm-900 mb-8;
+    line-break: strict;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   .btn-primary {
@@ -39,6 +46,9 @@ main {
 
   .card {
     @apply bg-white rounded-xl p-6 shadow-soft hover:shadow-lg transition-shadow duration-300;
+    line-break: strict;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   .section-divider {
@@ -194,23 +204,38 @@ body {
 
 p {
   font-size: clamp(0.95rem, 1.8vw, 1rem);
+  line-break: strict;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 /* Headings with fluid typography */
 h1 {
   font-size: clamp(1.5rem, 6vw, 2.5rem);
+  line-break: strict;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 h2 {
   font-size: clamp(1.3rem, 5vw, 2rem);
+  line-break: strict;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 h3 {
   font-size: clamp(1.15rem, 4vw, 1.5rem);
+  line-break: strict;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 h4 {
   font-size: clamp(1rem, 3vw, 1.25rem);
+  line-break: strict;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 /* Component-specific fluid typography */
@@ -235,4 +260,11 @@ button,
 a,
 span {
   font-size: clamp(0.95rem, 1.8vw, 1rem);
+}
+
+/* Japanese text in all elements */
+* {
+  line-break: strict;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }

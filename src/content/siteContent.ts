@@ -391,33 +391,28 @@ export const siteContent = {
     calendar: {
       month: 3,
       year: 2026,
-      closedDates: [1, 2, 8, 9,15,19,22],
+      closedDates: [1, 2, 8, 9, 15, 19, 22],
       specialDates: [{ date: 9, label: "ゴルフコンペ開催", emoji: "⛳" }],
     },
     specialEvent: {
-      title: "ゴルフコンペ 2026年3月9日（月）",
-      date: "2026年3月9日（月）",
+      title: "ゴルフコンペ第2回 2026年5月12日（火）",
+      date: "2026年5月12日（火）",
       description:
-        "ともちゃん家関連企画でゴルフコンペを開催します。ゴールド佐野カントリークラブにて、楽しいイベントをお楽しみください。",
+        "ともちゃん家関連企画でゴルフコンペ第2回を開催します。おおむらさきゴルフ倶楽部にて、楽しいイベントをお楽しみください。プレイ終了後はともちゃん家で打ち上げ！",
       image: "/images/events/golf-tournament.webp",
       details: [
         {
           icon: "📍",
           label: "会場",
-          value: "ゴールド佐野カントリークラブ（栃木県佐野市）",
+          value: "おおむらさきゴルフ倶楽部",
         },
-        { icon: "🕐", label: "時間", value: "集合 8時15分 / スタート 8時35分" },
-        { icon: "⏱️", label: "プレー形式", value: "前半終了後 表彰式、新ぺリ" },
-        {
-          icon: "💰",
-          label: "会費",
-          value: "1,000円 + スタートフェア外(L500円割引あり)",
-        },
-        {
-          icon: "🏆",
-          label: "特典",
-          value: "1位2位3位 ブービー賞、賞品あり",
-        },
+        { icon: "🕐", label: "集合時間", value: "9時30分" },
+        { icon: "⛳", label: "スタート時間", value: "10時8分" },
+        { icon: "🚌", label: "送迎バス", value: "森林公園駅北口から出発（8時40分、9時10分）" },
+        { icon: "💰", label: "ゴルフ料金", value: "13,490円" },
+        { icon: "🍻", label: "会費", value: "8,000円（景品代・打ち上げ飲み放題食事に充当）" },
+        { icon: "🏆", label: "賞品", value: "1位2位3位・ブービー・ニアピン景品あり" },
+        { icon: "⚠️", label: "ルール", value: "新ペリ・スタートフェアウェイ外し500円罰金" },
       ],
       cta: {
         label: "詳細・申込はInstagramへ",
