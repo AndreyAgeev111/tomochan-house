@@ -391,8 +391,8 @@ export const siteContent = {
     calendar: {
       month: 3,
       year: 2026,
-      closedDates: [1, 2, 8, 9, 15, 19, 22],
-      specialDates: [{ date: 9, label: "ゴルフコンペ開催", emoji: "⛳" }],
+      closedDates: [5, 7, 12, 14, 21, 26, 29],
+      specialDates: [],
     },
     specialEvent: {
       title: "ゴルフコンペ第2回 2026年5月12日（火）",

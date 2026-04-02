@@ -1,0 +1,63 @@
+---
+import ScrollReveal from "../../common/react/ScrollReveal";
+---
+
+<section class="py-12 bg-gradient-to-r from-amber-50 to-orange-50 border-b-4 border-amber-300">
+  <div class="max-w-4xl mx-auto px-4">
+    <ScrollReveal client:load>
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden md:flex">
+        <!-- Image -->
+        <div class="md:w-2/5 flex items-center justify-center bg-amber-50 p-6">
+          <img
+            src="/cat-worker.png"
+            alt="スタッフ募集中の猫キャラクター"
+            class="w-64 h-64 object-contain drop-shadow-md"
+            loading="eager"
+          />
+        </div>
+
+        <!-- Content -->
+        <div class="md:w-3/5 p-8">
+          <div class="inline-block bg-red-500 text-white text-sm font-bold px-4 py-1 rounded-full mb-4">
+            スタッフ募集中！
+          </div>
+          <h2 class="text-2xl font-bold text-warm-900 mb-4">一緒に働きませんか？</h2>
+
+          <ul class="space-y-3 text-warm-800 mb-6">
+            <li class="flex items-start gap-3">
+              <span class="text-lg flex-shrink-0">🕐</span>
+              <div>
+                <span class="font-bold">勤務時間</span>
+                <p class="text-sm">20時〜4時の間、3時間からOK！</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-lg flex-shrink-0">💰</span>
+              <div>
+                <span class="font-bold">時給</span>
+                <p class="text-sm">応相談</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-lg flex-shrink-0">🍽️</span>
+              <div>
+                <span class="font-bold">仕事内容</span>
+                <p class="text-sm">ドリンク出し、料理提供など</p>
+              </div>
+            </li>
+          </ul>
+
+          <a
+            href="https://instagram.com/tomochan_house"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-lg font-bold hover:shadow-lg transition-all hover:scale-105 transform duration-300"
+          >
+            <span>📱</span>
+            <span>応募・お問い合わせはDMへ</span>
+          </a>
+        </div>
+      </div>
+    </ScrollReveal>
+  </div>
+</section>
