@@ -389,10 +389,10 @@ export const siteContent = {
       { date: "年末年始", reason: "要確認" },
     ],
     calendar: {
-      month: 4,
+      month: 5,
       year: 2026,
-      closedDates: [5, 7, 12, 14, 21, 26, 29],
-      specialDates: [],
+      closedDates: [5, 6, 10, 11, 17, 19, 24],
+      specialDates: [{ date: 12, label: "ゴルフコンペ開催", emoji: "⛳", color: "yellow" }],
     },
     specialEvent: {
       title: "ゴルフコンペ第2回 2026年5月12日（火）",
