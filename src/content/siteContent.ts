@@ -377,47 +377,16 @@ export const siteContent = {
         icon: "🎤",
       },
       { date: "毎月末日", event: "特別メニュー登場", icon: "✨" },
-      {
-        date: "2026年5月12日",
-        event: "ゴルフコンペ開催",
-        icon: "⛳",
-        isSpecial: true,
-      },
     ],
     holidays: [
       { date: "第1月曜", reason: "定休日" },
       { date: "年末年始", reason: "要確認" },
     ],
     calendar: {
-      month: 5,
+      month: 6,
       year: 2026,
-      closedDates: [5, 6, 10, 11, 17, 19, 24],
-      specialDates: [{ date: 12, label: "ゴルフコンペ開催", emoji: "⛳", color: "yellow" }],
-    },
-    specialEvent: {
-      title: "ゴルフコンペ第2回 2026年5月12日（火）",
-      date: "2026年5月12日（火）",
-      description:
-        "ともちゃん家関連企画でゴルフコンペ第2回を開催します。おおむらさきゴルフ倶楽部にて、楽しいイベントをお楽しみください。プレイ終了後はともちゃん家で打ち上げ！",
-      image: "/images/events/golf-tournament.webp",
-      details: [
-        {
-          icon: "📍",
-          label: "会場",
-          value: "おおむらさきゴルフ倶楽部",
-        },
-        { icon: "🕐", label: "集合時間", value: "9時30分" },
-        { icon: "⛳", label: "スタート時間", value: "10時8分" },
-        { icon: "🚌", label: "送迎バス", value: "森林公園駅北口から出発（8時40分、9時10分）" },
-        { icon: "💰", label: "ゴルフ料金", value: "13,490円" },
-        { icon: "🍻", label: "会費", value: "8,000円（景品代・打ち上げ飲み放題食事に充当）" },
-        { icon: "🏆", label: "賞品", value: "1位2位3位・ブービー・ニアピン景品あり" },
-        { icon: "⚠️", label: "ルール", value: "新ペリ・スタートフェアウェイ外し500円罰金" },
-      ],
-      cta: {
-        label: "詳細・申込はInstagramへ",
-        href: "https://instagram.com/tomochan_house",
-      },
+      closedDates: [2, 7, 9, 14, 16, 21, 22],
+      specialDates: [],
     },
   },
 
