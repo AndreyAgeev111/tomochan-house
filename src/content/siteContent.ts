@@ -386,8 +386,51 @@ export const siteContent = {
       month: 7,
       year: 2026,
       closedDates: [1, 5, 12, 13, 20, 28],
-      specialDates: [],
+      specialDates: [{ date: 29, label: "第3回ゴルフコンペ開催", emoji: "⛳" }],
     },
+    specialEvent: {
+      title: "ゴルフコンペ 第3回",
+      date: "2026年7月29日（水）",
+      description: "ともちゃん家ゴルフコンペ第3回を開催します。",
+      image: "/images/events/golf-tournament.webp",
+      details: [
+        {
+          icon: "📍",
+          label: "会場",
+          value: "浦和ゴルフ倶楽部（埼玉県さいたま市桜区新開3-13-1）",
+        },
+        {
+          icon: "🕗",
+          label: "集合時間",
+          value: "8時30分",
+        },
+        {
+          icon: "🏌️",
+          label: "スタート時間",
+          value: "9時06分（4組）",
+        },
+        {
+          icon: "💴",
+          label: "プレイ料金",
+          value: "13,700円",
+        },
+        {
+          icon: "🍻",
+          label: "会費",
+          value: "8,000円（景品代・飲み放題・食事代込み）",
+        },
+        {
+          icon: "🏆",
+          label: "賞品",
+          value: "1位・2位・3位・ブービー賞",
+        },
+        {
+          icon: "⚠️",
+          label: "ルール",
+          value: "スタートフェアウェイ外し500円・新ペリ・ドラコン・ニアピンあり",
+        },
+      ]
+    }
   },
 
   gallery: {
