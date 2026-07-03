@@ -429,7 +429,11 @@ export const siteContent = {
           label: "ルール",
           value: "スタートフェアウェイ外し500円・新ペリ・ドラコン・ニアピンあり",
         },
-      ]
+      ],
+      cta: {
+        label: "詳細・申込はInstagramへ",
+        href: "https://instagram.com/tomochan_house",
+      },
     }
   },
 
