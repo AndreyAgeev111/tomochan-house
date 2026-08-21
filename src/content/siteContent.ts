@@ -385,7 +385,7 @@ export const siteContent = {
     calendar: {
       month: 8,
       year: 2026,
-      closedDates: [2, 3, 11, 16, 17, 18, 23, 24],
+      closedDates: [2, 3, 11, 16, 17, 18],
       specialDates: [],
     },
   },
