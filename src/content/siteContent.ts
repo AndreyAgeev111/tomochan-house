@@ -444,8 +444,7 @@ export const siteContent = {
                                                                                                                                                                                                                                     cta: {
                                                                                                                                                                                                                                         label: "詳細・申込はInstagramへ",
                                                                                                                                                                                                                                             href: "https://instagram.com/tomochan_house",
-                                                                                                                                                                                                                                              },
-                                                                                                                                                                                                                                              },
+                                                                                                                                                                                                                                    },
     }
   },
 
