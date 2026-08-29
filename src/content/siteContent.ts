@@ -400,52 +400,52 @@ export const siteContent = {
       description: "ともちゃん家ゴルフコンペ第4回を開催します。",
       image: "/images/events/golf-tournament.jpg",
       details: [
-      {
-        icon: "📍",
-        label: "会場",
-        value: "大宮国際カントリークラブ（埼玉県さいたま市西区宝来910）",
+        {
+          icon: "📍",
+          label: "会場",
+          value: "大宮国際カントリークラブ（埼玉県さいたま市西区宝来910）",
+        },
+        {
+          icon: "🕘",
+          label: "集合時間",
+          value: "9時15分",
+        },
+        {
+          icon: "🏌️",
+          label: "スタート時間",
+          value: "9時59分（4組）",
+        },
+        {
+          icon: "💴",
+          label: "プレイ料金",
+          value: "18,500円",
+        },
+        {
+          icon: "🍻",
+          label: "会費",
+          value: "8,000円（景品代・飲み放題・食事代込み）",
+        },
+        {
+          icon: "🏠",
+          label: "打ち上げ",
+          value: "プレイ終了後、ともちゃん家で開催",
+        },
+        {
+          icon: "🏆",
+          label: "賞品",
+          value: "1位・2位・3位・ブービー賞",
+        },
+        {
+          icon: "⚠️",
+          label: "ルール",
+          value: "スタートフェアウェイ外し500円・新ペリ・ドラコン・ニアピンあり",
+        },
+      ],
+      cta: {
+        label: "詳細・申込はInstagramへ",
+        href: "https://instagram.com/tomochan_house",
       },
-      {
-        icon: "🕘",
-        label: "集合時間",
-                                                                value: "9時15分",
-                                                                    },
-                                                                        {
-                                                                              icon: "🏌️",
-                                                                                    label: "スタート時間",
-                                                                                          value: "9時59分（4組）",
-                                                                                              },
-                                                                                                  {
-                                                                                                        icon: "💴",
-                                                                                                              label: "プレイ料金",
-                                                                                                                    value: "18,500円",
-                                                                                                                        },
-                                                                                                                            {
-                                                                                                                                  icon: "🍻",
-                                                                                                                                        label: "会費",
-                                                                                                                                              value: "8,000円（景品代・飲み放題・食事代込み）",
-                                                                                                                                                  },
-                                                                                                                                                      {
-                                                                                                                                                            icon: "🏠",
-                                                                                                                                                                  label: "打ち上げ",
-                                                                                                                                                                        value: "プレイ終了後、ともちゃん家で開催",
-                                                                                                                                                                            },
-                                                                                                                                                                                {
-                                                                                                                                                                                      icon: "🏆",
-                                                                                                                                                                                            label: "賞品",
-                                                                                                                                                                                                  value: "1位・2位・3位・ブービー賞",
-                                                                                                                                                                                                      },
-                                                                                                                                                                                                          {
-                                                                                                                                                                                                                icon: "⚠️",
-                                                                                                                                                                                                                      label: "ルール",
-                                                                                                                                                                                                                            value: "スタートフェアウェイ外し500円・新ペリ・ドラコン・ニアピンあり",
-                                                                                                                                                                                                                                },
-                                                                                                                                                                                                                                  ],
-                                                                                                                                                                                                                                    cta: {
-                                                                                                                                                                                                                                        label: "詳細・申込はInstagramへ",
-                                                                                                                                                                                                                                            href: "https://instagram.com/tomochan_house",
-                                                                                                                                                                                                                                    },
-    }
+    },
   },
 
   gallery: {
