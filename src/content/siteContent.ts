@@ -389,16 +389,16 @@ export const siteContent = {
       { date: "年末年始", reason: "要確認" },
     ],
     calendar: {
-      month: 8,
+      month: 9,
       year: 2026,
-      closedDates: [2, 3, 11, 16, 17, 18],
-      specialDates: [],
+      closedDates: [1, 6, 15, 21, 23, 27],
+      specialDates: [{ date: 22, label: "ゴルフコンペ開催", emoji: "⛳", color: "yellow" }],
     },
     specialEvent: {
       title: "ゴルフコンペ 第4回",
       date: "2026年9月22日（火）",
       description: "ともちゃん家ゴルフコンペ第4回を開催します。",
-      image: "/images/events/golf-tournament.jpg",
+      image: "/images/events/golf-tournament.webp",
       details: [
         {
           icon: "📍",

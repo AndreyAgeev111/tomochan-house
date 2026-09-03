@@ -97,7 +97,6 @@ export default function Calendar({ month, year, closedDates, specialDates = [] }
           <span className="text-sm text-warm-700">営業していない日</span>
         </div>
         {specialDates.map((specialDate) => {
-          const isSpecialClosed = closedDates.includes(specialDate.date);
           return (
             <div key={`legend-${specialDate.date}`} className="flex items-center gap-2">
               <span className="text-lg">{specialDate.emoji}</span>
