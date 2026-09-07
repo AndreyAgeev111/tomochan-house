@@ -56,9 +56,15 @@ pnpm dev
 // src/content/siteContent.ts
 business: {
   name: "ともちゃん家",           // 店名
-  phone: "03-XXXX-XXXX",          // 電話番号
-  address: "東京都豊島区池袋2-5-4", // 住所
-  instagramHandle: "tomochan_house", // Instagram
+    phone
+:
+  "03-XXXX-XXXX",          // 電話番号
+    address
+:
+  "東京都豊島区池袋2-5-4", // 住所
+    instagramHandle
+:
+  "tomochan_house", // Instagram
 }
 ```
 
@@ -269,9 +275,15 @@ All content is centralized in `src/content/siteContent.ts`.
 // src/content/siteContent.ts
 business: {
   name: "Tomochan House",           // Store name
-  phone: "03-XXXX-XXXX",            // Phone number
-  address: "2-5-4 Ikebukuro, Toshima-ku, Tokyo", // Address
-  instagramHandle: "tomochan_house", // Instagram
+    phone
+:
+  "03-XXXX-XXXX",            // Phone number
+    address
+:
+  "2-5-4 Ikebukuro, Toshima-ku, Tokyo", // Address
+    instagramHandle
+:
+  "tomochan_house", // Instagram
 }
 ```
 

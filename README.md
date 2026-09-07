@@ -4,7 +4,8 @@
 
 ## 📋 概要
 
-ともちゃん家は、Astro + Tailwind CSS + React で構築された、モダンで軽量な単一ページ webサイトです。GitHub Pages にホストされており、完全にスタティック（サーバーレス）です。
+ともちゃん家は、Astro + Tailwind CSS + React で構築された、モダンで軽量な単一ページ webサイトです。GitHub Pages
+にホストされており、完全にスタティック（サーバーレス）です。
 
 ### 特徴
 
@@ -19,14 +20,14 @@
 
 ## 🛠️ 技術スタック
 
-| 技術 | バージョン | 用途 |
-| --- | --- | --- |
-| Astro | 4.0+ | 静的サイトジェネレータ |
-| React | 18.2+ | インタラクティブ機能（島） |
-| Tailwind CSS | 3.4+ | スタイリング |
-| TypeScript | 5.3+ | 型安全性 |
-| Framer Motion | 11.0+ | アニメーション |
-| lucide-react | 最新 | アイコン |
+| 技術          | バージョン | 用途                       |
+|---------------|------------|----------------------------|
+| Astro         | 4.0+       | 静的サイトジェネレータ     |
+| React         | 18.2+      | インタラクティブ機能（島） |
+| Tailwind CSS  | 3.4+       | スタイリング               |
+| TypeScript    | 5.3+       | 型安全性                   |
+| Framer Motion | 11.0+      | アニメーション             |
+| lucide-react  | 最新       | アイコン                   |
 
 ---
 
@@ -180,14 +181,24 @@ git push origin main
 ```javascript
 colors: {
   warm: {
-    50: "#faf8f3",  // 明るい背景
-    900: "#5d4a42", // 濃いテキスト
-  },
+    50
+  :
+    "#faf8f3",  // 明るい背景
+      900
+  :
+    "#5d4a42", // 濃いテキスト
+  }
+,
   accent: {
     light: "#fef3c7",  // ボタンハイライト
-    DEFAULT: "#fcd34d",
-    dark: "#f59e0b",   // ホバー状態
-  },
+      DEFAULT
+  :
+    "#fcd34d",
+      dark
+  :
+    "#f59e0b",   // ホバー状態
+  }
+,
 }
 ```
 
@@ -209,11 +220,11 @@ fontFamily: {
 
 ## 📱 レスポンシブデザイン
 
-| デバイス | ブレークポイント | 対応 |
-| --- | --- | --- |
-| モバイル | < 640px | ✅ 最適化 |
-| タブレット | 640px - 1024px | ✅ 対応 |
-| デスクトップ | > 1024px | ✅ フル対応 |
+| デバイス     | ブレークポイント | 対応        |
+|--------------|------------------|-------------|
+| モバイル     | < 640px          | ✅ 最適化   |
+| タブレット   | 640px - 1024px   | ✅ 対応     |
+| デスクトップ | > 1024px         | ✅ フル対応 |
 
 すべてのセクションがモバイル優先で設計されています。
 
@@ -447,8 +458,7 @@ import YourComponent from "../components/YourInteractiveComponent";
 
 ---
 
-**最終更新**: 2026年2月13日
-**ステータス**: 🟢 本番対応
+**最終更新**: 2026年2月13日 **ステータス**: 🟢 本番対応
 
 ---
 
@@ -462,7 +472,8 @@ import YourComponent from "../components/YourInteractiveComponent";
 
 ## 📋 Overview
 
-Tomochan House is a modern, lightweight single-page website built with Astro + Tailwind CSS + React. It's hosted on GitHub Pages and completely static (serverless).
+Tomochan House is a modern, lightweight single-page website built with Astro + Tailwind CSS + React. It's hosted on
+GitHub Pages and completely static (serverless).
 
 ### Features
 
@@ -477,14 +488,14 @@ Tomochan House is a modern, lightweight single-page website built with Astro + T
 
 ## 🛠️ Technology Stack
 
-| Technology | Version | Purpose |
-| --- | --- | --- |
-| Astro | 4.0+ | Static Site Generator |
-| React | 18.2+ | Interactive Features (Islands) |
-| Tailwind CSS | 3.4+ | Styling |
-| TypeScript | 5.3+ | Type Safety |
-| Framer Motion | 11.0+ | Animations |
-| lucide-react | Latest | Icons |
+| Technology    | Version | Purpose                        |
+|---------------|---------|--------------------------------|
+| Astro         | 4.0+    | Static Site Generator          |
+| React         | 18.2+   | Interactive Features (Islands) |
+| Tailwind CSS  | 3.4+    | Styling                        |
+| TypeScript    | 5.3+    | Type Safety                    |
+| Framer Motion | 11.0+   | Animations                     |
+| lucide-react  | Latest  | Icons                          |
 
 ---
 
@@ -638,14 +649,24 @@ Adjust colors in `tailwind.config.mjs` `colors` section:
 ```javascript
 colors: {
   warm: {
-    50: "#faf8f3",  // Light background
-    900: "#5d4a42", // Dark text
-  },
+    50
+  :
+    "#faf8f3",  // Light background
+      900
+  :
+    "#5d4a42", // Dark text
+  }
+,
   accent: {
     light: "#fef3c7",  // Button highlight
-    DEFAULT: "#fcd34d",
-    dark: "#f59e0b",   // Hover state
-  },
+      DEFAULT
+  :
+    "#fcd34d",
+      dark
+  :
+    "#f59e0b",   // Hover state
+  }
+,
 }
 ```
 
@@ -667,11 +688,11 @@ Modify animation settings in `src/utils/animation.ts`.
 
 ## 📱 Responsive Design
 
-| Device | Breakpoint | Support |
-| --- | --- | --- |
-| Mobile | < 640px | ✅ Optimized |
-| Tablet | 640px - 1024px | ✅ Supported |
-| Desktop | > 1024px | ✅ Full Support |
+| Device  | Breakpoint     | Support         |
+|---------|----------------|-----------------|
+| Mobile  | < 640px        | ✅ Optimized    |
+| Tablet  | 640px - 1024px | ✅ Supported    |
+| Desktop | > 1024px       | ✅ Full Support |
 
 All sections are designed mobile-first.
 
@@ -892,5 +913,4 @@ If you encounter issues:
 
 ---
 
-**Last Updated**: February 2026
-**Status**: 🟢 Production Ready
+**Last Updated**: February 2026 **Status**: 🟢 Production Ready

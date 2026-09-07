@@ -50,6 +50,7 @@ pnpm format:check
 ## Code Style & Quality Tools
 
 ### ESLint
+
 - **Purpose**: Catch bugs and enforce code standards
 - **Config**: `.eslintrc.json`
 - **Rules**:
@@ -61,6 +62,7 @@ pnpm format:check
   - Astro rules for `.astro` files
 
 ### Prettier
+
 - **Purpose**: Automatic code formatting
 - **Config**: `.prettierrc.json`
 - **Features**:
@@ -71,6 +73,7 @@ pnpm format:check
   - Supports Astro files with `prettier-plugin-astro`
 
 ### EditorConfig
+
 - **Purpose**: Consistent editor settings across team
 - **Config**: `.editorconfig`
 - **IDE Support**: Install extension for your editor (VS Code, IntelliJ, etc.)
@@ -91,6 +94,7 @@ git commit --no-verify
 ```
 
 Hooks will:
+
 - Remove trailing whitespace
 - Ensure files end with newline
 - Check YAML syntax
@@ -141,14 +145,17 @@ src/
 ## Common Issues
 
 ### ESLint errors after setup
+
 - Run `pnpm lint:fix` to auto-fix most issues
 - Check `.eslintrc.json` for specific rule configuration
 
 ### Prettier conflicts with ESLint
+
 - Configuration is already coordinated in `.eslintrc.json`
 - Run `pnpm format` before committing
 
 ### Pre-commit hooks fail
+
 - Run `pnpm format` to fix formatting issues
 - Run `pnpm lint:fix` to fix linting issues
 - Use `git commit --no-verify` only as last resort

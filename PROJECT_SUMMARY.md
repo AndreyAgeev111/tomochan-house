@@ -193,14 +193,17 @@ git push -u origin main
 ### 🎨 デザインシステム
 
 **カラー** (`tailwind.config.mjs` 内):
+
 - `warm-*`: メインパレット (50-900)
 - `accent-*`: アクセントカラー (light, DEFAULT, dark)
 
 **タイポグラフィ**:
+
 - 日本語対応フォントスタック（Hiragino Maru Gothic ProN + システムフォント）
 - 丸みを帯びたやさしい外観
 
 **シャドウ & 半径**:
+
 - `shadow-soft`: 0 4px 15px
 - `shadow-softer`: 0 2px 8px
 - `rounded-lg`/`rounded-xl`: ソフトなコーナー
@@ -243,7 +246,7 @@ src/content/siteContent.ts
 ```typescript
 export const siteContent = {
   business: { ... },      // 施設の主要情報
-  nav: [ ... ],           // ナビゲーションリンク
+  nav: [...],           // ナビゲーションリンク
   hero: { ... },          // ヒーローセクション
   about: { ... },         // 施設について
   menu: { ... },          // メニュー
@@ -252,7 +255,7 @@ export const siteContent = {
   access: { ... },        // アドレスとルート
   instagram: { ... },     // Instagram接続
   contact: { ... },       // 連絡先 + FAQ
-  news: [ ... ],          // ニュース
+  news: [...],          // ニュース
 };
 ```
 
@@ -281,13 +284,13 @@ export const siteContent = {
 
 ## 📦 バンドルサイズ
 
-| コンポーネント | サイズ (gzip) |
-| --- | --- |
-| Reactランタイム | 43.8 KB |
-| Framer Motion | 36.7 KB |
-| HTMLページ | 約20 KB |
-| CSS (Tailwind) | 約5 KB |
-| **合計** | **約260 KB** |
+| コンポーネント  | サイズ (gzip) |
+|-----------------|---------------|
+| Reactランタイム | 43.8 KB       |
+| Framer Motion   | 36.7 KB       |
+| HTMLページ      | 約20 KB       |
+| CSS (Tailwind)  | 約5 KB        |
+| **合計**        | **約260 KB**  |
 
 インタラクティブ機能付きのシングルページウェブサイトにしては非常に軽量です!
 
@@ -354,9 +357,7 @@ export const siteContent = {
 
 ---
 
-**ステータス**: ✅ デプロイ準備完了
-**ライセンス**: MIT
-**作成日**: 2024-01-11
+**ステータス**: ✅ デプロイ準備完了 **ライセンス**: MIT **作成日**: 2024-01-11
 
 ---
 
@@ -559,14 +560,17 @@ git push -u origin main
 ### 🎨 Design System
 
 **Colors** (in `tailwind.config.mjs`):
+
 - `warm-*`: Main palette (50-900)
 - `accent-*`: Accent colors (light, DEFAULT, dark)
 
 **Typography**:
+
 - Japanese-friendly font stack (Hiragino Maru Gothic ProN + system fonts)
 - Rounded, soft appearance
 
 **Shadows & Radius**:
+
 - `shadow-soft`: 0 4px 15px
 - `shadow-softer`: 0 2px 8px
 - `rounded-lg`/`rounded-xl`: Soft corners
@@ -609,7 +613,7 @@ Structure:
 ```typescript
 export const siteContent = {
   business: { ... },      // Main establishment information
-  nav: [ ... ],           // Navigation links
+  nav: [...],           // Navigation links
   hero: { ... },          // Hero section
   about: { ... },         // About the establishment
   menu: { ... },          // Menu
@@ -618,7 +622,7 @@ export const siteContent = {
   access: { ... },        // Address and route
   instagram: { ... },     // Instagram connection
   contact: { ... },       // Contacts + FAQ
-  news: [ ... ],          // News
+  news: [...],          // News
 };
 ```
 
@@ -647,13 +651,13 @@ Each section is typed with TypeScript for safety.
 
 ## 📦 Bundle Sizes
 
-| Component | Size (gzip) |
-| --- | --- |
-| React runtime | 43.8 KB |
-| Framer Motion | 36.7 KB |
-| HTML page | ~20 KB |
-| CSS (Tailwind) | ~5 KB |
-| **Total** | **~260 KB** |
+| Component      | Size (gzip) |
+|----------------|-------------|
+| React runtime  | 43.8 KB     |
+| Framer Motion  | 36.7 KB     |
+| HTML page      | ~20 KB      |
+| CSS (Tailwind) | ~5 KB       |
+| **Total**      | **~260 KB** |
 
 Very lightweight for a single-page website with interactivity!
 
@@ -720,6 +724,4 @@ For any questions about usage or customization:
 
 ---
 
-**Status**: ✅ Ready to deploy
-**License**: MIT
-**Creation Date**: 2024-01-11
+**Status**: ✅ Ready to deploy **License**: MIT **Creation Date**: 2024-01-11
