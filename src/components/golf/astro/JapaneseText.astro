@@ -1,0 +1,9 @@
+---
+interface Props {
+  phrases: string[];
+}
+
+const { phrases } = Astro.props;
+---
+
+{phrases.map((phrase) => <span class="japanese-phrase">{phrase}</span>)}

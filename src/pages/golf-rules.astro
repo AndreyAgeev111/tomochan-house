@@ -1,0 +1,228 @@
+---
+import { Image } from "astro:assets";
+import JapaneseText from "../components/golf/astro/JapaneseText.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import judge from "../../public/images/golf/kuchan-golf-judge.webp";
+import { BONUS_POINTS_PER_ACTION, FORMULA_POINTS } from "../content/golfChampionship";
+---
+
+<MainLayout
+  title="ポイントルール | ともちゃん家 ゴルフチャンピオンシップ"
+  description="くーちゃん審判がチャンピオンシップのポイントルールをご案内。各戦の上位10名に順位ポイント、対象の記録やプレーには1回につき3ポイントのボーナスが加算されます。"
+>
+  <section
+    class="overflow-hidden bg-gradient-to-br from-warm-100 via-warm-50 to-accent-light/40 pt-28 pb-10 md:pt-32 md:pb-14"
+  >
+    <div class="max-w-5xl mx-auto px-4">
+      <a
+        href="/golf-results/#leaderboard-title"
+        class="inline-flex min-h-11 items-center gap-2 rounded-lg text-sm font-bold text-green-800 hover:text-green-950 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-dark"
+      >
+        <span aria-hidden="true">←</span> ランキングに戻る
+      </a>
+      <div class="mt-5 grid items-center gap-6 md:grid-cols-[minmax(0,1fr)_280px]">
+        <div>
+          <p class="text-sm font-bold tracking-wider text-green-800">CHAMPIONSHIP RULES</p>
+          <h1 class="mt-2 text-3xl md:text-4xl font-bold leading-tight text-warm-900">
+            くーちゃんと学ぶ<br />ポイントルール
+          </h1>
+          <div
+            class="relative mt-6 rounded-2xl border border-warm-200 bg-white p-5 md:p-6 shadow-soft"
+          >
+            <p class="text-xs font-bold tracking-wider text-green-800">くーちゃん審判より</p>
+            <p class="mt-2 text-lg font-bold leading-relaxed text-warm-900">
+              <JapaneseText
+                phrases={[
+                  "「みんなのがんばりを",
+                  "ポイントに！",
+                  "ぼくと一緒に",
+                  "ルールを",
+                  "確認するにゃ。」",
+                ]}
+              />
+            </p>
+            <p class="mt-3 text-sm leading-relaxed text-warm-600">
+              <JapaneseText
+                phrases={[
+                  "各戦の順位ポイントと",
+                  "ボーナスポイントを",
+                  "合計して、",
+                  "シーズンの",
+                  "総合ランキングを",
+                  "決めます。",
+                ]}
+              />
+            </p>
+          </div>
+        </div>
+        <Image
+          src={judge}
+          alt="ルールブックと指示棒を持ってポイントの仕組みを説明する、くーちゃん審判"
+          widths={[240, 360, 560]}
+          sizes="(min-width: 768px) 280px, 220px"
+          format="webp"
+          loading="eager"
+          class="mx-auto w-[220px] md:w-full h-auto drop-shadow-lg"
+        />
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-5xl mx-auto px-4 py-10 md:py-14 space-y-8">
+    <section
+      aria-labelledby="placing-title"
+      class="rounded-2xl border border-warm-200 bg-white p-5 md:p-8 shadow-soft"
+    >
+      <div class="flex flex-col items-start gap-3 sm:flex-row">
+        <span
+          aria-hidden="true"
+          class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent-light font-bold text-warm-900"
+          >01</span
+        >
+        <div>
+          <h2 id="placing-title" class="text-xl md:text-2xl font-bold text-warm-900">
+            <JapaneseText phrases={["上位10名に", "順位ポイント"]} />
+          </h2>
+          <p class="mt-2 text-sm leading-relaxed text-warm-600">
+            <JapaneseText
+              phrases={[
+                "F1方式の配点を採用。",
+                "各戦の順位に応じて、",
+                "次のポイントを",
+                "獲得できます。",
+              ]}
+            />
+          </p>
+        </div>
+      </div>
+      <ol class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-5">
+        {
+          FORMULA_POINTS.map((points, index) => (
+            <li
+              class={`rounded-xl border p-4 text-center ${index === 0 ? "border-accent-dark bg-accent-light" : "border-warm-200 bg-warm-50"}`}
+            >
+              <p class="text-sm font-bold text-warm-600">{index + 1}位</p>
+              <p class="mt-1 text-3xl font-bold tabular-nums text-warm-900">
+                {points}
+                <span class="ml-1 text-sm font-medium text-warm-600">pt</span>
+              </p>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="mt-5 rounded-lg bg-warm-100 px-4 py-3 text-sm leading-relaxed text-warm-700">
+        <JapaneseText
+          phrases={[
+            "くーちゃんメモ：",
+            "11位以下の",
+            "順位ポイントは0pt。",
+            "不参加の回も",
+            "順位ポイントは",
+            "加算されません。",
+          ]}
+        />
+      </p>
+    </section>
+
+    <section
+      aria-labelledby="bonus-title"
+      class="rounded-2xl border border-green-200 bg-green-50 p-5 md:p-8"
+    >
+      <div class="flex flex-col items-start gap-3 sm:flex-row">
+        <span
+          aria-hidden="true"
+          class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-green-800 font-bold text-white"
+          >02</span
+        >
+        <div class="min-w-0 flex-1">
+          <h2 id="bonus-title" class="text-xl md:text-2xl font-bold text-green-950">
+            <JapaneseText phrases={["ボーナスは", "1回につき", `+${BONUS_POINTS_PER_ACTION}pt`]} />
+          </h2>
+          <p class="mt-3 text-sm leading-relaxed text-green-900">
+            <JapaneseText
+              phrases={[
+                "順位ポイントとは別に、",
+                "対象となる記録や",
+                "プレーなど、",
+                "さまざまな項目に応じて",
+                "ボーナスポイントが",
+                "加算されます。",
+                "1回の獲得につき",
+                `${BONUS_POINTS_PER_ACTION}ptです。`,
+              ]}
+            />
+          </p>
+          <p class="mt-4 rounded-lg bg-white/80 px-4 py-3 text-sm leading-relaxed text-green-900">
+            <JapaneseText
+              phrases={["対象となる項目や", "達成条件は、", "決まり次第", "お知らせします。"]}
+            />
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      aria-labelledby="total-title"
+      class="rounded-2xl border border-warm-200 bg-white p-5 md:p-8 shadow-soft"
+    >
+      <div class="flex flex-col items-start gap-3 sm:flex-row">
+        <span
+          aria-hidden="true"
+          class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent-light font-bold text-warm-900"
+          >03</span
+        >
+        <div>
+          <h2 id="total-title" class="text-xl md:text-2xl font-bold text-warm-900">
+            <JapaneseText phrases={["ポイントを", "積み重ねよう"]} />
+          </h2>
+          <p class="mt-3 text-sm leading-relaxed text-warm-600">
+            <JapaneseText
+              phrases={[
+                "シーズン中に",
+                "獲得した",
+                "順位ポイントと",
+                "ボーナスポイントの",
+                "合計で競います。",
+              ]}
+            />
+          </p>
+          <div class="mt-4 rounded-xl bg-warm-50 p-4">
+            <p class="text-xs font-bold text-green-800">たとえば</p>
+            <p class="mt-2 text-sm leading-relaxed text-warm-700">
+              <JapaneseText
+                phrases={["第1戦で1位、", "第2戦で2位、", "ボーナスを1回", "獲得した場合"]}
+              />
+            </p>
+            <p class="mt-2 text-xl md:text-2xl font-bold text-warm-900 tabular-nums">
+              {FORMULA_POINTS[0]} + {FORMULA_POINTS[1]} + {BONUS_POINTS_PER_ACTION} = <span
+                class="text-green-800"
+                >{FORMULA_POINTS[0] + FORMULA_POINTS[1] + BONUS_POINTS_PER_ACTION}pt</span
+              >
+            </p>
+          </div>
+          <p class="mt-4 text-sm leading-relaxed text-warm-600">
+            <JapaneseText
+              phrases={[
+                "ポイントに応じた",
+                "特典も準備中。",
+                "内容が決まり次第",
+                "お知らせします。",
+              ]}
+            />
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="text-center">
+      <p class="mb-4 font-bold text-warm-800">
+        <JapaneseText phrases={["「ルールがわかったら、", "みんなの成績を", "見に行くにゃ！」"]} />
+      </p>
+      <a
+        href="/golf-results/#leaderboard-title"
+        class="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-green-800 px-6 py-3 font-bold text-white shadow-soft hover:bg-green-950 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-dark"
+        >ランキングを見る <span aria-hidden="true">→</span></a
+      >
+    </div>
+  </div>
+</MainLayout>

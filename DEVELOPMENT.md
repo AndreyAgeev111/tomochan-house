@@ -26,6 +26,9 @@ pnpm preview
 
 # Type checking
 pnpm check
+
+# Scoring regression tests
+pnpm test
 ```
 
 ### Code Quality
@@ -62,7 +65,7 @@ pnpm format:check
 - **Config**: `.prettierrc.json`
 - **Features**:
   - 2-space indentation
-  - Single quotes for consistency
+  - Double quotes for consistency
   - 100 character line width
   - Trailing commas in ES5 format
   - Supports Astro files with `prettier-plugin-astro`
@@ -99,8 +102,11 @@ Hooks will:
 1. Run type checking: `pnpm check`
 2. Lint code: `pnpm lint:fix`
 3. Format code: `pnpm format`
-4. Build to verify: `pnpm build`
-5. Commit and push
+4. Run scoring regression tests: `pnpm test`
+5. Build to verify: `pnpm build`
+6. Commit and push
+
+The deployment workflow also runs type, lint, formatting, and scoring checks before building.
 
 ## Project Structure
 

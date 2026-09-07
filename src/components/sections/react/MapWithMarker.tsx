@@ -1,5 +1,3 @@
-import React from "react";
-
 interface MapProps {
   address: string;
   latitude: number;

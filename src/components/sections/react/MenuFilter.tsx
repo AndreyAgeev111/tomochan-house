@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { siteContent } from "../../../content/siteContent";
 
@@ -17,7 +17,9 @@ const itemVariants = {
 
 export default function MenuFilter() {
   const { menu } = siteContent;
-  const [activeCategory, setActiveCategory] = useState(menu.categories[0]);
+  const [activeCategory, setActiveCategory] = useState<(typeof menu.categories)[number]>(
+    menu.categories[0]
+  );
 
   const filteredItems = menu.items.filter((item) => item.category === activeCategory);
 
@@ -61,7 +63,7 @@ export default function MenuFilter() {
                   {item.name}
                 </h4>
                 <p className="text-xs md:text-sm text-warm-700 mb-2 md:mb-3 line-clamp-2 whitespace-pre-line">
-                  {item.description}
+                  {"description" in item ? item.description : null}
                 </p>
                 <p className="font-bold text-accent-DEFAULT text-sm md:text-base">{item.price}</p>
               </div>

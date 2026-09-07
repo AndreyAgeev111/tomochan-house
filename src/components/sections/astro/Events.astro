@@ -20,7 +20,7 @@ const { events } = siteContent;
               events.monthlyEvents.map((event) => (
                 <div
                   class={`flex gap-3 md:gap-4 p-3 md:p-4 rounded-lg transition-colors ${
-                    event.isSpecial
+                    "isSpecial" in event && event.isSpecial
                       ? "bg-accent-light border-l-4 border-accent-dark hover:bg-accent"
                       : "bg-warm-50 hover:bg-warm-100"
                   }`}
@@ -28,16 +28,18 @@ const { events } = siteContent;
                   <span class="text-2xl flex-shrink-0">{event.icon}</span>
                   <div class="flex-1">
                     <a
-                      href={event.isSpecial ? "#special-event-card" : undefined}
-                      class={event.isSpecial ? "cursor-pointer" : ""}
+                      href={
+                        "isSpecial" in event && event.isSpecial ? "#special-event-card" : undefined
+                      }
+                      class={"isSpecial" in event && event.isSpecial ? "cursor-pointer" : ""}
                     >
                       <p
-                        class={`font-bold ${event.isSpecial ? "text-warm-900 hover:underline" : "text-warm-900"}`}
+                        class={`font-bold ${"isSpecial" in event && event.isSpecial ? "text-warm-900 hover:underline" : "text-warm-900"}`}
                       >
                         {event.event}
                       </p>
                       <p
-                        class={`text-sm ${event.isSpecial ? "text-warm-800 hover:text-warm-900" : "text-warm-700"}`}
+                        class={`text-sm ${"isSpecial" in event && event.isSpecial ? "text-warm-800 hover:text-warm-900" : "text-warm-700"}`}
                       >
                         {event.date}
                       </p>
