@@ -268,3 +268,14 @@ span {
   word-break: break-word;
   overflow-wrap: break-word;
 }
+
+/* Shared by the golf page's Astro and React copy. */
+.japanese-phrase {
+  display: inline-block;
+  max-width: 100%;
+  font: inherit;
+  letter-spacing: inherit;
+  word-break: normal;
+  overflow-wrap: anywhere;
+  line-break: strict;
+}

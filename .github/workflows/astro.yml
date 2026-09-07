@@ -45,6 +45,13 @@ jobs:
         run: |
           pnpm install --frozen-lockfile
 
+      - name: Check types, code style, and scoring
+        run: |
+          pnpm check
+          pnpm lint
+          pnpm format:check
+          pnpm test
+
       - name: Build with Astro
         run: |
           pnpm build --site "${{ steps.pages.outputs.origin }}" --base "${{ steps.pages.outputs.base_path }}"

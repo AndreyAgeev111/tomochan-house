@@ -1,0 +1,108 @@
+---
+import JapaneseText from "./JapaneseText.astro";
+import { Image } from "astro:assets";
+import mascot from "../../../../public/images/golf/kuchan-golf-champion.webp";
+import type { Championship } from "../../../content/golfChampionship";
+
+interface Props {
+  championship: Championship;
+}
+
+const { championship } = Astro.props;
+---
+
+<section
+  class="relative overflow-hidden bg-gradient-to-br from-warm-100 via-warm-50 to-accent-light/40 pt-28 pb-10 md:pt-32 md:pb-14"
+>
+  <div
+    class="absolute inset-0 opacity-[0.06]"
+    aria-hidden="true"
+    style="background-image: radial-gradient(#5d4a42 1px, transparent 1px); background-size: 22px 22px;"
+  >
+  </div>
+
+  <div class="relative max-w-6xl mx-auto px-4">
+    <div class="grid gap-7 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-center">
+      <div class="min-w-0 relative z-10">
+        <div
+          class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-softer text-sm font-bold text-warm-800 mb-5"
+        >
+          <span aria-hidden="true">⛳</span>
+          <span>ゴルフコンペ</span>
+        </div>
+
+        <p class="text-sm font-bold tracking-[0.16em] text-green-800 mb-2">
+          {championship.season}
+        </p>
+
+        <h1
+          class="whitespace-nowrap text-[clamp(0.82rem,4.35vw,3rem)] font-bold tracking-[-0.035em] text-warm-900 leading-tight"
+        >
+          {championship.title}
+        </h1>
+
+        <p class="mt-4 text-warm-700 text-base md:text-lg leading-relaxed max-w-2xl">
+          <JapaneseText
+            phrases={["仲間と楽しむゴルフ。", "みんなのポイントと", "順位をチェック！"]}
+          />
+        </p>
+
+        <div class="mt-6 flex flex-wrap gap-3" aria-label="大会進行状況">
+          <div class="bg-white rounded-xl shadow-soft px-5 py-3 min-w-28 text-center">
+            <p class="text-xs text-warm-600">現在</p>
+            <p class="text-lg md:text-xl font-bold text-warm-900">
+              第{championship.completedStages}戦終了
+            </p>
+          </div>
+
+          <div
+            class="bg-green-800 text-white rounded-xl shadow-soft px-5 py-3 min-w-24 text-center"
+          >
+            <p class="text-xs text-green-100">シーズン</p>
+            <p class="text-lg md:text-xl font-bold">
+              全{championship.totalStages}戦
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="relative mx-auto flex h-52 w-52 items-center justify-center sm:h-60 sm:w-60 lg:h-72 lg:w-72"
+        aria-label="チャンピオンシップマスコット くーちゃん"
+      >
+        <div
+          class="absolute inset-[8%] rounded-full bg-gradient-to-br from-accent-light via-warm-100 to-green-50 shadow-softer"
+          aria-hidden="true"
+        >
+        </div>
+
+        <div class="absolute inset-[18%] rounded-full border border-warm-200/70" aria-hidden="true">
+        </div>
+
+        <div
+          class="absolute -left-2 top-8 h-8 w-8 rounded-full bg-accent-DEFAULT/25 blur-sm"
+          aria-hidden="true"
+        >
+        </div>
+
+        <div
+          class="absolute -right-1 bottom-10 h-10 w-10 rounded-full bg-green-700/10 blur-sm"
+          aria-hidden="true"
+        >
+        </div>
+
+        <Image
+          src={mascot}
+          widths={[256, 384, 640]}
+          sizes="(min-width: 1024px) 323px, (min-width: 640px) 269px, 233px"
+          format="webp"
+          alt="ゴルフウェア姿で優勝トロフィーを掲げる、ともちゃん家のマスコット・くーちゃん"
+          width="1296"
+          height="1213"
+          loading="eager"
+          decoding="async"
+          class="relative z-10 h-[112%] w-[112%] max-w-none object-contain drop-shadow-[0_10px_18px_rgba(93,74,66,0.16)]"
+        />
+      </div>
+    </div>
+  </div>
+</section>

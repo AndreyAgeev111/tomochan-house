@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface FAQItem {
   q: string;
@@ -8,7 +8,7 @@ interface FAQItem {
 }
 
 interface FAQProps {
-  faqItems: FAQItem[];
+  faqItems: readonly FAQItem[];
 }
 
 export default function FAQ({ faqItems }: FAQProps) {

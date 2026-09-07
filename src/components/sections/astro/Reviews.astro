@@ -77,7 +77,10 @@ const hasHalfStar = reviews.rating % 1 !== 0;
                 </div>
 
                 <div class="flex justify-between text-xs text-warm-700">
-                  <span>{testimonial.timeAgo || testimonial.priceRange}</span>
+                  <span>
+                    {("timeAgo" in testimonial ? testimonial.timeAgo : undefined) ||
+                      ("priceRange" in testimonial ? testimonial.priceRange : undefined)}
+                  </span>
                 </div>
               </div>
             </ScrollReveal>

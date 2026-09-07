@@ -1,10 +1,8 @@
-import React from "react";
-
 interface CalendarProps {
   month: number;
   year: number;
-  closedDates: number[];
-  specialDates?: Array<{
+  closedDates: readonly number[];
+  specialDates?: ReadonlyArray<{
     date: number;
     label: string;
     emoji: string;

@@ -1,0 +1,24 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import GolfPageHero from "../components/golf/astro/GolfPageHero.astro";
+import GolfChampionship from "../components/golf/react/GolfChampionship";
+import GolfRewards from "../components/golf/astro/GolfRewards.astro";
+import { siteContent } from "../content/siteContent";
+import { golfChampionship } from "../content/golfChampionship";
+import { validateChampionship } from "../utils/golfChampionshipUtils";
+
+validateChampionship(golfChampionship);
+---
+
+<MainLayout
+  title="ゴルフコンペ結果 | ともちゃん家"
+  description="ともちゃん家ゴルフチャンピオンシップの総合ランキング、各戦の結果、順位・ポイント推移を紹介します。"
+>
+  <GolfPageHero championship={golfChampionship} />
+  <GolfRewards championship={golfChampionship} />
+  <GolfChampionship
+    client:load
+    championship={golfChampionship}
+    instagramUrl={siteContent.business.instagramUrl}
+  />
+</MainLayout>
