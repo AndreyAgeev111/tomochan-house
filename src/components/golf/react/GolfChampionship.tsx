@@ -522,8 +522,9 @@ function Leaderboard({
 
       <div className="-mx-4 md:mx-0">
         <div
-          className="max-w-full overflow-x-auto overscroll-x-contain touch-pan-x px-4 md:px-0 pb-3"
+          className="max-w-full overflow-x-auto overscroll-x-contain touch-auto px-4 md:px-0 pb-3"
           style={{
+            // Allow vertical page gestures as well as horizontal content scrolling.
             WebkitOverflowScrolling: "touch",
           }}
         >
@@ -787,7 +788,7 @@ function EvolutionChart({
   return (
     <div>
       <div
-        className="-mx-3 overflow-x-auto overscroll-x-contain touch-pan-x px-3 pb-2 md:mx-0 md:px-0"
+        className="-mx-3 overflow-x-auto overscroll-x-contain touch-auto px-3 pb-2 md:mx-0 md:px-0"
         style={{
           WebkitOverflowScrolling: "touch",
         }}
