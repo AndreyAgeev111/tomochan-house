@@ -528,7 +528,7 @@ export const siteContent = {
   reviews: {
     title: "ご感想をお聞かせください",
     rating: 4.9,
-    totalReviews: 15,
+    totalReviews: 21,
     testimonials: [
       {
         id: 1,
