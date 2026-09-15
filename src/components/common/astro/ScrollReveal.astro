@@ -1,0 +1,23 @@
+---
+interface Props {
+  className?: string;
+  delay?: number;
+  variant?: "card" | "photos" | "heading";
+}
+const { className = "", delay = 0, variant = "card" } = Astro.props;
+---
+
+<div
+  class={className}
+  data-reveal={variant}
+  style={`--reveal-delay: ${Math.min(Math.max(delay, 0), 0.3)}s`}
+>
+  <div data-reveal-content class="flow-root h-full">
+    <slot />
+  </div>
+</div>
+
+<script>
+  import { initScrollReveals } from "../../../utils/scrollReveal";
+  initScrollReveals();
+</script>

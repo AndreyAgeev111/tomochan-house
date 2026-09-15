@@ -1,6 +1,6 @@
 ---
 import SectionTitle from "../../common/astro/SectionTitle.astro";
-import ScrollReveal from "../../common/react/ScrollReveal";
+import ScrollReveal from "../../common/astro/ScrollReveal.astro";
 import Calendar from "../react/Calendar";
 import { siteContent } from "../../../content/siteContent";
 
@@ -12,7 +12,7 @@ const { events } = siteContent;
     <SectionTitle title="営業カレンダー・イベント" subtitle={events.intro} />
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 mb-8 md:mb-12">
-      <ScrollReveal client:load>
+      <ScrollReveal>
         <div>
           <h3 class="text-xl md:text-2xl font-bold text-warm-900 mb-4 md:mb-6">今月のイベント</h3>
           <div class="space-y-3 md:space-y-4">
@@ -52,7 +52,7 @@ const { events } = siteContent;
         </div>
       </ScrollReveal>
 
-      <ScrollReveal client:load delay={0.1}>
+      <ScrollReveal delay={0.1}>
         <Calendar
           client:load
           month={events.calendar.month}
@@ -65,7 +65,7 @@ const { events } = siteContent;
 
     {
       events.specialEvent && (
-        <ScrollReveal client:load>
+        <ScrollReveal>
           <div
             id="special-event-card"
             class="bg-gradient-to-br from-accent-50 to-warm-50 rounded-2xl overflow-hidden shadow-soft mb-12"

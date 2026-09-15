@@ -1,5 +1,5 @@
 ---
-import ScrollReveal from "../../common/react/ScrollReveal";
+import ScrollReveal from "../../common/astro/ScrollReveal.astro";
 import SectionTitle from "../../common/astro/SectionTitle.astro";
 import { siteContent } from "../../../content/siteContent";
 
@@ -10,7 +10,7 @@ const { instagram } = siteContent;
   <div class="max-w-6xl mx-auto px-4">
     <SectionTitle title="インスタグラム" />
 
-    <ScrollReveal client:load>
+    <ScrollReveal>
       <div class="max-w-3xl mx-auto bg-warm-50 rounded-2xl shadow-softer p-6 md:p-12">
         <!-- Instagram Info -->
         <div class="space-y-6 text-center">

@@ -1,7 +1,7 @@
 ---
 import SectionTitle from "../../common/astro/SectionTitle.astro";
 import FAQ from "../react/FAQ";
-import ScrollReveal from "../../common/react/ScrollReveal";
+import ScrollReveal from "../../common/astro/ScrollReveal.astro";
 import PawPrints from "../../common/astro/PawPrints.astro";
 import { siteContent } from "../../../content/siteContent";
 
@@ -16,7 +16,7 @@ const { contact } = siteContent;
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
       {
         contact.ctas.map((cta, i) => (
-          <ScrollReveal client:load delay={i * 0.1}>
+          <ScrollReveal delay={i * 0.1}>
             <a
               href={cta.href}
               target="_blank"
@@ -39,7 +39,7 @@ const { contact } = siteContent;
     </div>
 
     <!-- FAQ Section -->
-    <ScrollReveal client:load>
+    <ScrollReveal>
       <div>
         <h3 class="text-3xl font-bold text-warm-900 mb-8 text-center">よくある質問</h3>
         <FAQ client:load faqItems={contact.faq} />

@@ -1,5 +1,5 @@
 ---
-import ScrollReveal from "../../common/react/ScrollReveal";
+import ScrollReveal from "../../common/astro/ScrollReveal.astro";
 import SectionTitle from "../../common/astro/SectionTitle.astro";
 import { siteContent } from "../../../content/siteContent";
 
@@ -13,7 +13,7 @@ const hasHalfStar = reviews.rating % 1 !== 0;
   <div class="max-w-6xl mx-auto px-4">
     <SectionTitle title={reviews.title} />
 
-    <ScrollReveal client:load>
+    <ScrollReveal>
       <div class="text-center mb-12">
         <div class="inline-block">
           <div class="flex items-center gap-3 mb-2 justify-center">
@@ -47,7 +47,7 @@ const hasHalfStar = reviews.rating % 1 !== 0;
       {
         reviews.testimonials.map((testimonial, index) => (
           <div class={index >= 2 ? "hidden lg:block" : ""}>
-            <ScrollReveal client:load>
+            <ScrollReveal>
               <div class="bg-white rounded-xl p-4 md:p-6 shadow-softer hover:shadow-soft transition-shadow border-l-4 border-accent-DEFAULT">
                 <div class="flex gap-1 mb-3">
                   {Array.from({ length: 5 }).map(() => (
@@ -90,7 +90,7 @@ const hasHalfStar = reviews.rating % 1 !== 0;
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      <ScrollReveal client:load>
+      <ScrollReveal>
         <div class="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
           <img src="/cat-face.webp" alt="Tomochan" class="w-40 h-40 object-contain" />
           <div>
@@ -99,7 +99,7 @@ const hasHalfStar = reviews.rating % 1 !== 0;
         </div>
       </ScrollReveal>
 
-      <ScrollReveal client:load delay={0.1}>
+      <ScrollReveal delay={0.1}>
         <div
           class="bg-gradient-to-br from-accent-light to-accent-DEFAULT rounded-xl p-8 shadow-soft hover:shadow-lg transition-shadow"
         >

@@ -1,5 +1,5 @@
 ---
-import ScrollReveal from "../../common/react/ScrollReveal";
+import ScrollReveal from "../../common/astro/ScrollReveal.astro";
 import SectionTitle from "../../common/astro/SectionTitle.astro";
 import GalleryLightbox from "../react/GalleryLightbox";
 import { siteContent } from "../../../content/siteContent";
@@ -11,7 +11,7 @@ const { gallery } = siteContent;
   <div class="max-w-6xl mx-auto px-4">
     <SectionTitle title="写真" subtitle={gallery.description} />
 
-    <ScrollReveal client:load>
+    <ScrollReveal variant="photos">
       <GalleryLightbox client:load images={gallery.images} />
     </ScrollReveal>
   </div>

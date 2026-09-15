@@ -1,5 +1,5 @@
 ---
-import ScrollReveal from "../../common/react/ScrollReveal";
+import ScrollReveal from "../../common/astro/ScrollReveal.astro";
 import SectionTitle from "../../common/astro/SectionTitle.astro";
 import { siteContent } from "../../../content/siteContent";
 
@@ -12,7 +12,7 @@ const { youtube } = siteContent;
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
       <!-- Video Embed -->
-      <ScrollReveal client:load>
+      <ScrollReveal>
         <div class="flex items-center justify-center">
           <div
             class="w-full aspect-video rounded-2xl overflow-hidden shadow-soft hover:shadow-lg transition-shadow"
@@ -31,7 +31,7 @@ const { youtube } = siteContent;
       </ScrollReveal>
 
       <!-- Content -->
-      <ScrollReveal client:load delay={0.1}>
+      <ScrollReveal delay={0.1}>
         <div class="flex flex-col justify-center">
           <div class="mb-4">
             <span
@@ -76,7 +76,7 @@ const { youtube } = siteContent;
 
     {
       youtube.promotion && (
-        <ScrollReveal client:load delay={0.3}>
+        <ScrollReveal delay={0.3}>
           <div class="mt-12 p-4 bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-300 rounded-lg">
             <div class="flex gap-3 items-start justify-center text-center">
               <span class="text-3xl flex-shrink-0">{youtube.promotion.icon}</span>

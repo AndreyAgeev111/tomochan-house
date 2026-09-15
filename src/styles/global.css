@@ -112,7 +112,7 @@ main {
 
 /* Floating element */
 .float-element {
-  animation: float 3s ease-in-out infinite;
+  animation: gentle-float 3s ease-in-out infinite;
 }
 
 /* Focus states for accessibility */
@@ -278,4 +278,145 @@ span {
   word-break: normal;
   overflow-wrap: anywhere;
   line-break: strict;
+}
+
+/* Motion enhancement: transforms do not change the document layout. */
+.noren {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.noren-panel {
+  position: absolute;
+  inset-block: 0;
+  width: 50%;
+  display: grid;
+  place-items: center;
+  color: #faf8f3;
+  background: repeating-linear-gradient(90deg, #5d4a42 0 2px, #665147 2px 5px);
+  border-bottom: 8px solid #c9aa91;
+}
+
+.noren-panel span {
+  font-size: clamp(1.25rem, 3.5vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.5;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  white-space: nowrap;
+  letter-spacing: 0.15em;
+  /* Equal inscription areas keep different-length phrases balanced. */
+  inline-size: 10em;
+  text-align: center;
+}
+
+.noren-left {
+  left: 0;
+}
+.noren-right {
+  right: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .noren {
+    display: block;
+    animation: noren-dismiss 1900ms step-end forwards;
+  }
+  .noren-left {
+    animation: noren-left 1800ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  }
+  .noren-right {
+    animation: noren-right 1800ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  }
+  #home:focus-within .noren {
+    /* Keep the animation timeline alive when focus enters/leaves the hero. */
+    visibility: hidden;
+  }
+  .hero-cat-float {
+    animation: gentle-float 3s ease-in-out infinite;
+  }
+  .hero-float {
+    animation: gentle-float 3s ease-in-out 1;
+  }
+  .hero-scroll-cue {
+    animation: gentle-float 1.5s ease-in-out 2;
+  }
+  .reveal-entered .section-divider {
+    transform-origin: left;
+    animation: divider-unfold 900ms ease-out;
+  }
+  .hero-cta {
+    transition:
+      transform 200ms ease,
+      background-color 200ms ease;
+  }
+  .hero-cta:active {
+    transform: translateY(1px);
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .hero-cta:hover {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes noren-left {
+  from {
+    transform: translateX(0) rotate(0);
+  }
+  to {
+    transform: translateX(-105%) rotate(-3deg);
+  }
+}
+@keyframes noren-right {
+  from {
+    transform: translateX(0) rotate(0);
+  }
+  to {
+    transform: translateX(105%) rotate(3deg);
+  }
+}
+@keyframes noren-dismiss {
+  to {
+    visibility: hidden;
+  }
+}
+@keyframes divider-unfold {
+  from {
+    transform: scaleX(0.25);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .fade-up {
+    opacity: 1;
+  }
+}
+
+@media print {
+  .noren {
+    display: none;
+  }
+}
+
+/* Explicit keyframes: custom classes must not depend on Tailwind utility generation. */
+@keyframes gentle-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }

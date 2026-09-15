@@ -1,5 +1,5 @@
 ---
-import ScrollReveal from "../../common/react/ScrollReveal";
+import ScrollReveal from "../../common/astro/ScrollReveal.astro";
 import SectionTitle from "../../common/astro/SectionTitle.astro";
 import MapWithMarker from "../react/MapWithMarker";
 import { siteContent } from "../../../content/siteContent";
@@ -13,7 +13,7 @@ const { access } = siteContent;
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <!-- Map with Marker -->
-      <ScrollReveal client:load>
+      <ScrollReveal>
         <MapWithMarker
           client:load
           address={access.address}
@@ -25,7 +25,7 @@ const { access } = siteContent;
       </ScrollReveal>
 
       <!-- Info -->
-      <ScrollReveal client:load delay={0.1}>
+      <ScrollReveal delay={0.1}>
         <div class="space-y-6">
           <div>
             <h3 class="text-2xl font-bold text-warm-900 mb-2">アクセス</h3>

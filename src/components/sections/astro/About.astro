@@ -1,5 +1,5 @@
 ---
-import ScrollReveal from "../../common/react/ScrollReveal";
+import ScrollReveal from "../../common/astro/ScrollReveal.astro";
 import SectionTitle from "../../common/astro/SectionTitle.astro";
 import PawPrints from "../../common/astro/PawPrints.astro";
 import { siteContent } from "../../../content/siteContent";
@@ -15,7 +15,7 @@ const { about } = siteContent;
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-8 mb-8 md:mb-16">
       {
         about.sections.map((section, i) => (
-          <ScrollReveal delay={i * 0.1} client:load>
+          <ScrollReveal delay={i * 0.1}>
             <div class="card h-full">
               <h3 class="text-xl font-bold text-warm-900 mb-4">{section.heading}</h3>
               <p class="text-warm-700 leading-relaxed whitespace-pre-line">{section.content}</p>
@@ -28,7 +28,7 @@ const { about } = siteContent;
     <PawPrints />
 
     <!-- Mascot card -->
-    <ScrollReveal client:load className="mt-8 md:mt-12">
+    <ScrollReveal className="mt-8 md:mt-12">
       <div
         class="bg-gradient-to-br from-accent-light to-warm-100 rounded-xl md:rounded-2xl p-5 md:p-8 text-center shadow-soft"
       >

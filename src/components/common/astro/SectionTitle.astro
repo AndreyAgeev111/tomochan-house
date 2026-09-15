@@ -1,4 +1,6 @@
 ---
+import ScrollReveal from "./ScrollReveal.astro";
+
 interface Props {
   title: string;
   subtitle?: string;
@@ -7,7 +9,7 @@ interface Props {
 const { title, subtitle } = Astro.props;
 ---
 
-<div class="text-center mb-12">
+<ScrollReveal className="text-center mb-12" variant="heading">
   <!-- Watermark background text -->
   <div
     class="text-6xl md:text-8xl font-black text-warm-100 absolute left-0 right-0 -z-10 pointer-events-none opacity-30"
@@ -19,4 +21,4 @@ const { title, subtitle } = Astro.props;
   {subtitle && <p class="text-lg text-warm-600">{subtitle}</p>}
 
   <div class="section-divider"></div>
-</div>
+</ScrollReveal>

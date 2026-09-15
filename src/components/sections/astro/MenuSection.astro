@@ -1,4 +1,5 @@
 ---
+import ScrollReveal from "../../common/astro/ScrollReveal.astro";
 import MenuFilter from "../react/MenuFilter";
 import SectionTitle from "../../common/astro/SectionTitle.astro";
 import PawPrints from "../../common/astro/PawPrints.astro";
@@ -11,7 +12,9 @@ const { menu } = siteContent;
   <div class="max-w-6xl mx-auto px-4">
     <SectionTitle title="おすすめメニュー" subtitle={menu.intro} />
 
-    <MenuFilter client:load />
+    <ScrollReveal>
+      <MenuFilter client:load />
+    </ScrollReveal>
 
     <PawPrints className="mt-8 md:mt-16" />
 
