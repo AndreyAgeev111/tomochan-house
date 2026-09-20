@@ -1,431 +1,79 @@
-# 🚀 ともちゃん家 - セットアップガイド
+# セットアップ・公開 / Setup and deployment
 
-## ステップ 1: ファイル準備
+更新日 / Reviewed: 2026-09-20.
 
-すべてのファイルがすでに配置されています！
+## ローカル開発 / Local setup
 
-```
-tomochan-house/
-├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   ├── pages/
-│   ├── styles/
-│   └── utils/
-├── public/
-├── .github/workflows/
-├── astro.config.mjs
-├── tailwind.config.mjs
-├── tsconfig.json
-├── package.json
-└── README.md
-```
+CI と同じ Node.js 22、pnpm 9 を使用してください。Use Node.js 22 and pnpm 9 to match the workflow.
 
-## ステップ 2: 依存関係をインストール
-
-```bash
-# Node.jsがインストールされているか確認
+```sh
 node --version
-
-# pnpm をインストール（未インストール時）
-npm install -g pnpm
-
-# プロジェクトディレクトリに移動
+# Only if pnpm 9 is not installed:
+npm install --global pnpm@9
+pnpm --version
+git clone https://github.com/AndreyAgeev111/tomochan-house.git
 cd tomochan-house
-
-# 依存関係をインストール
-pnpm install
-```
-
-## ステップ 3: ローカルで実行
-
-```bash
+pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-ブラウザで `http://localhost:3000` にアクセスすると、サイトが表示されます。
+ブラウザで <http://localhost:4321> を開きます。ポートが使用中の場合はターミナルに表示された URL を使います。 Open the URL
+printed by Astro; the default port is 4321.
 
-## ステップ 4: コンテンツをカスタマイズ
+No environment variables or API keys are required for the current static build. Maps, YouTube and analytics contact
+external services in the browser.
 
-すべてのコンテンツは `src/content/siteContent.ts` に集約されています。
+## 編集と確認 / Editing and checking
 
-### 基本情報を編集
+店舗情報は `src/content/siteContent.ts`、ゴルフ結果は `src/content/golfChampionship.ts` です。コンポーネント内に直接書かれた文言もあります。
+See the [content guide](docs/CONTENT_GUIDE.md) for exact fields and editing precautions.
 
-```typescript
-// src/content/siteContent.ts
-business: {
-  name: "ともちゃん家",           // 店名
-    phone
-:
-  "03-XXXX-XXXX",          // 電話番号
-    address
-:
-  "東京都豊島区池袋2-5-4", // 住所
-    instagramHandle
-:
-  "tomochan_house", // Instagram
-}
+```sh
+pnpm check
+pnpm lint
+pnpm format:check
+pnpm test
+pnpm build
+pnpm preview
 ```
 
-### メニューを追加
-
-```typescript
-menu: {
-  items: [
-    {
-      category: "料理",
-      name: "料理の名前",
-      description: "説明文",
-      price: "¥1,000",
-      icon: "🍲",
-    },
-  ],
-}
-```
-
-### 画像を置き換え
-
-`public/images/` に以下を配置:
-
-- `gallery-1.jpg` ~ `gallery-12.jpg` (正方形画像推奨)
-
-## ステップ 5: GitHub Pages にデプロイ
-
-### 5.1 GitHub にプッシュ
-
-```bash
-# Git を初期化
-git init
-git add .
-git commit -m "Initial commit - Tomochan House website"
-
-# GitHub にプッシュ
-git remote add origin https://github.com/yourusername/tomochan-house.git
-git branch -M main
-git push -u origin main
-```
-
-### 5.2 GitHub Pages を設定
-
-1. GitHub リポジトリを開く
-2. **Settings** → **Pages** へ移動
-3. **Source** を "GitHub Actions" に設定
-4. 保存
-
-### 5.3 自動デプロイ
-
-`.github/workflows/deploy.yml` により、`main` ブランチにプッシュすると自動的にデプロイされます。
-
-デプロイ完了後、以下の URL でサイトが公開されます:
-
-```
-https://yourusername.github.io/tomochan-house
-```
-
-## トラブルシューティング
-
-### Q: 開発サーバーが起動しない
-
-**A:** 以下を実行:
-
-```bash
-pnpm clean
-pnpm install
-pnpm dev
-```
-
-### Q: GitHub Pages にデプロイできない
-
-**A:** 以下を確認:
-
-1. リポジトリが **public** か確認
-2. `.github/workflows/deploy.yml` が存在するか確認
-3. `astro.config.mjs` の `base` が `/tomochan-house` か確認
-4. リポジトリ Settings → Pages で確認
-
-### Q: 画像が表示されない
-
-**A:** `public/images/` にファイルを配置し、ファイル名を確認してください。
-
-### Q: 自動デプロイが失敗した
-
-**A:** GitHub Actions ログを確認:
-
-1. リポジトリの **Actions** タブを開く
-2. 失敗したワークフローをクリック
-3. ログを確認
-
-## よくある変更
-
-### 営業時間を変更
-
-```typescript
-hours: [
-  { day: "月〜金", time: "19:00〜4:00" },
-  { day: "土日祝", time: "18:00〜5:00" },
-]
-```
-
-### Instagram ハンドルを変更
-
-```typescript
-instagramHandle: "your_instagram_handle"
-```
-
-### FAQ を追加
-
-```typescript
-faq: [
-  {
-    q: "新しい質問",
-    a: "回答文",
-  },
-]
-```
-
-### お知らせを追加
-
-```typescript
-news: [
-  {
-    id: 4,
-    date: "2024-01-25",
-    title: "タイトル",
-    content: "内容",
-    icon: "📱",
-  },
-]
-```
-
----
-
-## 💡 ヒント
-
-- ローカルで編集 → ファイルを保存すると自動リロード
-- デプロイ前に `pnpm build` で本番ビルドをテスト
-- GitHub Actions で自動デプロイ中は Actions タブで確認可能
-- SEO 最適化済み（タイトル、メタディスクリプション等）
-
----
-
-✅ これでセットアップは完了です！楽しいサイト構築を！🐱
-
----
-
----
-
----
-
-# 🚀 Tomochan House - Setup Guide
-
-## Step 1: File Preparation
-
-All files are already in place!
-
-```
-tomochan-house/
-├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   ├── pages/
-│   ├── styles/
-│   └── utils/
-├── public/
-├── .github/workflows/
-├── astro.config.mjs
-├── tailwind.config.mjs
-├── tsconfig.json
-├── package.json
-└── README.md
-```
-
-## Step 2: Install Dependencies
-
-```bash
-# Check if Node.js is installed
-node --version
-
-# Install pnpm (if not already installed)
-npm install -g pnpm
-
-# Navigate to project directory
-cd tomochan-house
-
-# Install dependencies
-pnpm install
-```
-
-## Step 3: Run Locally
-
-```bash
-pnpm dev
-```
-
-Open `http://localhost:3000` in your browser to see the site.
-
-## Step 4: Customize Content
-
-All content is centralized in `src/content/siteContent.ts`.
-
-### Edit Business Information
-
-```typescript
-// src/content/siteContent.ts
-business: {
-  name: "Tomochan House",           // Store name
-    phone
-:
-  "03-XXXX-XXXX",            // Phone number
-    address
-:
-  "2-5-4 Ikebukuro, Toshima-ku, Tokyo", // Address
-    instagramHandle
-:
-  "tomochan_house", // Instagram
-}
-```
-
-### Add Menu Items
-
-```typescript
-menu: {
-  items: [
-    {
-      category: "Dishes",
-      name: "Dish Name",
-      description: "Description",
-      price: "¥1,000",
-      icon: "🍲",
-    },
-  ],
-}
-```
-
-### Replace Images
-
-Place images in `public/images/`:
-
-- `gallery-1.jpg` ~ `gallery-12.jpg` (square images recommended)
-
-## Step 5: Deploy to GitHub Pages
-
-### 5.1 Push to GitHub
-
-```bash
-# Initialize Git
-git init
-git add .
-git commit -m "Initial commit - Tomochan House website"
-
-# Push to GitHub
-git remote add origin https://github.com/yourusername/tomochan-house.git
-git branch -M main
-git push -u origin main
-```
-
-### 5.2 Configure GitHub Pages
-
-1. Open your GitHub repository
-2. Go to **Settings** → **Pages**
-3. Set **Source** to "GitHub Actions"
-4. Save
-
-### 5.3 Auto-Deploy
-
-With `.github/workflows/deploy.yml`, pushing to `main` automatically deploys.
-
-After deployment completes, your site will be available at:
-
-```
-https://yourusername.github.io/tomochan-house
-```
-
-## Troubleshooting
-
-### Q: Dev server won't start
-
-**A:** Run:
-
-```bash
-pnpm clean
-pnpm install
-pnpm dev
-```
-
-### Q: Can't deploy to GitHub Pages
-
-**A:** Check:
-
-1. Repository is **public**
-2. `.github/workflows/deploy.yml` exists
-3. `astro.config.mjs` `base` is `/tomochan-house`
-4. Repository Settings → Pages
-
-### Q: Images not displaying
-
-**A:** Verify files are in `public/images/` and filenames are correct.
-
-### Q: Auto-deploy failed
-
-**A:** Check GitHub Actions logs:
-
-1. Open your repository's **Actions** tab
-2. Click the failed workflow
-3. Review the logs
-
-## Common Changes
-
-### Change business hours
-
-```typescript
-hours: [
-  { day: "Mon-Fri", time: "19:00-04:00" },
-  { day: "Sat-Sun/Holidays", time: "18:00-05:00" },
-]
-```
-
-### Change Instagram handle
-
-```typescript
-instagramHandle: "your_instagram_handle"
-```
-
-### Add FAQ
-
-```typescript
-faq: [
-  {
-    q: "New question",
-    a: "Answer text",
-  },
-]
-```
-
-### Add news
-
-```typescript
-news: [
-  {
-    id: 4,
-    date: "2024-01-25",
-    title: "Title",
-    content: "Content",
-    icon: "📱",
-  },
-]
-```
-
----
-
-## 💡 Tips
-
-- Edit locally → save and auto-reloads
-- Test production build with `pnpm build` before deploying
-- Monitor auto-deployment in Actions tab
-- SEO optimized (title, meta descriptions, etc.)
-
----
-
-✅ Setup complete! Enjoy building your site! 🐱
+`preview` serves `dist/`; rebuild after edits. For a phone on the same trusted LAN, use `pnpm dev --host 0.0.0.0` and
+open the computer's LAN IP with the printed port. This makes the development server reachable on that network. For
+production-like checks use `pnpm preview --host 0.0.0.0` after building.
+
+## GitHub Pages
+
+公開先 / Production URL: <https://tomochan-house.jp>.
+
+- Workflow: [`.github/workflows/astro.yml`](.github/workflows/astro.yml).
+- Automatic trigger: push to **master**. Manual trigger: **workflow_dispatch**.
+- CI installs pnpm 9 and Node 22, then uses `pnpm install --frozen-lockfile`.
+- Types, lint, source formatting and tests must pass before building.
+- Build uses `actions/configure-pages` outputs to override Astro's `site` and `base`.
+- `dist/` is uploaded and deployed through the `github-pages` environment.
+
+既存リポジトリで `git init` やブランチの改名は不要です。日常の操作は [Git ガイド](GIT_INSTRUCTIONS.md)を参照してください。
+Do not reinitialize this repository or rename master to main as part of setup.
+
+For repository administrators: Settings → Pages must use GitHub Actions and the intended custom domain, with matching
+DNS and HTTPS settings. `astro.config.mjs` defaults to `site: "https://tomochan-house.jp"` and `base: "/"`; the root
+`CNAME` records that domain. Since the CNAME is outside `public/`, do not assume Astro copies it into `dist/`; verify
+the Pages domain setting. Do not change base to `/tomochan-house` for this custom-domain deployment.
+
+A version tag or GitHub release does not itself trigger the current workflow.
+See [release checklist](docs/RELEASING.md).
+
+## トラブルシューティング / Troubleshooting
+
+| Symptom                            | Check                                                                                                                                                           |
+|------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Install fails with frozen lockfile | Match Node/pnpm versions. If dependencies intentionally changed, run `pnpm install` and review/commit the lockfile with package.json. Do not bypass this in CI. |
+| Port is occupied                   | Use Astro's printed URL or `pnpm dev --port 4322`.                                                                                                              |
+| Type checks pass, CI still fails   | Run lint, format:check and tests separately; they check different things.                                                                                       |
+| Prettier reports one file          | Run `pnpm exec prettier --write src/pages/golf-rules.astro` (substitute the reported path), then repeat format:check.                                           |
+| Phone shows desktop layout         | Disable the browser's “Desktop site / サイトのPC版” option, reload, then check viewport and CSS if it persists.                                                 |
+| Images are missing                 | Check filename case and references relative to public; inspect network 404s.                                                                                    |
+| Changes are absent online          | Check the deployed master commit and Actions result, then refresh the page.                                                                                     |
+| Build/deployment fails             | Inspect the first failing step in Actions. Publishing does not happen if build checks fail.                                                                     |
+
+`pnpm clean` is not defined. Avoid deleting the lockfile to fix an unrelated build error.

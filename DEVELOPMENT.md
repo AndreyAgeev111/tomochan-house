@@ -1,169 +1,121 @@
-# Development Guide
+# Development guide
 
-## Setup
+Reviewed: 2026-09-20. Start with [setup](SETUP_GUIDE.md); use Node.js 22 and pnpm 9 as in CI.
 
-```bash
-# Install dependencies
-pnpm install
+## Commands
 
-# Setup pre-commit hooks (optional)
-pre-commit install
-```
+| Command             | Purpose                                       |
+|---------------------|-----------------------------------------------|
+| `pnpm dev`          | Astro development server, normally port 4321  |
+| `pnpm build`        | Static production build in `dist/`            |
+| `pnpm preview`      | Serve the existing production build locally   |
+| `pnpm check`        | Astro and TypeScript diagnostics              |
+| `pnpm lint`         | ESLint over JS, JSX, TS, TSX and Astro source |
+| `pnpm lint:fix`     | Apply ESLint automatic fixes; review the diff |
+| `pnpm format`       | Format matching files under `src/`            |
+| `pnpm format:check` | Check formatting under `src/`                 |
+| `pnpm test`         | Node test runner for `tests/*.test.mjs`       |
 
-## Scripts
+There is no `clean` script. Root documentation is outside the `format:check` glob; check it separately with
+`pnpm exec prettier --check "*.md" "docs/**/*.md"`.
 
-### Development
+## Architecture
 
-```bash
-# Start dev server
-pnpm dev
-
-# Build for production
-pnpm build
-
-# Preview production build
-pnpm preview
-
-# Type checking
-pnpm check
-
-# Scoring regression tests
-pnpm test
-```
-
-### Code Quality
-
-```bash
-# Run ESLint (check for issues)
-pnpm lint
-
-# Run ESLint with auto-fix
-pnpm lint:fix
-
-# Format code with Prettier
-pnpm format
-
-# Check if code is formatted correctly
-pnpm format:check
-```
-
-## Code Style & Quality Tools
-
-### ESLint
-
-- **Purpose**: Catch bugs and enforce code standards
-- **Config**: `.eslintrc.json`
-- **Rules**:
-  - No unused variables (except prefixed with `_`)
-  - No duplicate imports
-  - Prefer `const` over `var`
-  - React rules for `.jsx` and `.tsx` files
-  - TypeScript rules for `.ts` and `.tsx` files
-  - Astro rules for `.astro` files
-
-### Prettier
-
-- **Purpose**: Automatic code formatting
-- **Config**: `.prettierrc.json`
-- **Features**:
-  - 2-space indentation
-  - Double quotes for consistency
-  - 100 character line width
-  - Trailing commas in ES5 format
-  - Supports Astro files with `prettier-plugin-astro`
-
-### EditorConfig
-
-- **Purpose**: Consistent editor settings across team
-- **Config**: `.editorconfig`
-- **IDE Support**: Install extension for your editor (VS Code, IntelliJ, etc.)
-
-## Git Hooks (Optional)
-
-Pre-commit hooks automatically check code before committing:
-
-```bash
-# Install pre-commit hooks
-pre-commit install
-
-# Run manually
-pre-commit run --all-files
-
-# Bypass hooks (not recommended)
-git commit --no-verify
-```
-
-Hooks will:
-
-- Remove trailing whitespace
-- Ensure files end with newline
-- Check YAML syntax
-- Prevent large files (>1MB) from being committed
-- Auto-format code with Prettier
-
-## Before Submitting Code
-
-1. Run type checking: `pnpm check`
-2. Lint code: `pnpm lint:fix`
-3. Format code: `pnpm format`
-4. Run scoring regression tests: `pnpm test`
-5. Build to verify: `pnpm build`
-6. Commit and push
-
-The deployment workflow also runs type, lint, formatting, and scoring checks before building.
-
-## Project Structure
-
-```
+```text
 src/
-├── components/
-│   ├── common/          # Reusable components
-│   ├── layout/          # Header, Footer, Navigation
-│   └── sections/        # Page sections
-├── content/             # Content data
-├── layouts/             # Astro layouts
-├── pages/               # Astro pages
-├── styles/              # Global styles
-└── images/              # Image assets
+  pages/                 index.astro, golf-results.astro, golf-rules.astro
+  layouts/               MainLayout.astro: metadata, shared navigation, analytics
+  components/
+    common/astro/        ScrollReveal, WinkingCat, SectionTitle, StructuredData, PawPrints
+    layout/astro/        Header, Footer
+    layout/react/        StickyNav
+    sections/astro/      Homepage sections
+    sections/react/      MenuFilter, Calendar, GalleryLightbox, FAQ, MapWithMarker
+    golf/astro/          GolfPageHero, GolfRewards, JapaneseText
+    golf/react/          GolfChampionship, JapaneseText
+  content/               siteContent.ts, golfChampionship.ts
+  styles/                global.css
+  utils/                 scrollReveal.ts, golfChampionshipUtils.ts, animation.ts
+  config/                animation.config.ts
+public/                  Static assets copied unchanged to the output
+tests/                   Scoring and scroll-reveal regression tests
 ```
 
-## Naming Conventions
+Astro renders content at build time. There is no application server or database. JSX does not automatically imply client
+JavaScript: MapWithMarker renders static markup without a hydration directive.
 
-- **Components**: PascalCase (e.g., `MenuFilter.tsx`, `Header.astro`)
-- **Files**: kebab-case for utilities, PascalCase for components
-- **Variables**: camelCase (e.g., `isMenuOpen`, `handleClick`)
-- **Constants**: UPPER_SNAKE_CASE (e.g., `MAX_ITEMS`, `API_URL`)
-- **CSS Classes**: kebab-case (e.g., `.mobile-menu`, `.sticky-nav`)
+### Hydration
 
-## Performance Tips
+- StickyNav and GolfChampionship use `client:load`.
+- MenuFilter, Calendar, GalleryLightbox and FAQ use `client:visible` with a 300 px root margin. Server-rendered HTML is
+  available before hydration.
+- The map iframe loads lazily; the surrounding React component is not hydrated.
+- Test anchor jumps and immediate interactions on a slow connection when changing hydration timing.
 
-- Use React lazy loading for heavy components
-- Optimize images before adding to project
-- Check bundle size: `pnpm build` and check dist/ folder
-- Use Astro components over React when possible (server-side rendering)
+### Motion
 
-## Common Issues
+- `ScrollReveal.astro` creates a stable observed wrapper and a moving inner wrapper.
+- `src/utils/scrollReveal.ts` uses one IntersectionObserver, Web Animations, transform and opacity. It avoids restarting
+  a running reveal and handles reduced motion and focus.
+- Curtain, floating hero cat and scroll cue live in `global.css` and `Hero.astro`.
+- `WinkingCat.astro` blends the eye region of `public/cat-wink.webp` over `public/cat-face.webp`. Its six-second CSS
+  cycle runs only while observed and the document is visible; reduced motion disables it.
+- FAQ and golf components also use Framer Motion.
+- `animation.ts` and `animation.config.ts` are existing helper definitions, currently not imported by components. They
+  are not the source of truth for all animation timings.
 
-### ESLint errors after setup
+Prefer transform/opacity to animated layout properties. Do not make readable content depend on JavaScript completing an
+entrance animation. Keep mobile effects modest and verify them on actual devices;
+see [performance](docs/PERFORMANCE.md).
 
-- Run `pnpm lint:fix` to auto-fix most issues
-- Check `.eslintrc.json` for specific rule configuration
+### Styling and responsive behavior
 
-### Prettier conflicts with ESLint
+Colors, fonts and utilities: `tailwind.config.mjs`. Shared theme overrides and animations: `src/styles/global.css`.
+Tailwind breakpoints retain their defaults: sm 640, md 768, lg 1024 px. StickyNav switches at 768 px, while the header's
+full navigation uses lg. There is no single universal mobile breakpoint.
 
-- Configuration is already coordinated in `.eslintrc.json`
-- Run `pnpm format` before committing
+The hero uses `min-height: 100svh` so tall screens are not capped at 900 px. Preserve content overflow on short screens.
+Test widths 360, 390, 412, 768 and 1280 px, landscape, keyboard focus and reduced motion.
 
-### Pre-commit hooks fail
+## Validation
 
-- Run `pnpm format` to fix formatting issues
-- Run `pnpm lint:fix` to fix linting issues
-- Use `git commit --no-verify` only as last resort
+Run the same sequence as the deployment workflow:
 
-## Resources
+```sh
+pnpm check
+pnpm lint
+pnpm format:check
+pnpm test
+pnpm build
+```
 
-- [Astro Documentation](https://docs.astro.build)
-- [ESLint Documentation](https://eslint.org/docs)
-- [Prettier Documentation](https://prettier.io/docs)
-- [TypeScript Documentation](https://www.typescriptlang.org/docs)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+`tests/golfChampionship.test.mjs` covers scoring/standings/chart logic; `tests/scrollReveal.test.mjs` covers reveal
+lifecycle behavior. These are not browser, accessibility or real-device performance tests.
+
+ESLint configuration is in `.eslintrc.json`; Prettier uses `.prettierrc.json` and the Astro plugin. Astro type checking
+can pass while ESLint rejects TypeScript syntax inside a script block. Keep simple inline scripts compatible with the
+configured parser or move typed logic to a `.ts` module; run both checks.
+
+Optional Python `pre-commit` hooks are configured in `.pre-commit-config.yaml`: whitespace, final newline, YAML, files
+over 1000 KB and formatting. Install the pre-commit tool separately, then run `pre-commit install` or
+`pre-commit run --all-files`. Hooks do not replace the full validation sequence.
+
+## Assets and metadata
+
+Use existing WebP files in `public/`; imported Astro image assets may be processed during build. Public assets are not
+automatically resized. Keep explicit dimensions/aspect ratios and use lazy loading below the fold. Gallery metadata and
+filenames must agree.
+
+MainLayout defines canonical/Open Graph tags, viewport and Google Analytics. StructuredData has additional business
+metadata. Some values are hardcoded, so editing `siteContent.ts` alone may not update all metadata. Current references
+to `/og-image.png` and `/logo.png` have no corresponding public files; add approved assets or update references in a
+separate code change before claiming complete social previews.
+
+A web manifest exists, but there is no service worker/offline implementation. `vercel.json` contains Vercel-specific
+configuration; it does not configure headers on GitHub Pages.
+
+## Scope of changes
+
+For content fields, use [CONTENT_GUIDE](docs/CONTENT_GUIDE.md). For release/version coordination,
+use [RELEASING](docs/RELEASING.md). Update these documents whenever scripts, hydration strategy, routes, scoring or
+deployment behavior changes.
