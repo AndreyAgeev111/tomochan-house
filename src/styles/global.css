@@ -1,3 +1,5 @@
+@config "../../tailwind.config.mjs";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -241,7 +243,7 @@ h4 {
 /* Component-specific fluid typography */
 @layer components {
   .hero-title {
-    font-size: clamp(2rem, 8vw, 3.75rem) !important;
+    font-size: clamp(2rem, 8vw, 3.75rem);
     font-weight: bold;
     color: #5d4a42;
     line-height: 1.2;
@@ -419,4 +421,382 @@ span {
   50% {
     transform: translateY(-10px);
   }
+}
+
+/* Shared palette and navigation; home keeps its own section compositions. */
+.izakaya-site {
+  --ink: #5d4a42;
+  --wine: #542c31;
+  --paper: #faf8f3;
+  --amber: #fcd34d;
+  color: var(--ink);
+  background: #faf8f3;
+}
+
+.izakaya-site > header {
+  background: #faf8f3f2;
+  border-bottom: 1px solid #ffffffb3;
+  box-shadow:
+    0 8px 32px #34201712,
+    inset 0 1px #fff;
+}
+
+.izakaya-site [data-quick-nav] {
+  background: #faf8f3f2;
+  border: 1px solid #ffffffb3;
+  box-shadow:
+    0 12px 32px #2e1c2526,
+    inset 0 1px #fff;
+}
+
+@supports (backdrop-filter: blur(16px)) {
+  .izakaya-site > header,
+  .izakaya-site [data-quick-nav] {
+    background: #faf8f3db;
+    backdrop-filter: blur(16px) saturate(130%);
+    -webkit-backdrop-filter: blur(16px) saturate(130%);
+  }
+}
+
+.izakaya-site .sticky-nav {
+  padding: 8px;
+  border-radius: 24px;
+}
+
+.izakaya-site .sticky-nav .btn-icon {
+  background: transparent;
+  box-shadow: none;
+  border-radius: 16px;
+}
+
+.izakaya-site .sticky-nav .btn-icon:hover {
+  background: #ffffffb3;
+}
+
+.izakaya-home #home {
+  background: linear-gradient(135deg, #f5f1e8, #faf8f3, #f5f1e8);
+  min-height: 100svh;
+  border-bottom: 1px solid #e0d4bf;
+  box-shadow: inset 0 -30px 60px #8b735512;
+}
+
+.izakaya-home #home::after {
+  content: "";
+  position: absolute;
+  inset: 98px 28px 28px;
+  border: 1px solid #b7a08766;
+  border-radius: 160px 160px 24px 24px;
+  pointer-events: none;
+}
+
+.izakaya-home #home .hero-title {
+  color: #5d4a42;
+  font-family: inherit;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 0 #fff9;
+}
+
+.izakaya-home #home p,
+.izakaya-home #home > div:last-child {
+  color: #9d7d68;
+}
+
+.izakaya-home #home .text-warm-700 {
+  color: #9d7d68;
+}
+
+.izakaya-home #home .bg-white {
+  background: #fff;
+  color: #7d6456;
+  border: 1px solid #e0d4bf;
+  box-shadow: inset 0 1px #ffffff0d;
+}
+
+.izakaya-home #home .bg-accent-light:not(.hero-float) {
+  background: #fef3c7;
+  box-shadow:
+    0 6px 24px #5d4a4212,
+    inset 0 1px #faf8f3;
+}
+
+.izakaya-home #home .hero-cta {
+  border-radius: 999px;
+}
+
+.izakaya-home #home .hero-cta.bg-accent {
+  color: #5d4a42;
+  background: #fcd34d;
+  box-shadow:
+    inset 0 1px #fff9,
+    0 8px 24px #5d4a421a;
+}
+
+.izakaya-home #home .hero-cta.border-2 {
+  color: #5d4a42;
+  border: 1px solid #9d7d68;
+  background: #faf8f3;
+}
+
+.izakaya-home #home .hero-cta.border-2:hover {
+  background: #f5f1e8;
+}
+
+.izakaya-home .hero-cat-float {
+  opacity: 0.9;
+  filter: drop-shadow(0 8px 12px #5d4a4226);
+}
+
+.izakaya-home #menu,
+.izakaya-home #gallery {
+  box-shadow: inset 0 1px #fff8;
+}
+
+.izakaya-home .section-title {
+  color: var(--ink);
+  font-family: inherit;
+  letter-spacing: 0.06em;
+}
+
+.izakaya-home .section-divider {
+  height: 2px;
+  background: linear-gradient(90deg, #fcd34d, transparent);
+}
+
+.izakaya-home .text-warm-700,
+.izakaya-home .text-warm-600 {
+  color: #9d7d68;
+}
+
+.izakaya-home .card {
+  border: 1px solid #e0d4bf;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow:
+    inset 0 1px #fff,
+    0 3px 5px #5d4a4206,
+    0 16px 32px #5d4a420c;
+}
+
+.izakaya-home #instagram .section-title {
+  color: #5d4a42;
+}
+
+.izakaya-home #instagram .bg-warm-50 {
+  background: #faf8f3;
+  border: 1px solid #e0d4bf;
+  box-shadow:
+    0 16px 40px #5d4a421a,
+    inset 0 1px #fff;
+}
+
+.izakaya-home #instagram a {
+  background: linear-gradient(to right, #ec4899, #f43f5e);
+  box-shadow:
+    inset 0 1px #ffffff26,
+    0 6px 16px #5d4a421a;
+}
+
+.izakaya-home #gallery button > div {
+  border: 7px solid #faf8f3;
+  border-bottom-width: 12px;
+  box-shadow:
+    0 2px 4px #35231d12,
+    0 16px 32px #35231d26;
+  border-radius: 6px;
+}
+
+.izakaya-home #gallery button:nth-child(2) {
+  padding-top: 20px;
+}
+
+.menu-paper {
+  position: relative;
+  padding: clamp(20px, 5vw, 56px);
+  border: 1px solid #e0d4bf;
+  border-radius: 6px;
+  background: repeating-linear-gradient(0deg, #a6814b04 0 1px, transparent 1px 5px), #faf8f3;
+  box-shadow:
+    0 2px 3px #5d4a420a,
+    0 20px 48px #5d4a421a,
+    inset 0 0 0 7px #faf8f3;
+}
+
+.menu-paper-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  border-bottom: 2px solid #7d6456;
+  padding-bottom: 24px;
+  margin-bottom: 8px;
+}
+
+.menu-paper-heading > span {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  letter-spacing: 0.15em;
+  color: #5d4a42;
+}
+
+.menu-categories {
+  display: flex;
+  gap: 8px;
+}
+
+.menu-categories button {
+  border: 1px solid #d4bfa8;
+  border-radius: 999px;
+  padding: 9px 22px;
+  color: #7d6456;
+  background: transparent;
+}
+
+.menu-categories button[aria-pressed="true"] {
+  color: #5d4a42;
+  background: #fcd34d;
+  border-color: #fcd34d;
+  box-shadow:
+    inset 0 1px #ffffff80,
+    0 3px 8px #5d4a421a;
+}
+
+.menu-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 48px;
+}
+
+.menu-entry {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px 0;
+  border-bottom: 1px solid #ede6d9;
+}
+
+.menu-entry-copy {
+  min-width: 0;
+}
+
+.menu-entry h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.65;
+  color: #5d4a42;
+}
+
+.menu-entry p {
+  font-size: 0.875rem;
+  color: #9d7d68;
+  margin-top: 6px;
+  white-space: pre-line;
+}
+
+.menu-price {
+  flex-shrink: 0;
+  color: #7d6456;
+  font-variant-numeric: tabular-nums;
+  font-size: 1rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  .izakaya-home #home::after {
+    inset: 84px 12px 16px;
+    border-radius: 100px 100px 18px 18px;
+  }
+  .izakaya-home #home > .relative {
+    padding: 120px 28px 64px;
+  }
+  .izakaya-home #home .hero-title {
+    /* Reserve the 28px side gutters and room for Japanese letter spacing. */
+    font-size: clamp(1.25rem, calc((100vw - 56px) / 12), 2.5rem);
+    white-space: nowrap;
+  }
+  .menu-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .menu-entry {
+    padding: 20px 0;
+  }
+  .izakaya-home #gallery button:nth-child(2) {
+    padding-top: 0;
+  }
+}
+
+/* Golf pairs warm olive green with the shared cream and gold palette. */
+.championship-hero {
+  background:
+    radial-gradient(ellipse at 85% 25%, #fcd34d12, transparent 50%),
+    linear-gradient(135deg, #354929, #52673b 55%, #455b32);
+  border-bottom: 1px solid #d7b476;
+}
+
+.championship-hero h1 {
+  color: #fff5df;
+}
+
+.championship-hero .hero-kicker {
+  color: #ffe6b5;
+}
+
+.championship-hero .hero-intro {
+  color: #faf0db;
+}
+
+.championship-hero .hero-back-link {
+  color: #ffe6b5;
+}
+
+.championship-hero .hero-back-link:hover {
+  color: #fff5df;
+}
+
+.championship-judge {
+  background: radial-gradient(ellipse at center, #f5e5c840, #eaf0dc18 48%, transparent 70%);
+}
+
+/* Keep branded surfaces and their foregrounds together, including in dev previews. */
+@layer components {
+  .surface-forest {
+    background-color: #455b32;
+    color: #fff;
+  }
+
+  .surface-forest-deep {
+    background-color: #354929;
+    color: #fff;
+  }
+
+  .surface-wine {
+    background-color: #63343c;
+    color: #fff;
+  }
+
+  a.surface-forest:hover,
+  button.surface-forest:enabled:hover {
+    background-color: #293a20;
+  }
+
+  a.surface-wine:hover,
+  button.surface-wine:enabled:hover {
+    background-color: #382025;
+  }
+
+  .golf-bonus-panel {
+    background-color: #eaf0dc;
+    color: #354929;
+    border: 1px solid #afbf91;
+    border-left: 4px solid #52673b;
+  }
+}
+.izakaya-home .text-warm-600 {
+  color: #b8927a;
+}
+.izakaya-home #home .hero-cta.bg-accent:hover {
+  background: #f59e0b;
 }

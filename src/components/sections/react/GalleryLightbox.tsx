@@ -28,7 +28,7 @@ export default function GalleryLightbox({ images }: GalleryLightboxProps) {
               setIndex(i);
               setOpen(true);
             }}
-            className="group cursor-pointer text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-DEFAULT rounded-lg"
+            className="group cursor-pointer text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent rounded-lg"
           >
             <div className="relative rounded-lg overflow-hidden aspect-square shadow-softer hover:shadow-lg transition-shadow duration-300">
               <img
@@ -58,7 +58,7 @@ export default function GalleryLightbox({ images }: GalleryLightboxProps) {
                   setIndex(i);
                   setOpen(true);
                 }}
-                className="flex-shrink-0 w-72 snap-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-DEFAULT rounded-lg"
+                className="flex-shrink-0 w-72 snap-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent rounded-lg"
               >
                 <div className="relative rounded-lg overflow-hidden aspect-square shadow-soft">
                   <img

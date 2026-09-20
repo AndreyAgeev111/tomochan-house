@@ -11,9 +11,7 @@ interface Props {
 const { championship } = Astro.props;
 ---
 
-<section
-  class="relative overflow-hidden bg-gradient-to-br from-warm-100 via-warm-50 to-accent-light/40 pt-28 pb-10 md:pt-32 md:pb-14"
->
+<section class="championship-hero relative overflow-hidden pt-28 pb-10 md:pt-32 md:pb-14">
   <div
     class="absolute inset-0 opacity-[0.06]"
     aria-hidden="true"
@@ -31,7 +29,7 @@ const { championship } = Astro.props;
           <span>ゴルフコンペ</span>
         </div>
 
-        <p class="text-sm font-bold tracking-[0.16em] text-green-800 mb-2">
+        <p class="hero-kicker text-sm font-bold tracking-[0.16em] mb-2">
           {championship.season}
         </p>
 
@@ -41,7 +39,7 @@ const { championship } = Astro.props;
           {championship.title}
         </h1>
 
-        <p class="mt-4 text-warm-700 text-base md:text-lg leading-relaxed max-w-2xl">
+        <p class="hero-intro mt-4 text-base md:text-lg leading-relaxed max-w-2xl">
           <JapaneseText
             phrases={["仲間と楽しむゴルフ。", "みんなのポイントと", "順位をチェック！"]}
           />
@@ -56,9 +54,9 @@ const { championship } = Astro.props;
           </div>
 
           <div
-            class="bg-green-800 text-white rounded-xl shadow-soft px-5 py-3 min-w-24 text-center"
+            class="surface-forest text-white rounded-xl shadow-soft px-5 py-3 min-w-24 text-center"
           >
-            <p class="text-xs text-green-100">シーズン</p>
+            <p class="text-xs text-forest-100">シーズン</p>
             <p class="text-lg md:text-xl font-bold">
               全{championship.totalStages}戦
             </p>
@@ -70,7 +68,7 @@ const { championship } = Astro.props;
         aria-label="チャンピオンシップマスコット くーちゃん"
       >
         <div
-          class="absolute inset-[8%] rounded-full bg-gradient-to-br from-accent-light via-warm-100 to-green-50 shadow-softer"
+          class="absolute inset-[8%] rounded-full bg-gradient-to-br from-accent-light via-warm-100 to-forest-50 shadow-softer"
           aria-hidden="true"
         >
         </div>
@@ -79,13 +77,13 @@ const { championship } = Astro.props;
         </div>
 
         <div
-          class="absolute -left-2 top-8 h-8 w-8 rounded-full bg-accent-DEFAULT/25 blur-sm"
+          class="absolute -left-2 top-8 h-8 w-8 rounded-full bg-accent/25 blur-sm"
           aria-hidden="true"
         >
         </div>
 
         <div
-          class="absolute -right-1 bottom-10 h-10 w-10 rounded-full bg-green-700/10 blur-sm"
+          class="absolute -right-1 bottom-10 h-10 w-10 rounded-full bg-forest-700/10 blur-sm"
           aria-hidden="true"
         >
         </div>

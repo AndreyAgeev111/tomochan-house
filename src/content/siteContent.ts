@@ -204,7 +204,7 @@ export const siteContent = {
       {
         category: "ドリンク",
         name: "ホッピー",
-        description: "中サイズは別途¥300。",
+        description: "中サイズは別途¥300",
         price: "¥350",
         icon: "🍺",
       },

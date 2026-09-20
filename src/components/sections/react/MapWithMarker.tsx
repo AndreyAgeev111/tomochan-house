@@ -41,7 +41,7 @@ export default function MapWithMarker({
         href={googleMapsUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="block w-full px-4 py-3 bg-gradient-to-r from-accent-DEFAULT to-accent-dark hover:opacity-90 text-warm-900 rounded-lg font-bold transition-all text-center"
+        className="block w-full px-4 py-3 bg-gradient-to-r from-accent to-accent-dark hover:opacity-90 text-warm-900 rounded-lg font-bold transition-all text-center"
       >
         🗺️ Google Mapsで詳細を見る
       </a>

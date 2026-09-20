@@ -15,7 +15,6 @@ const { access } = siteContent;
       <!-- Map with Marker -->
       <ScrollReveal>
         <MapWithMarker
-          client:load
           address={access.address}
           latitude={access.latitude}
           longitude={access.longitude}
@@ -34,7 +33,7 @@ const { access } = siteContent;
               {
                 access.directions.map((dir, i) => (
                   <li class="flex gap-3">
-                    <span class="font-bold text-accent-DEFAULT min-w-fit">{i + 1}.</span>
+                    <span class="font-bold text-accent min-w-fit">{i + 1}.</span>
                     <span class="text-warm-700">{dir}</span>
                   </li>
                 ))

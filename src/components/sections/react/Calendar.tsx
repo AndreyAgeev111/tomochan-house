@@ -76,7 +76,7 @@ export default function Calendar({ month, year, closedDates, specialDates = [] }
                     ? "bg-red-100 text-red-700 border-red-300"
                     : specialDate
                       ? `${getColorClasses(specialDate.color)}`
-                      : "bg-warm-50 text-warm-900 border-transparent hover:border-accent-DEFAULT hover:bg-warm-100"
+                      : "bg-warm-50 text-warm-900 border-transparent hover:border-accent hover:bg-warm-100"
               }`}
             >
               <div>{day}</div>

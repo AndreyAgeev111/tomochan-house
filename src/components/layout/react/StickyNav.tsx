@@ -84,7 +84,7 @@ export default function StickyNav() {
             <a
               key={link.href}
               href={link.href}
-              className="flex min-h-[62px] min-w-0 flex-col items-center justify-center gap-1 px-1 py-2 text-center text-[0.7rem] font-bold leading-tight text-warm-700 hover:text-accent-dark focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-accent-DEFAULT"
+              className="flex min-h-[62px] min-w-0 flex-col items-center justify-center gap-1 px-1 py-2 text-center text-[0.7rem] font-bold leading-tight text-warm-700 hover:text-accent-dark focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-accent"
               title={link.label}
             >
               <span className="text-xl" style={{ fontSize: "1.25rem" }} aria-hidden="true">
@@ -106,7 +106,7 @@ export default function StickyNav() {
         <a
           key={link.href}
           href={link.href}
-          className="btn-icon bg-white shadow-soft hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-DEFAULT"
+          className="btn-icon bg-white shadow-soft hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           title={link.label}
         >
           <span className="text-xl" style={{ fontSize: "1.25rem" }} aria-hidden="true">

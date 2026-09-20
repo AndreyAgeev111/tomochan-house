@@ -81,7 +81,7 @@ const pageUrl = new URL(Astro.url.pathname, siteUrl).href;
     <StructuredData />
   </head>
 
-  <body>
+  <body class:list={["izakaya-site", { "izakaya-home": Astro.url.pathname === "/" }]}>
     <Header />
     <StickyNav client:load />
     <main>

@@ -147,7 +147,7 @@ const navigation = isGolfPage ? golfNavigation : defaultNavigation;
   <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
     <a
       href="/"
-      class="flex items-center gap-2 group flex-shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-DEFAULT rounded-lg"
+      class="flex items-center gap-2 group flex-shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent rounded-lg"
     >
       <img
         src="/cat-face.webp"
@@ -173,13 +173,13 @@ const navigation = isGolfPage ? golfNavigation : defaultNavigation;
             <a
               href={hrefFor(item.href)}
               aria-current={active ? "page" : undefined}
-              class={`text-sm font-medium transition-colors whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-DEFAULT rounded ${
+              class={`text-sm font-medium transition-colors whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent rounded ${
                 isGolfPage
                   ? item.id === "home"
                     ? "text-warm-700 hover:text-accent-dark"
-                    : "text-green-800 font-bold hover:text-green-950"
+                    : "text-forest-800 font-bold hover:text-forest-950"
                   : item.id === "golf"
-                    ? "text-green-800 font-bold"
+                    ? "text-forest-800 font-bold"
                     : "text-warm-700 hover:text-accent-dark"
               }`}
             >
@@ -194,7 +194,7 @@ const navigation = isGolfPage ? golfNavigation : defaultNavigation;
       href={siteContent.business.instagramUrl}
       target="_blank"
       rel="noopener noreferrer"
-      class="hidden xl:flex items-center gap-2 px-4 py-2 rounded-lg bg-accent-light hover:bg-accent-DEFAULT transition-colors text-sm font-bold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-DEFAULT flex-shrink-0"
+      class="hidden xl:flex items-center gap-2 px-4 py-2 rounded-lg bg-accent-light hover:bg-accent transition-colors text-sm font-bold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent flex-shrink-0"
     >
       <span aria-hidden="true">📱</span>
       <span>
@@ -204,7 +204,7 @@ const navigation = isGolfPage ? golfNavigation : defaultNavigation;
 
     <button
       id="hamburger-btn"
-      class="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg hover:bg-warm-100 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-DEFAULT"
+      class="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg hover:bg-warm-100 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
       aria-label="メニューを開く"
       aria-expanded="false"
       aria-controls="mobile-menu"
@@ -232,7 +232,7 @@ const navigation = isGolfPage ? golfNavigation : defaultNavigation;
 
     <button
       id="close-btn"
-      class="text-2xl text-warm-500 hover:text-warm-900 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-DEFAULT rounded p-1"
+      class="text-2xl text-warm-500 hover:text-warm-900 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent rounded p-1"
       aria-label="メニューを閉じる"
     >
       ✕
@@ -249,15 +249,15 @@ const navigation = isGolfPage ? golfNavigation : defaultNavigation;
           <a
             href={hrefFor(item.href)}
             aria-current={active ? "page" : undefined}
-            class={`px-6 py-4 text-lg font-medium transition-colors rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-DEFAULT ${
+            class={`px-6 py-4 text-lg font-medium transition-colors rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
               isGolfPage
                 ? item.id === "home"
                   ? "text-warm-900 hover:bg-warm-50"
-                  : "bg-green-50 text-green-900 font-bold hover:bg-green-100"
+                  : "bg-forest-50 text-forest-900 font-bold hover:bg-forest-100"
                 : item.id === "golf"
                   ? active
-                    ? "bg-green-100 text-green-950 font-bold"
-                    : "bg-green-50 text-green-900 font-bold"
+                    ? "bg-forest-100 text-forest-950 font-bold"
+                    : "bg-forest-50 text-forest-900 font-bold"
                   : "text-warm-900 hover:bg-warm-50"
             }`}
           >
@@ -273,7 +273,7 @@ const navigation = isGolfPage ? golfNavigation : defaultNavigation;
       href={siteContent.business.instagramUrl}
       target="_blank"
       rel="noopener noreferrer"
-      class="block w-full px-4 py-3 bg-accent-light hover:bg-accent-DEFAULT transition-colors rounded-lg font-bold text-warm-900 items-center justify-center gap-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-DEFAULT"
+      class="block w-full px-4 py-3 bg-accent-light hover:bg-accent transition-colors rounded-lg font-bold text-warm-900 items-center justify-center gap-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
     >
       <span aria-hidden="true">📱</span>
       <span>

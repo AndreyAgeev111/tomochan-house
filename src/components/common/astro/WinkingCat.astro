@@ -1,0 +1,72 @@
+<div class="winking-cat relative w-40 h-40" data-winking-cat>
+  <img
+    src="/cat-face.webp"
+    alt="Tomochan"
+    width="320"
+    height="320"
+    loading="lazy"
+    decoding="async"
+    class="w-full h-full object-contain"
+  />
+  <img
+    src="/cat-wink.webp"
+    alt=""
+    aria-hidden="true"
+    width="320"
+    height="320"
+    loading="lazy"
+    decoding="async"
+    class="wink-eye absolute inset-0 w-full h-full object-contain pointer-events-none"
+  />
+</div>
+
+<style>
+  .wink-eye {
+    opacity: 0;
+    /* Keep the original face still; softly blend only the alternate eyelid. */
+    mask-image: radial-gradient(ellipse 13% 11% at 65% 52%, #000 78%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 13% 11% at 65% 52%, #000 78%, transparent 100%);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .winking-cat[data-visible] .wink-eye {
+      animation: cat-wink 6s linear infinite;
+    }
+  }
+  @keyframes cat-wink {
+    0%,
+    18%,
+    27%,
+    100% {
+      opacity: 0;
+    }
+    20%,
+    24% {
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  const cats = document.querySelectorAll<HTMLElement>("[data-winking-cat]");
+  if ("IntersectionObserver" in window && cats.length) {
+    const visible = new Set<Element>();
+    const update = () => {
+      cats.forEach((cat) => {
+        cat.toggleAttribute("data-visible", visible.has(cat) && !document.hidden);
+      });
+    };
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) visible.add(entry.target);
+        else visible.delete(entry.target);
+      }
+      update();
+    });
+    cats.forEach((cat) => observer.observe(cat));
+    document.addEventListener("visibilitychange", update);
+    window.addEventListener("pagehide", () => {
+      cats.forEach((cat) => cat.removeAttribute("data-visible"));
+    });
+    window.addEventListener("pageshow", update);
+  }
+</script>

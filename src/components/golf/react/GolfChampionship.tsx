@@ -92,7 +92,7 @@ function Podium({
   return (
     <section aria-labelledby="podium-title" className="max-w-6xl mx-auto px-4 py-10 md:py-14">
       <div className="text-center mb-8">
-        <p className="text-sm font-bold text-green-800 tracking-wider">TOP PLAYERS</p>
+        <p className="text-sm font-bold text-forest-800 tracking-wider">TOP PLAYERS</p>
         <h2
           id="podium-title"
           className="scroll-mt-24 text-2xl md:text-3xl font-bold text-warm-900 mt-1"
@@ -150,7 +150,7 @@ function Podium({
                 </p>
 
                 {standing.bonusPoints > 0 && (
-                  <span className="rounded-full bg-white/70 px-2.5 py-1 text-xs font-bold text-green-900">
+                  <span className="rounded-full bg-white/70 px-2.5 py-1 text-xs font-bold text-forest-900">
                     +{standing.bonusPoints} bonus
                   </span>
                 )}
@@ -308,7 +308,7 @@ function PlayerProfileModal({
             </div>
           )}
           <div className="relative min-w-0 border-l-4 border-accent-dark pl-3">
-            <p className="text-xs text-green-800 font-bold tracking-wider">PLAYER PROFILE</p>
+            <p className="text-xs text-forest-800 font-bold tracking-wider">PLAYER PROFILE</p>
             <h3
               id="player-profile-title"
               className="mt-1 font-bold text-3xl tracking-tight text-warm-900 truncate"
@@ -343,9 +343,9 @@ function PlayerProfileModal({
             </div>
             <div className="rounded-xl bg-white border border-warm-200 p-3 text-center">
               <p className="text-xs text-warm-600">追加pt</p>
-              <p className="mt-1 text-xl font-bold text-green-800">+{standing.bonusPoints}</p>
+              <p className="mt-1 text-xl font-bold text-forest-800">+{standing.bonusPoints}</p>
             </div>
-            <div className="rounded-xl bg-accent-light border border-accent-DEFAULT p-3 text-center">
+            <div className="rounded-xl bg-accent-light border border-accent p-3 text-center">
               <p className="text-xs text-warm-700">合計</p>
               <p className="mt-1 text-xl font-bold text-warm-900">{standing.totalPoints}pt</p>
             </div>
@@ -429,13 +429,13 @@ function PlayerProfileModal({
                 {bonuses.map((bonus) => (
                   <li
                     key={bonus.id}
-                    className="flex items-center justify-between gap-3 rounded-lg bg-green-50 border border-green-100 px-3 py-2.5"
+                    className="flex items-center justify-between gap-3 rounded-lg bg-forest-50 border border-forest-100 px-3 py-2.5"
                   >
                     <div>
-                      <p className="text-sm font-bold text-green-950">{bonus.label}</p>
-                      <p className="text-xs text-green-800 mt-0.5">第{bonus.stage}戦</p>
+                      <p className="text-sm font-bold text-forest-950">{bonus.label}</p>
+                      <p className="text-xs text-forest-800 mt-0.5">第{bonus.stage}戦</p>
                     </div>
-                    <span className="font-bold text-green-900">+{BONUS_POINTS_PER_ACTION}pt</span>
+                    <span className="font-bold text-forest-900">+{BONUS_POINTS_PER_ACTION}pt</span>
                   </li>
                 ))}
               </ul>
@@ -461,7 +461,7 @@ function PlayerProfileModal({
                   block: "start",
                 });
               }}
-              className="w-full min-h-12 rounded-xl bg-green-800 text-white font-bold disabled:bg-warm-300 disabled:text-warm-500 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-dark"
+              className="w-full min-h-12 rounded-xl surface-forest text-white font-bold disabled:bg-warm-300 disabled:text-warm-500 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-dark"
             >
               {canTrend ? "この選手をグラフで見る" : "グラフ表示には2戦以上の出場が必要です"}
             </button>
@@ -489,7 +489,7 @@ function Leaderboard({
       className="max-w-6xl mx-auto px-4 pb-12 md:pb-16 overflow-hidden"
     >
       <div className="mb-5">
-        <p className="text-sm font-bold text-green-800">LEADERBOARD</p>
+        <p className="text-sm font-bold text-forest-800">LEADERBOARD</p>
         <div className="flex items-center gap-3">
           <h2
             id="leaderboard-title"
@@ -501,7 +501,7 @@ function Leaderboard({
             href="/golf-rules/"
             aria-label="くーちゃんとポイントルールを見る"
             title="ポイントルール"
-            className="inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-accent-dark bg-accent-light text-xl font-bold text-warm-900 shadow-softer transition-colors hover:bg-accent-DEFAULT focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-dark"
+            className="inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-accent-dark bg-accent-light text-xl font-bold text-warm-900 shadow-softer transition-colors hover:bg-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-dark"
           >
             <span aria-hidden="true">?</span>
           </a>
@@ -602,7 +602,7 @@ function Leaderboard({
                             >
                               {standing.rank}
                             </span>
-                            <span className="min-w-0 truncate text-base font-bold text-warm-900 group-hover:text-green-800 group-focus-visible:text-green-800">
+                            <span className="min-w-0 truncate text-base font-bold text-warm-900 group-hover:text-forest-800 group-focus-visible:text-forest-800">
                               {standing.player.name}
                             </span>
                           </button>
@@ -623,7 +623,7 @@ function Leaderboard({
                           </td>
                         ))}
 
-                        <td className="px-2 py-3 text-center font-bold text-green-800">
+                        <td className="px-2 py-3 text-center font-bold text-forest-800">
                           {standing.bonusPoints > 0 ? `+${standing.bonusPoints}` : "—"}
                         </td>
 
@@ -665,7 +665,7 @@ function Leaderboard({
           href={instagramUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-lg bg-accent-light px-4 py-2 text-sm font-bold text-warm-900 transition-colors hover:bg-accent-DEFAULT focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-dark"
+          className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-lg bg-accent-light px-4 py-2 text-sm font-bold text-warm-900 transition-colors hover:bg-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-dark"
         >
           <span aria-hidden="true">📱</span>
           InstagramでDM
@@ -1098,7 +1098,7 @@ export default function GolfChampionship({
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-6">
             <div>
-              <p className="text-sm font-bold text-green-800">CHAMPIONSHIP EVOLUTION</p>
+              <p className="text-sm font-bold text-forest-800">CHAMPIONSHIP EVOLUTION</p>
               <h2
                 id="analytics-title"
                 className="text-2xl md:text-3xl font-bold text-warm-900 scroll-mt-24"
@@ -1132,7 +1132,7 @@ export default function GolfChampionship({
                   }}
                   aria-pressed={mode === "rank"}
                   className={`px-4 py-2 rounded-md text-sm font-bold focus-visible:outline-2 focus-visible:outline-accent-dark ${
-                    mode === "rank" ? "bg-accent-DEFAULT text-warm-900" : "text-warm-700"
+                    mode === "rank" ? "bg-accent text-warm-900" : "text-warm-700"
                   }`}
                 >
                   順位推移
@@ -1146,7 +1146,7 @@ export default function GolfChampionship({
                   }}
                   aria-pressed={mode === "points"}
                   className={`px-4 py-2 rounded-md text-sm font-bold focus-visible:outline-2 focus-visible:outline-accent-dark ${
-                    mode === "points" ? "bg-accent-DEFAULT text-warm-900" : "text-warm-700"
+                    mode === "points" ? "bg-accent text-warm-900" : "text-warm-700"
                   }`}
                 >
                   累計ポイント
@@ -1162,7 +1162,7 @@ export default function GolfChampionship({
                 aria-pressed={showForecast}
                 className={`px-4 py-2 rounded-lg text-sm font-bold border focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-dark ${
                   showForecast
-                    ? "bg-green-800 text-white border-green-800"
+                    ? "surface-forest text-white border-forest-800"
                     : "bg-white text-warm-800 border-warm-300"
                 }`}
               >
@@ -1186,7 +1186,7 @@ export default function GolfChampionship({
                         setSelected("");
                         setHovered(null);
                       }}
-                      className="min-h-10 px-3 py-2 rounded-lg border border-green-700 bg-green-50 text-xs font-bold text-green-900 inline-flex items-center gap-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-dark"
+                      className="min-h-10 px-3 py-2 rounded-lg border border-forest-700 bg-forest-50 text-xs font-bold text-forest-900 inline-flex items-center gap-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-dark"
                     >
                       <X size={14} aria-hidden="true" />
                       ハイライト解除
@@ -1287,37 +1287,37 @@ export default function GolfChampionship({
                 }}
                 className="mt-6 grid lg:grid-cols-[1fr_1.7fr] gap-5"
               >
-                <div className="bg-green-900 text-white rounded-xl p-6 shadow-soft">
-                  <div className="flex items-center gap-2 text-green-100 text-xs font-bold tracking-[0.16em]">
+                <div className="surface-forest-deep text-white rounded-xl p-6 shadow-soft">
+                  <div className="flex items-center gap-2 text-forest-100 text-xs font-bold tracking-[0.16em]">
                     <Trophy size={16} aria-hidden="true" />
                     COMEBACK POTENTIAL
                   </div>
                   <p className="text-2xl font-bold mt-3">{selectedStanding.player.name}</p>
-                  <p className="text-green-100 mt-1">
+                  <p className="text-forest-100 mt-1">
                     現在 {selectedStanding.rank}位 · {selectedForecast.status}
                   </p>
 
                   <div className="grid grid-cols-2 gap-3 mt-6 text-sm tabular-nums">
                     <div>
-                      <p className="text-green-200">首位との差</p>
+                      <p className="text-forest-200">首位との差</p>
                       <p className="text-xl font-bold">
                         {selectedForecast.gapToLeader}
                         pt
                       </p>
                     </div>
                     <div>
-                      <p className="text-green-200">残り試合</p>
+                      <p className="text-forest-200">残り試合</p>
                       <p className="text-xl font-bold">{selectedForecast.remainingStages}戦</p>
                     </div>
                     <div>
-                      <p className="text-green-200">現在の平均</p>
+                      <p className="text-forest-200">現在の平均</p>
                       <p className="text-xl font-bold">
                         {selectedForecast.currentAverage}
                         pt
                       </p>
                     </div>
                     <div>
-                      <p className="text-green-200">首位争いの目安</p>
+                      <p className="text-forest-200">首位争いの目安</p>
                       <p className="text-xl font-bold">
                         {selectedForecast.requiredAverageToLead}
                         pt
@@ -1365,7 +1365,7 @@ export default function GolfChampionship({
                 exit={{
                   opacity: 0,
                 }}
-                className="mt-6 rounded-xl border border-dashed border-green-300 bg-green-50/70 px-5 py-4 text-sm text-green-950 flex items-start gap-3"
+                className="mt-6 rounded-xl border border-dashed border-forest-300 bg-forest-50/70 px-5 py-4 text-sm text-forest-950 flex items-start gap-3"
               >
                 <Focus size={20} className="mt-0.5 flex-shrink-0" aria-hidden="true" />
                 <p>

@@ -54,7 +54,7 @@ const { events } = siteContent;
 
       <ScrollReveal delay={0.1}>
         <Calendar
-          client:load
+          client:visible={{ rootMargin: "300px" }}
           month={events.calendar.month}
           year={events.calendar.year}
           closedDates={events.calendar.closedDates}
@@ -75,6 +75,10 @@ const { events } = siteContent;
                 <img
                   src={events.specialEvent.image}
                   alt={events.specialEvent.title}
+                  loading="lazy"
+                  decoding="async"
+                  width="1081"
+                  height="1536"
                   class="rounded-lg w-full h-auto object-cover shadow-md hover:shadow-lg transition-shadow"
                 />
               </div>

@@ -19,11 +19,11 @@ export default function FAQ({ faqItems }: FAQProps) {
       {faqItems.map((item, i) => (
         <div
           key={i}
-          className="border-2 border-warm-200 rounded-lg overflow-hidden hover:border-accent-DEFAULT transition-colors"
+          className="border-2 border-warm-200 rounded-lg overflow-hidden hover:border-accent transition-colors"
         >
           <button
             onClick={() => setOpenId(openId === i ? null : i)}
-            className="w-full px-6 py-4 flex items-center justify-between bg-white hover:bg-warm-50 transition-colors text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-DEFAULT"
+            className="w-full px-6 py-4 flex items-center justify-between bg-white hover:bg-warm-50 transition-colors text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
             <span className="font-bold text-warm-900 flex-1">{item.q}</span>
             <motion.div
@@ -31,7 +31,7 @@ export default function FAQ({ faqItems }: FAQProps) {
               transition={{ duration: 0.3 }}
               className="flex-shrink-0"
             >
-              <ChevronDown className="w-5 h-5 text-accent-DEFAULT" />
+              <ChevronDown className="w-5 h-5 text-accent" />
             </motion.div>
           </button>
 

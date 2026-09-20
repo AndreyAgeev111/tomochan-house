@@ -12,7 +12,7 @@ const { gallery } = siteContent;
     <SectionTitle title="写真" subtitle={gallery.description} />
 
     <ScrollReveal variant="photos">
-      <GalleryLightbox client:load images={gallery.images} />
+      <GalleryLightbox client:visible={{ rootMargin: "300px" }} images={gallery.images} />
     </ScrollReveal>
   </div>
 </section>

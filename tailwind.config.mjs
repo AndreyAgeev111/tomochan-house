@@ -16,6 +16,26 @@ export default {
           800: "#7d6456",
           900: "#5d4a42",
         },
+        forest: {
+          50: "#f6f7ee",
+          100: "#eaf0dc",
+          200: "#d1ddba",
+          300: "#afbf91",
+          700: "#52673b",
+          800: "#455b32",
+          900: "#354929",
+          950: "#293a20",
+        },
+        wine: {
+          50: "#faf3f2",
+          100: "#f1e2e1",
+          200: "#dfc3c5",
+          300: "#c99da2",
+          700: "#7b414b",
+          800: "#63343c",
+          900: "#542c31",
+          950: "#382025",
+        },
         accent: {
           light: "#fef3c7",
           DEFAULT: "#fcd34d",
@@ -23,13 +43,7 @@ export default {
         },
       },
       fontFamily: {
-        sans: [
-          "ui-rounded",
-          "Hiragino Maru Gothic ProN",
-          "Quicksand",
-          "system-ui",
-          "sans-serif",
-        ],
+        sans: ["ui-rounded", "Hiragino Maru Gothic ProN", "Quicksand", "system-ui", "sans-serif"],
       },
       borderRadius: {
         lg: "1rem",
@@ -42,7 +56,7 @@ export default {
       animation: {
         "fade-up": "fadeUp 0.6s ease-out forwards",
         "fade-in": "fadeIn 0.4s ease-out forwards",
-        "float": "float 3s ease-in-out infinite",
+        float: "float 3s ease-in-out infinite",
       },
       keyframes: {
         fadeUp: {
