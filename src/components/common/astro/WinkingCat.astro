@@ -47,9 +47,9 @@
 </style>
 
 <script>
-  const cats = document.querySelectorAll<HTMLElement>("[data-winking-cat]");
+  const cats = document.querySelectorAll("[data-winking-cat]");
   if ("IntersectionObserver" in window && cats.length) {
-    const visible = new Set<Element>();
+    const visible = new Set();
     const update = () => {
       cats.forEach((cat) => {
         cat.toggleAttribute("data-visible", visible.has(cat) && !document.hidden);
