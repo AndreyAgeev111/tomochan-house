@@ -66,7 +66,7 @@ export const golfChampionship: Championship = {
   id: "tomochan-house-2026",
   title: "ともちゃん家 ゴルフチャンピオンシップ",
   season: "2026 SEASON",
-  completedStages: 2,
+  completedStages: 3,
   totalStages: 6,
 
   stages: [
@@ -79,27 +79,33 @@ export const golfChampionship: Championship = {
       date: "2026-07-29",
       location: "浦和ゴルフ倶楽部",
     },
+    {
+      stage: 3,
+      date: "2026-09-22",
+      location: "大宮国際カントリークラブ",
+    },
   ],
 
   // Opaque IDs must never contain names or other personal information.
   players: [
-    { id: "player-15542eac", name: "KD" },
+    { id: "player-15542eac", name: "かわいちゃん" },
     { id: "player-68ceac43", name: "AY" },
-    { id: "player-5e5c2cf6", name: "SY" },
+    { id: "player-5e5c2cf6", name: "よっぴー" },
     { id: "player-d925dd41", name: "TH" },
     { id: "player-3b7c2ae8", name: "SY" },
     { id: "player-b82e1f4d", name: "KS" },
     { id: "player-900077f9", name: "OK" },
-    { id: "player-bab3a577", name: "OT" },
-    { id: "player-2c5b0a08", name: "OM" },
+    { id: "player-bab3a577", name: "ともちゃん" },
+    { id: "player-2c5b0a08", name: "やんちゃん" },
     { id: "player-9301f7da", name: "FK" },
-    { id: "player-83f40e87", name: "OA" },
-
+    { id: "player-83f40e87", name: "ありさ" },
     { id: "player-f77da93c", name: "NF" },
     { id: "player-0a860c72", name: "MK" },
-    { id: "player-2ee84505", name: "OR" },
+    { id: "player-2ee84505", name: "りっきー" },
     { id: "player-18c67317", name: "NI" },
-    { id: "player-7b2dccb9", name: "KH" },
+    { id: "player-7b2dccb9", name: "ペルー人（社長）" },
+    { id: "player-4cb8e3d1", name: "もりし" },
+    { id: "player-a7519f20", name: "しんちゃん" },
   ],
 
   results: [
@@ -127,14 +133,19 @@ export const golfChampionship: Championship = {
     { stage: 2, playerId: "player-83f40e87", rank: 8, gross: 105, handicap: 21.6, net: 83.4 },
     { stage: 2, playerId: "player-7b2dccb9", rank: 9, gross: 111, handicap: 26.4, net: 84.6 },
     { stage: 2, playerId: "player-b82e1f4d", rank: 10, gross: 109, handicap: 24.0, net: 85.0 },
+
+    // Stage 3 — 2026-09-22 / 大宮国際カントリークラブ
+    { stage: 3, playerId: "player-5e5c2cf6", rank: 1, gross: 90, handicap: 23.2, net: 66.8 },
+    { stage: 3, playerId: "player-bab3a577", rank: 2, gross: 96, handicap: 28.0, net: 68.0 },
+    { stage: 3, playerId: "player-15542eac", rank: 3, gross: 85, handicap: 14.8, net: 70.2 },
+    { stage: 3, playerId: "player-4cb8e3d1", rank: 4, gross: 95, handicap: 24.4, net: 70.6 },
+    { stage: 3, playerId: "player-2c5b0a08", rank: 5, gross: 100, handicap: 29.2, net: 70.8 },
+    { stage: 3, playerId: "player-a7519f20", rank: 6, gross: 97, handicap: 25.6, net: 71.4 },
+    { stage: 3, playerId: "player-7b2dccb9", rank: 7, gross: 102, handicap: 30.4, net: 71.6 },
+    { stage: 3, playerId: "player-83f40e87", rank: 8, gross: 110, handicap: 34.0, net: 76.0 },
+    { stage: 3, playerId: "player-2ee84505", rank: 9, gross: 113, handicap: 35.2, net: 77.8 },
   ],
 
-  /**
-   * DEVELOPMENT MOCK REWARD TIERS.
-   * The point-reward feature is confirmed, but the actual prizes are not.
-   * Keep thresholds/config here so the public component never hardcodes them.
-   * Current concept: one new reward unlocks every 25 championship points.
-   */
   rewardTiers: [
     {
       threshold: 25,
@@ -158,6 +169,5 @@ export const golfChampionship: Championship = {
     },
   ],
 
-  // No bonus points have been awarded yet.
   bonusActions: [],
 };
