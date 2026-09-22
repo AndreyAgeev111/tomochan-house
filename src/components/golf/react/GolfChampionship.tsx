@@ -21,16 +21,35 @@ type Hovered = {
   stage: number;
 } | null;
 
+// Assign by the full trend-eligible roster, never by the visible subset.
 const COLORS = [
-  "#8a6a24",
-  "#3f7b59",
-  "#a65f45",
-  "#6f5d9b",
-  "#36758a",
-  "#a17455",
-  "#687544",
-  "#8b566e",
+  "#0072b2",
+  "#d55e00",
+  "#009e73",
+  "#a83c98",
+  "#b58900",
+  "#332288",
+  "#007f86",
+  "#c51b45",
+  "#5b7b00",
+  "#6f4b2a",
+  "#536dce",
+  "#8c564b",
+  "#b14f00",
+  "#006644",
+  "#8b298c",
+  "#555555",
+  "#006091",
+  "#9b174c",
 ];
+
+function chartColor(championship: Championship, standings: Standing[], playerId: string) {
+  const eligibleIds = new Set(trendEligibleStandings(standings).map((s) => s.player.id));
+  const index = championship.players
+    .filter((player) => eligibleIds.has(player.id))
+    .findIndex((player) => player.id === playerId);
+  return COLORS[Math.max(0, index) % COLORS.length];
+}
 
 const MEDALS = ["🥇", "🥈", "🥉"];
 
@@ -754,12 +773,13 @@ function EvolutionChart({
   const x = (stage: number) =>
     left + ((stage - 1) / Math.max(1, totalStages - 1)) * (width - left - right);
 
-  const yRank = (rank: number) => {
-    if (visibleCount <= 1) {
+  const rankCount = Math.max(1, standings.length);
+  const yRank = (rank: number | null) => {
+    if (rankCount <= 1) {
       return top + (height - top - bottom) / 2;
     }
 
-    return top + ((rank - 1) / (visibleCount - 1)) * (height - top - bottom);
+    return top + (((rank ?? rankCount) - 1) / (rankCount - 1)) * (height - top - bottom);
   };
 
   const yPoints = (points: number) =>
@@ -804,14 +824,14 @@ function EvolutionChart({
           <title id="chart-title">{mode === "rank" ? "順位推移" : "累計ポイント推移"}</title>
           <desc id="chart-desc">
             2戦以上出場した選手の
-            {mode === "rank" ? "表示中選手内での順位" : "累計チャンピオンシップポイント"}
+            {mode === "rank" ? "全参加者の中での総合順位" : "累計チャンピオンシップポイント"}
             の推移です。
           </desc>
 
           {(mode === "rank"
             ? Array.from(
                 {
-                  length: visibleCount,
+                  length: rankCount,
                 },
                 (_, index) => index + 1
               )
@@ -864,13 +884,11 @@ function EvolutionChart({
           {eligible
             .filter((standing) => visible.has(standing.player.id))
             .map((standing) => {
-              const color =
-                COLORS[
-                  championship.players.findIndex((player) => player.id === standing.player.id) %
-                    COLORS.length
-                ];
+              const color = chartColor(championship, standings, standing.player.id);
               const dimmed = Boolean(selected && selected !== standing.player.id);
-              const playerSeries = series.get(standing.player.id) ?? [];
+              const playerSeries = (series.get(standing.player.id) ?? []).filter(
+                (point) => mode !== "rank" || point.rank !== null
+              );
               const historical = playerSeries.filter((point) => !point.isForecast);
               const projected = playerSeries.filter((point) => point.isForecast);
 
@@ -900,6 +918,27 @@ function EvolutionChart({
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />
+
+                  {historical.length > 0 && (
+                    <text
+                      x={x(historical[historical.length - 1].stage) - 8}
+                      y={
+                        (mode === "rank"
+                          ? yRank(historical[historical.length - 1].rank)
+                          : yPoints(historical[historical.length - 1].cumulativePoints)) - 9
+                      }
+                      textAnchor="end"
+                      fontSize="11"
+                      fontWeight="700"
+                      fill={color}
+                      stroke="white"
+                      strokeWidth="3"
+                      paintOrder="stroke"
+                      pointerEvents="none"
+                    >
+                      {standing.player.shortName ?? standing.player.name}
+                    </text>
+                  )}
 
                   {forecastPath && (
                     <path
@@ -993,7 +1032,7 @@ function EvolutionChart({
           <div className="inline-flex flex-wrap gap-x-3 gap-y-1 rounded-lg bg-warm-50 border border-warm-200 px-3 py-2 text-sm text-warm-800">
             <strong className="text-warm-900">{activeStanding.player.name}</strong>
             <span>
-              第{hovered.stage}戦 · {activePoint.rank}位
+              第{hovered.stage}戦 · {activePoint.rank === null ? "未出場" : `${activePoint.rank}位`}
               {activePoint.isForecast ? "（予測）" : !activePoint.participated ? "（不参加）" : ""}
             </span>
             <span>
@@ -1113,6 +1152,9 @@ export default function GolfChampionship({
                     "選手だけを表示します。",
                     "1戦のみの成績から",
                     "将来推移は作りません。",
+                    "順位は全参加者の総合順位で、",
+                    "選手の表示・非表示では変わりません。",
+                    "予測対象外の選手は現在のポイントを維持して比較します。",
                   ]}
                 />
               </p>
@@ -1222,11 +1264,7 @@ export default function GolfChampionship({
 
               <div className="flex flex-wrap gap-2">
                 {eligible.map((standing) => {
-                  const color =
-                    COLORS[
-                      championship.players.findIndex((player) => player.id === standing.player.id) %
-                        COLORS.length
-                    ];
+                  const color = chartColor(championship, standings, standing.player.id);
                   const isVisible = visible.has(standing.player.id);
 
                   return (

@@ -50,7 +50,7 @@ export type Forecast = {
 export type ChartPoint = {
   stage: number;
   cumulativePoints: number;
-  rank: number;
+  rank: number | null;
   isForecast: boolean;
   participated: boolean;
 };
@@ -281,7 +281,7 @@ export function buildForecasts(
       standing,
       future,
       cumulative,
-      final: total,
+      final: cumulative.at(-1) ?? standing.totalPoints,
       optimistic: total + uncertainty,
       pessimistic: Math.max(standing.totalPoints, total - uncertainty),
     };
@@ -375,61 +375,41 @@ export function buildVisibleChartSeries(
   const result = new Map<string, ChartPoint[]>();
   eligible.forEach((standing) => result.set(standing.player.id, []));
 
-  const historicalTotals = new Map<string, Map<number, number>>();
-
-  eligible.forEach((standing) => {
-    historicalTotals.set(
-      standing.player.id,
-      new Map(standing.history.map((snapshot) => [snapshot.stage, snapshot.cumulativePoints]))
-    );
-  });
-
+  const forecastByPlayer = new Map(forecasts.map((forecast) => [forecast.playerId, forecast]));
   const lastStage = includeForecast ? championship.totalStages : championship.completedStages;
 
   for (let stage = 1; stage <= lastStage; stage += 1) {
-    const stageValues = eligible.map((standing) => {
-      if (stage <= championship.completedStages) {
-        return {
-          playerId: standing.player.id,
-          points: historicalTotals.get(standing.player.id)?.get(stage) ?? 0,
-        };
-      }
-
-      const forecast = forecasts.find((item) => item.playerId === standing.player.id);
+    const isForecast = stage > championship.completedStages;
+    // Rank the entire field first. Visibility and trend eligibility only select lines.
+    // Players without a forecast retain their earned points, as in buildForecasts.
+    const stageValues = standings.map((standing) => {
+      const snapshot = standing.history.find((item) => item.stage === stage);
+      const forecast = forecastByPlayer.get(standing.player.id);
       return {
-        playerId: standing.player.id,
-        points:
-          forecast?.projectedPointsByStage[stage - championship.completedStages - 1] ??
-          standing.totalPoints,
+        standing,
+        points: isForecast
+          ? (forecast?.projectedPointsByStage[stage - championship.completedStages - 1] ??
+            standing.totalPoints)
+          : (snapshot?.cumulativePoints ?? 0),
+        rank: snapshot?.overallRank ?? null,
       };
     });
+    const projectedOrder = isForecast
+      ? [...stageValues].sort((a, b) => b.points - a.points || a.standing.rank - b.standing.rank)
+      : [];
+    const projectedRanks = new Map(
+      projectedOrder.map((entry, index) => [entry.standing.player.id, index + 1])
+    );
 
-    const ranked =
-      stage <= championship.completedStages
-        ? rankPlayersAtStage(
-            championship,
-            stageValues.map((entry) => entry.playerId),
-            new Map(stageValues.map((entry) => [entry.playerId, entry.points])),
-            stage
-          ).map((playerId) => ({ playerId }))
-        : [...stageValues].sort((a, b) => b.points - a.points);
-    const rankByPlayer = new Map(ranked.map((entry, index) => [entry.playerId, index + 1]));
-
-    eligible.forEach((standing) => {
-      const value = stageValues.find((entry) => entry.playerId === standing.player.id);
-      if (!value) return;
-
+    for (const { standing, points, rank } of stageValues) {
       result.get(standing.player.id)?.push({
         stage,
-        cumulativePoints: value.points,
-        rank: rankByPlayer.get(standing.player.id) ?? 1,
-        isForecast: stage > championship.completedStages,
-        participated:
-          stage <= championship.completedStages
-            ? Boolean(getResult(championship, standing.player.id, stage))
-            : true,
+        cumulativePoints: points,
+        rank: isForecast ? (projectedRanks.get(standing.player.id) ?? null) : rank,
+        isForecast,
+        participated: isForecast || Boolean(getResult(championship, standing.player.id, stage)),
       });
-    });
+    }
   }
 
   return result;

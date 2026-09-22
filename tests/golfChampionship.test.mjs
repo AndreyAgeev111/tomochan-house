@@ -96,7 +96,7 @@ test("historical chart uses the same tie breaker as standings", () => {
   assert.equal(series.get("b")[1].rank, 1);
   const onlyA = buildVisibleChartSeries(data, standings, [], ["a"], false);
   assert.equal(onlyA.size, 1);
-  assert.ok(onlyA.get("a").every((point) => point.rank === 1));
+  assert.deepEqual(onlyA.get("a"), series.get("a"));
 });
 
 test("forecasts require two appearances and stay within the scoring range", () => {
@@ -147,4 +147,46 @@ test("published player IDs are opaque and cannot expose names", () => {
   const ids = new Set(golfChampionship.players.map((player) => player.id));
   assert.equal(ids.size, golfChampionship.players.length);
   assert.ok(golfChampionship.results.every((result) => ids.has(result.playerId)));
+});
+
+test("chart ranks include one-round opponents and do not change with visibility", () => {
+  const data = fixture([
+    [1, "a", 10],
+    [2, "a", 10],
+    [1, "b", 1],
+  ]);
+  const standings = buildStandings(data);
+  const forecasts = buildForecasts(data, standings);
+  const series = buildVisibleChartSeries(data, standings, forecasts, ["a", "b"], true);
+  assert.equal(series.has("b"), false);
+  assert.equal(series.get("a")[1].rank, 2);
+  assert.equal(series.get("a").at(-1).rank, forecasts[0].projectedRank);
+  assert.deepEqual(
+    buildVisibleChartSeries(data, standings, forecasts, ["a"], true).get("a"),
+    series.get("a")
+  );
+});
+
+test("all real chart histories match standings and every subset preserves ranks and forecasts", () => {
+  const standings = buildStandings(golfChampionship);
+  const forecasts = buildForecasts(golfChampionship, standings);
+  const ids = standings.filter((s) => s.appearances >= 2).map((s) => s.player.id);
+  const all = buildVisibleChartSeries(golfChampionship, standings, forecasts, ids, true);
+  for (let mask = 0; mask < 2 ** ids.length; mask++) {
+    const selected = ids.filter((_, index) => mask & (1 << index));
+    const subset = buildVisibleChartSeries(golfChampionship, standings, forecasts, selected, true);
+    assert.equal(subset.size, selected.length);
+    for (const id of selected) assert.deepEqual(subset.get(id), all.get(id));
+  }
+  for (const [id, points] of all) {
+    const standing = standings.find((s) => s.player.id === id);
+    for (const point of points.filter((p) => !p.isForecast)) {
+      assert.equal(
+        point.rank,
+        standing.history.find((h) => h.stage === point.stage)?.overallRank ?? null
+      );
+    }
+    assert.equal(points[golfChampionship.completedStages - 1].rank, standing.rank);
+    assert.equal(points.at(-1).rank, forecasts.find((f) => f.playerId === id).projectedRank);
+  }
 });
