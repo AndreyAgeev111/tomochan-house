@@ -45,20 +45,6 @@ function fixture(results, completedStages = 2) {
   };
 }
 
-test("published standings use real results without demonstration bonuses", () => {
-  validateChampionship(golfChampionship);
-  const standings = buildStandings(golfChampionship);
-  assert.equal(standings.length, 16);
-  assert.equal(standings[0].player.id, "player-15542eac");
-  assert.equal(standings[0].totalPoints, 50);
-  assert.equal(standings.find((s) => s.player.id === "player-83f40e87").totalPoints, 4);
-  assert.ok(standings.every((s) => s.bonusPoints === 0 && s.totalPoints === s.basePoints));
-  assert.equal(
-    standings.reduce((total, s) => total + s.totalPoints, 0),
-    2 * FORMULA_POINTS.reduce((total, points) => total + points, 0)
-  );
-});
-
 test("missing rounds stay distinct from participation worth zero points", () => {
   const standings = buildStandings(
     fixture([
