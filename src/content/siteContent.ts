@@ -378,8 +378,8 @@ export const siteContent = {
       },
       { date: "毎月末日", event: "特別メニュー登場", icon: "✨" },
       {
-        date: "2026年9月22日",
-        event: "第4回ゴルフコンペ開催",
+        date: "2026年11月17日",
+        event: "第5回ゴルフコンペ開催",
         icon: "⛳",
         isSpecial: true,
       },
@@ -389,36 +389,36 @@ export const siteContent = {
       { date: "年末年始", reason: "要確認" },
     ],
     calendar: {
-      month: 9,
+      month: 10,
       year: 2026,
-      closedDates: [1, 6, 15, 21, 23, 27],
-      specialDates: [{ date: 22, label: "ゴルフコンペ開催", emoji: "⛳", color: "yellow" }],
+      closedDates: [4, 5, 12, 13, 18, 19, 26, 27],
+      specialDates: [],
     },
     specialEvent: {
-      title: "ゴルフコンペ 第4回",
-      date: "2026年9月22日（火）",
-      description: "ともちゃん家ゴルフコンペ第4回を開催します。",
+      title: "ゴルフコンペ 第5回",
+      date: "2026年11月17日（火）",
+      description: "ともちゃん家ゴルフコンペ第5回を開催します。",
       image: "/images/events/golf-tournament.webp",
       details: [
         {
           icon: "📍",
           label: "会場",
-          value: "大宮国際カントリークラブ（埼玉県さいたま市西区宝来910）",
+          value: "ゴールド佐野カントリークラブ（栃木県佐野市岩崎町1616）",
         },
         {
           icon: "🕘",
           label: "集合時間",
-          value: "9時15分",
+          value: "7時45分",
         },
         {
           icon: "🏌️",
           label: "スタート時間",
-          value: "9時59分（4組）",
+          value: "8時00分（4組）",
         },
         {
           icon: "💴",
           label: "プレイ料金",
-          value: "18,500円",
+          value: "13,990円",
         },
         {
           icon: "🍻",
