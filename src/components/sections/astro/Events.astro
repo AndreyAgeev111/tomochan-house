@@ -2,6 +2,7 @@
 import SectionTitle from "../../common/astro/SectionTitle.astro";
 import ScrollReveal from "../../common/astro/ScrollReveal.astro";
 import Calendar from "../react/Calendar";
+import BirthdayEvent from "./BirthdayEvent.astro";
 import { siteContent } from "../../../content/siteContent";
 
 const { events } = siteContent;
@@ -19,36 +20,35 @@ const { events } = siteContent;
           </h3>
           <div class="space-y-3 md:space-y-4">
             {
-              events.monthlyEvents.map((event) => (
-                <div
-                  class={`flex gap-3 md:gap-4 p-3 md:p-4 rounded-lg transition-colors ${
-                    "isSpecial" in event && event.isSpecial
-                      ? "bg-accent-light border-l-4 border-accent-dark hover:bg-accent"
-                      : "bg-warm-50 hover:bg-warm-100"
-                  }`}
-                >
-                  <span class="text-2xl flex-shrink-0">{event.icon}</span>
-                  <div class="flex-1">
-                    <a
-                      href={
-                        "isSpecial" in event && event.isSpecial ? "#special-event-card" : undefined
-                      }
-                      class={"isSpecial" in event && event.isSpecial ? "cursor-pointer" : ""}
-                    >
-                      <p
-                        class={`font-bold ${"isSpecial" in event && event.isSpecial ? "text-warm-900 hover:underline" : "text-warm-900"}`}
-                      >
+              events.monthlyEvents.map((event) => {
+                const href = "href" in event ? event.href : undefined;
+                const Tag = href ? "a" : "div";
+                const isBirthday = "theme" in event && event.theme === "birthday";
+                return (
+                  <Tag
+                    href={href}
+                    class={`flex gap-3 md:gap-4 p-3 md:p-4 rounded-lg transition-colors ${
+                      isBirthday
+                        ? "bg-pink-50 border-l-4 border-pink-500 hover:bg-pink-100"
+                        : "isSpecial" in event && event.isSpecial
+                          ? "bg-accent-light border-l-4 border-accent-dark hover:bg-accent"
+                          : "bg-warm-50 hover:bg-warm-100"
+                    }`}
+                  >
+                    <span class="text-2xl flex-shrink-0" aria-hidden="true">
+                      {event.icon}
+                    </span>
+                    <div class="flex-1 min-w-0">
+                      <p class={`font-bold ${isBirthday ? "text-pink-900" : "text-warm-900"}`}>
                         {event.event}
                       </p>
-                      <p
-                        class={`text-sm ${"isSpecial" in event && event.isSpecial ? "text-warm-800 hover:text-warm-900" : "text-warm-700"}`}
-                      >
+                      <p class={`text-sm ${isBirthday ? "text-pink-800" : "text-warm-700"}`}>
                         {event.date}
                       </p>
-                    </a>
-                  </div>
-                </div>
-              ))
+                    </div>
+                  </Tag>
+                );
+              })
             }
           </div>
         </div>
@@ -64,6 +64,8 @@ const { events } = siteContent;
         />
       </ScrollReveal>
     </div>
+
+    <BirthdayEvent event={events.birthdayEvent} />
 
     {
       events.specialEvent && (

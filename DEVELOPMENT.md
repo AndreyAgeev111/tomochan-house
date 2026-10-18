@@ -60,6 +60,8 @@ JavaScript: MapWithMarker renders static markup without a hydration directive.
 - Curtain, floating hero cat and scroll cue live in `global.css` and `Hero.astro`.
 - `WinkingCat.astro` blends the eye region of `public/cat-wink.webp` over `public/cat-face.webp`. Its six-second CSS
   cycle runs only while observed and the document is visible; reduced motion disables it.
+- `BirthdayEvent.astro` uses `birthdayCelebration.ts` for a four-second confetti, fanfare and balloon animation when
+  the birthday copy becomes visible, with an optional replay button. Reduced motion keeps the static decoration.
 - FAQ and golf components also use Framer Motion.
 - `animation.ts` and `animation.config.ts` are existing helper definitions, currently not imported by components. They
   are not the source of truth for all animation timings.
