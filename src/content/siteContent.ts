@@ -69,7 +69,8 @@ export const siteContent = {
     ],
     mascot: {
       name: "くーちゃん",
-      description: "ともちゃんの家族の一員。\nInstagramのストーリーに登場率高め！",
+      description:
+        "ともちゃん家の家族の一員\nInstagramのストーリーに登場率高め！\nセット料金は\n男性2500円 女性2000円\n何時間いても割増ないにゃん",
       emoji: "🐱",
     },
   },
@@ -371,11 +372,6 @@ export const siteContent = {
     intro: "今月の営業状況とイベント情報です。",
     note: "日曜・月曜も営業する日があります。\n最新情報はInstagramをご確認ください。",
     monthlyEvents: [
-      {
-        date: "毎週火曜",
-        event: "９２点以上はサワー1杯サービス",
-        icon: "🎤",
-      },
       { date: "毎月末日", event: "特別メニュー登場", icon: "✨" },
       {
         date: "2026年10月30日（金）・31日（土）",
