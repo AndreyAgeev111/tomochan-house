@@ -374,14 +374,6 @@ export const siteContent = {
     monthlyEvents: [
       { date: "毎月末日", event: "特別メニュー登場", icon: "✨" },
       {
-        date: "2026年10月30日（金）・31日（土）",
-        event: "ARISA バースデーパーティー",
-        icon: "🎂",
-        isSpecial: true,
-        theme: "birthday",
-        href: "#birthday-event-card",
-      },
-      {
         date: "2026年11月17日",
         event: "第5回ゴルフコンペ開催",
         icon: "⛳",
@@ -394,51 +386,10 @@ export const siteContent = {
       { date: "年末年始", reason: "要確認" },
     ],
     calendar: {
-      month: 10,
+      month: 11,
       year: 2026,
-      closedDates: [4, 5, 12, 13, 18, 19, 26, 27],
-      specialDates: [
-        {
-          date: 30,
-          label: "ARISA バースデー",
-          emoji: "🎂",
-          color: "pink",
-          href: "#birthday-event-card",
-        },
-        {
-          date: 31,
-          label: "ARISA バースデー",
-          emoji: "🎂",
-          color: "pink",
-          href: "#birthday-event-card",
-        },
-      ],
-    },
-    birthdayEvent: {
-      title: "バースデーパーティー",
-      name: "ARISA",
-      date: "2026年10月30日（金）・31日（土）",
-      description:
-        "ARISAのお誕生日を、みんなでお祝いしませんか？ともちゃん家で、おいしい料理とドリンク、カラオケを囲んで楽しいひとときを。一緒に乾杯しましょう！",
-      image: "/images/events/arisa-birthday.webp",
-      imageWidth: 720,
-      imageHeight: 1280,
-      details: [
-        {
-          icon: "🏮",
-          label: "会場",
-          value: "ともちゃん家（池袋駅 徒歩5分）",
-        },
-        {
-          icon: "🥂",
-          label: "みんなでお祝い",
-          value: "お食事・ドリンク・カラオケで、にぎやかな2日間を♪",
-        },
-      ],
-      cta: {
-        label: "ご予約・お問い合わせ",
-        href: "https://instagram.com/tomochan_house",
-      },
+      closedDates: [1, 3, 9, 10, 16, 22, 23, 24, 25],
+      specialDates: [],
     },
     specialEvent: {
       title: "ゴルフコンペ 第5回",

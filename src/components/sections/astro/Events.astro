@@ -2,7 +2,6 @@
 import SectionTitle from "../../common/astro/SectionTitle.astro";
 import ScrollReveal from "../../common/astro/ScrollReveal.astro";
 import Calendar from "../react/Calendar";
-import BirthdayEvent from "./BirthdayEvent.astro";
 import { siteContent } from "../../../content/siteContent";
 
 const { events } = siteContent;
@@ -64,8 +63,6 @@ const { events } = siteContent;
         />
       </ScrollReveal>
     </div>
-
-    <BirthdayEvent event={events.birthdayEvent} />
 
     {
       events.specialEvent && (
