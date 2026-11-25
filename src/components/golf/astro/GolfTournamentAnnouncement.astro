@@ -1,11 +1,6 @@
 ---
 import { golfTournament2027 as event } from "../../../content/golfTournament";
 import { siteContent } from "../../../content/siteContent";
-
-interface Props {
-  showSeasonLink?: boolean;
-}
-const { showSeasonLink = false } = Astro.props;
 ---
 
 <section id={event.id} class="golf-announcement" aria-labelledby={`${event.id}-title`}>
@@ -43,13 +38,6 @@ const { showSeasonLink = false } = Astro.props;
           電話でお問い合わせ
         </a>
       </div>
-      {
-        showSeasonLink && (
-          <a class="golf-season-link" href="/golf-results/2027/">
-            2027シーズンのページを見る
-          </a>
-        )
-      }
     </div>
   </div>
 </section>
@@ -150,8 +138,7 @@ const { showSeasonLink = false } = Astro.props;
   .golf-announcement-cta:hover {
     background: #234632;
   }
-  .golf-announcement-phone,
-  .golf-season-link {
+  .golf-announcement-phone {
     display: inline-flex;
     align-items: center;
     min-height: 44px;
@@ -160,9 +147,6 @@ const { showSeasonLink = false } = Astro.props;
     font-weight: 700;
     text-decoration: underline;
     text-underline-offset: 4px;
-  }
-  .golf-season-link {
-    margin-top: 0.75rem;
   }
   @media (max-width: 767px) {
     .golf-announcement-grid {

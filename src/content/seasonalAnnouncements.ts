@@ -1,5 +1,3 @@
-import { siteContent } from "./siteContent";
-
 export type SeasonalAnnouncement = {
   id: string;
   theme: "golf" | "anniversary" | "party";
@@ -9,7 +7,6 @@ export type SeasonalAnnouncement = {
   date: string | null;
   poster: { src: string; width: number; height: number; alt: string } | null;
   details: { label: string; value: string }[];
-  link?: { label: string; href: string };
 };
 
 // Confirmed details are transcribed from the owner's original posters.
@@ -36,7 +33,6 @@ export const seasonalAnnouncements: SeasonalAnnouncement[] = [
         value: "期間中は、お通しをいつもより豪華にご用意します。",
       },
     ],
-    link: { label: "Instagramでお問い合わせ", href: siteContent.business.instagramUrl },
   },
   {
     id: "year-end-party",
@@ -44,7 +40,7 @@ export const seasonalAnnouncements: SeasonalAnnouncement[] = [
     label: "YEAR-END PARTY",
     title: "忘年会のご予約受付中",
     description:
-      "一年の締めくくりに、ともちゃん家で忘年会はいかがですか？ご希望に合わせた内容をご相談いただけます。",
+      "一年の締めくくりに、ともちゃん家で忘年会はいかがですか？皆さまで楽しいひとときをお過ごしください。",
     date: "ご予約受付中",
     poster: {
       src: "/images/events/year-end-party-2026.webp",
@@ -57,11 +53,6 @@ export const seasonalAnnouncements: SeasonalAnnouncement[] = [
         label: "飲み放題・お食事",
         value: "ご希望に合わせてご相談に応じます。",
       },
-      {
-        label: "ご予約・ご相談",
-        value: "InstagramのDM、またはお電話でお問い合わせください。",
-      },
     ],
-    link: { label: "Instagramで予約・相談する", href: siteContent.business.instagramUrl },
   },
 ];
