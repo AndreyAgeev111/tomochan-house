@@ -1,0 +1,262 @@
+---
+interface Props {
+  snowfall?: boolean;
+}
+
+const { snowfall = false } = Astro.props;
+// The garland and snowfall never intercept navigation or readable page content.
+const ornaments = Array.from({ length: 12 }, (_, index) => ({
+  x: 60 + index * 120,
+  color: index % 2 === 0 ? "#9a4b54" : "#d7b56c",
+  delay: (index % 4) * 0.25,
+}));
+const flakes = Array.from({ length: 42 }, (_, index) => ({
+  left: (index * 37 + 11) % 100,
+  size: 2 + (index % 4),
+  duration: 17 + (index % 9) * 1.8,
+  delay: -((index * 7) % 32),
+  drift: ((index * 17) % 60) - 30,
+  opacity: 0.25 + (index % 4) * 0.08,
+}));
+---
+
+<div class="new-year-garland" aria-hidden="true">
+  <svg viewBox="0 0 1440 56" fill="none" preserveAspectRatio="xMidYMin slice">
+    <defs>
+      <pattern id="new-year-pine" x="0" y="0" width="120" height="42" patternUnits="userSpaceOnUse">
+        <path d="M-5 2Q60 33 125 2" stroke="#325646" stroke-width="5"></path>
+        <path
+          d="m5 5 7 13m1-11 11 15M24 12l7 13m5-10 6 13m7-11 5 12m8-11 1 13m11-14-4 12m16-15-6 13m18-17-7 14m18-19-8 15m19-21-7 15"
+          stroke="#52735a"
+          stroke-width="2.5"
+          stroke-linecap="round"></path>
+        <path
+          d="m8 8 10-3m8 9 12-5m11 8 10-7m13 7 7-9m16 7 5-9m16 4 3-9"
+          stroke="#6e8761"
+          stroke-width="2"
+          stroke-linecap="round"></path>
+      </pattern>
+    </defs>
+    <path d="M0 0h1440v42H0z" fill="url(#new-year-pine)"></path>
+    {
+      ornaments.map((ornament) => (
+        <g transform={`translate(${ornament.x} 0)`}>
+          <path d="M0 25v9" stroke="#b99756" stroke-width="1.5" />
+          <rect x="-2.5" y="32" width="5" height="3" rx="1" fill="#ae8a48" />
+          <circle cx="0" cy="41" r="7" fill={ornament.color} />
+          <path
+            d="M-3 37a5 5 0 0 0-1 4"
+            stroke="#fff8df"
+            stroke-opacity="0.65"
+            stroke-linecap="round"
+          />
+          <path
+            class="new-year-spark"
+            style={`--spark-delay:${ornament.delay}s`}
+            d="m32 12 1.5 4.5L38 18l-4.5 1.5L32 24l-1.5-4.5L26 18l4.5-1.5z"
+            fill="#d7b56c"
+          />
+        </g>
+      ))
+    }
+  </svg>
+</div>
+
+{
+  snowfall && (
+    <>
+      <div class="winter-weather" data-winter-weather aria-hidden="true">
+        {flakes.map((flake) => (
+          <span
+            class="winter-flake"
+            style={`--flake-left:${flake.left}%;--flake-size:${flake.size}px;--flake-duration:${flake.duration}s;--flake-delay:${flake.delay}s;--flake-drift:${flake.drift}px;--flake-opacity:${flake.opacity}`}
+          >
+            <i />
+          </span>
+        ))}
+      </div>
+      <button
+        type="button"
+        class="winter-snow-toggle"
+        data-winter-snow-toggle
+        aria-label="雪のアニメーション"
+        aria-pressed="false"
+        hidden
+      >
+        <span class="winter-snow-toggle-icon" aria-hidden="true">
+          ❄
+        </span>
+        <span data-winter-snow-label>雪を止める</span>
+      </button>
+    </>
+  )
+}
+
+<script>
+  import { initWinterWeather } from "../../../utils/winterWeather";
+  initWinterWeather();
+</script>
+
+<style>
+  .new-year-garland {
+    position: absolute;
+    z-index: 20;
+    top: 4.375rem;
+    inset-inline: 0;
+    height: 3.5rem;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .new-year-garland svg {
+    display: block;
+    width: 100%;
+    height: 3.5rem;
+  }
+
+  .new-year-spark {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .winter-weather {
+    position: fixed;
+    inset: 0;
+    z-index: 25;
+    overflow: hidden;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .winter-weather:not(.is-snowing) {
+    visibility: hidden;
+  }
+
+  .winter-flake {
+    position: absolute;
+    top: -2rem;
+    left: var(--flake-left);
+    opacity: 0;
+    animation: winter-snow-fall var(--flake-duration) var(--flake-delay) linear infinite;
+    animation-play-state: paused;
+  }
+
+  .winter-flake i {
+    display: block;
+    width: var(--flake-size);
+    height: var(--flake-size);
+    border-radius: 50%;
+    background: #f7fcff;
+    box-shadow: 0 0 3px #6b97a970;
+  }
+
+  .is-snowing .winter-flake {
+    animation-play-state: running;
+  }
+
+  .winter-snow-toggle {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    z-index: 25;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0.5rem 0.9rem;
+    border: 1px solid #c9dbdb;
+    border-radius: 999px;
+    color: #3d5f57;
+    background: #fafffff2;
+    box-shadow: 0 3px 14px #35564a12;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .winter-snow-toggle[hidden] {
+    display: none;
+  }
+
+  .winter-snow-toggle:hover {
+    background: #eaf4f2;
+  }
+
+  .winter-snow-toggle:focus-visible {
+    outline: 3px solid #526e60;
+    outline-offset: 3px;
+  }
+
+  .winter-snow-toggle-icon {
+    color: #668e9e;
+    font-size: 1.25rem;
+  }
+
+  :global(.izakaya-site > header) {
+    border-bottom-color: #bd9a5b;
+  }
+
+  :global(.izakaya-site .championship-hero) {
+    padding-top: 9rem;
+  }
+
+  :global(.izakaya-site > footer) {
+    border-top: 3px solid #b79a5e;
+    background: #29483d;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .new-year-spark {
+      animation: new-year-twinkle 1.6s var(--spark-delay) ease-in-out 2;
+    }
+  }
+
+  @keyframes winter-snow-fall {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, -2rem, 0);
+    }
+    8%,
+    90% {
+      opacity: var(--flake-opacity);
+    }
+    100% {
+      opacity: 0;
+      transform: translate3d(var(--flake-drift), calc(100vh + 4rem), 0);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .winter-flake:nth-child(n + 23) {
+      display: none;
+    }
+
+    .winter-snow-toggle {
+      bottom: calc(5.25rem + env(safe-area-inset-bottom));
+      left: 0.75rem;
+      padding-inline: 0.75rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .winter-weather,
+    .winter-snow-toggle {
+      display: none;
+    }
+  }
+
+  @keyframes new-year-twinkle {
+    50% {
+      opacity: 0.35;
+      transform: scale(0.65);
+    }
+  }
+
+  @media print {
+    .new-year-garland,
+    .winter-weather,
+    .winter-snow-toggle {
+      display: none;
+    }
+  }
+</style>

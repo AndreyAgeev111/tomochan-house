@@ -1,0 +1,149 @@
+---
+import WinterTree from "./WinterTree.astro";
+const roadsideTrees = Array.from({ length: 28 });
+---
+
+<div class="winter-journey" data-winter-journey>
+  <svg
+    class="winter-journey-trail"
+    data-winter-trail
+    aria-hidden="true"
+    focusable="false"
+    preserveAspectRatio="none"
+    fill="none"
+  >
+    <path class="winter-trail-edge" data-winter-trail-path></path>
+    <path class="winter-trail-snow" data-winter-trail-path></path>
+    <path class="winter-trail-steps" data-winter-trail-path></path>
+  </svg>
+  <div class="winter-journey-roadside" aria-hidden="true">
+    {
+      roadsideTrees.map(() => (
+        <div class="winter-roadside-tree" data-winter-roadside-tree>
+          <WinterTree />
+        </div>
+      ))
+    }
+  </div>
+  <slot />
+</div>
+<script>
+  import { initWinterJourney } from "../../../utils/winterJourney";
+  initWinterJourney();
+</script>
+<style>
+  .winter-journey {
+    --winter-gutter: clamp(1.75rem, 5vw, 4.5rem);
+    --winter-trail-width: 28px;
+    position: relative;
+    isolation: isolate;
+    background: linear-gradient(180deg, #f4f7f4, #eaf2f2 40%, #f6f5ed 75%, #eef5f3);
+  }
+  .winter-journey-trail {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  .winter-journey-trail path {
+    vector-effect: non-scaling-stroke;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .winter-trail-edge {
+    stroke: #c7dfe3;
+    stroke-width: var(--winter-trail-width);
+  }
+  .winter-trail-snow {
+    stroke: #fcfefe;
+    stroke-width: calc(var(--winter-trail-width) - 4px);
+  }
+  .winter-trail-steps {
+    stroke: #a9c6d1;
+    stroke-width: 2px;
+    stroke-dasharray: 2 18;
+  }
+  .winter-journey-roadside {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    overflow: hidden;
+    pointer-events: none;
+    user-select: none;
+  }
+  .winter-roadside-tree {
+    position: absolute;
+    width: 2.6rem;
+    height: 3.55rem;
+    visibility: hidden;
+  }
+  .winter-roadside-tree[data-positioned] {
+    visibility: visible;
+  }
+  .winter-journey > :global(section) {
+    position: relative;
+    background: transparent;
+  }
+  .winter-journey > :global(section)::before {
+    content: "";
+    position: absolute;
+    inset: 1.25rem var(--winter-gutter);
+    z-index: 2;
+    border: 1px solid #d9e3df;
+    border-radius: 1.75rem;
+    background: #fff;
+    box-shadow: 0 8px 28px #36574a0c;
+    pointer-events: none;
+  }
+  .winter-journey > :global(section:nth-of-type(even))::before {
+    background: #fffdf8;
+  }
+  .winter-journey > :global(section) > :global(*) {
+    position: relative;
+    z-index: 3;
+  }
+  .winter-journey > :global(section) > :global(div) {
+    width: calc(100% - 2 * var(--winter-gutter));
+    margin-inline: auto;
+  }
+  :global(.izakaya-home) .winter-journey :global(.card) {
+    background: #fff;
+    border-color: #d6dfd8;
+    box-shadow: 0 6px 20px #36574a12;
+  }
+  .winter-journey :global([data-reveal-content]),
+  .winter-journey :global([data-reveal="photos"] button > div) {
+    opacity: 1 !important;
+  }
+  :global(.izakaya-home) .winter-journey :global(.text-warm-700),
+  :global(.izakaya-home) .winter-journey :global(.text-warm-600) {
+    color: #795f52;
+  }
+  @media (max-width: 767px) {
+    .winter-journey {
+      --winter-trail-width: 20px;
+    }
+    .winter-roadside-tree {
+      width: 1.8rem;
+      height: 2.5rem;
+    }
+    .winter-journey > :global(section)::before {
+      inset-block: 0.75rem;
+      border-radius: 1.25rem;
+    }
+  }
+  @media print {
+    .winter-journey-trail,
+    .winter-journey-roadside {
+      display: none;
+    }
+    .winter-journey {
+      background: none;
+    }
+    .winter-journey > :global(section)::before {
+      box-shadow: none;
+    }
+  }
+</style>

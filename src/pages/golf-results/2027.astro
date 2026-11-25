@@ -1,0 +1,35 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import GolfPageHero from "../../components/golf/astro/GolfPageHero.astro";
+import SeasonNavigation from "../../components/golf/astro/SeasonNavigation.astro";
+import SeasonChampion from "../../components/golf/astro/SeasonChampion.astro";
+import GolfChampionship from "../../components/golf/react/GolfChampionship";
+import { siteContent } from "../../content/siteContent";
+import { golfChampionship2027 } from "../../content/golfChampionship";
+import { validateChampionship } from "../../utils/golfChampionshipUtils";
+
+validateChampionship(golfChampionship2027);
+---
+
+<MainLayout
+  title="2027年 ゴルフチャンピオンシップ | ともちゃん家"
+  description="ともちゃん家ゴルフチャンピオンシップ2027シーズンはまもなく開幕。参加者・大会結果は、決まり次第お知らせします。"
+>
+  <GolfPageHero championship={golfChampionship2027} />
+  <SeasonNavigation championship={golfChampionship2027} />
+  <SeasonChampion championship={golfChampionship2027} />
+  {
+    golfChampionship2027.results.length > 0 ? (
+      <GolfChampionship
+        client:load
+        championship={golfChampionship2027}
+        instagramUrl={siteContent.business.instagramUrl}
+      />
+    ) : (
+      <GolfChampionship
+        championship={golfChampionship2027}
+        instagramUrl={siteContent.business.instagramUrl}
+      />
+    )
+  }
+</MainLayout>

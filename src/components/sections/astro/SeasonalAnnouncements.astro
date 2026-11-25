@@ -1,0 +1,282 @@
+---
+import { seasonalAnnouncements } from "../../../content/seasonalAnnouncements";
+import { siteContent } from "../../../content/siteContent";
+
+const icons = { golf: "⛳", anniversary: "🥂", party: "🎍" };
+---
+
+<section class="seasonal-announcements" aria-labelledby="seasonal-announcements-title">
+  <div class="seasonal-heading">
+    <p>CELEBRATE TOGETHER</p>
+    <h3 id="seasonal-announcements-title">2周年と、年末の乾杯。</h3>
+    <span>ともちゃん家で、またひとつ素敵な思い出を。</span>
+  </div>
+  <div class="seasonal-grid">
+    {
+      seasonalAnnouncements.map((event) => (
+        <article
+          id={event.id}
+          class:list={["seasonal-card", `seasonal-card-${event.theme}`]}
+          aria-labelledby={`${event.id}-title`}
+        >
+          {event.poster ? (
+            <a href={event.poster.src} class="seasonal-poster-link" aria-label={event.poster.alt}>
+              <img
+                src={event.poster.src}
+                alt={event.poster.alt}
+                width={event.poster.width}
+                height={event.poster.height}
+                loading="lazy"
+                decoding="async"
+                class="seasonal-poster"
+              />
+            </a>
+          ) : (
+            <div class="seasonal-art" aria-hidden="true">
+              <span class="seasonal-art-spark">✦</span>
+              <span class="seasonal-icon">{icons[event.theme]}</span>
+              <span class="seasonal-art-spark">✦</span>
+              <span class="seasonal-art-label">{event.label}</span>
+            </div>
+          )}
+          <div class="seasonal-copy">
+            <p class="seasonal-label">{event.label}</p>
+            <p class:list={["seasonal-date", { "is-pending": !event.date }]}>
+              {event.date ?? "詳細は近日公開"}
+            </p>
+            <h4 id={`${event.id}-title`}>{event.title}</h4>
+            <p class="seasonal-description">{event.description}</p>
+            {event.details.length > 0 && (
+              <dl class="seasonal-details">
+                {event.details.map((detail) => (
+                  <div>
+                    <dt>{detail.label}</dt>
+                    <dd>{detail.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            )}
+            <div class="seasonal-actions">
+              {event.link && (
+                <a class="seasonal-link" href={event.link.href}>
+                  {event.link.label}
+                </a>
+              )}
+              <a class="seasonal-phone" href={`tel:${siteContent.business.phone}`}>
+                電話でお問い合わせ
+              </a>
+            </div>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .seasonal-announcements {
+    margin-block: 0 3.5rem;
+  }
+
+  .seasonal-heading {
+    margin-bottom: 1.75rem;
+    text-align: center;
+  }
+
+  .seasonal-heading > p {
+    color: #7b414b;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+
+  .seasonal-heading h3 {
+    margin-block: 0.5rem;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+  }
+
+  .seasonal-heading > span {
+    color: #755d50;
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .seasonal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .seasonal-card {
+    --event-color: #354929;
+    --event-glow: #afbf9138;
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid #e0d4bf;
+    border-radius: 1.25rem;
+    background: #fffdfa;
+    box-shadow: 0 6px 20px #5d4a420a;
+    scroll-margin-top: 6rem;
+  }
+
+  .seasonal-card-anniversary {
+    --event-color: #63343c;
+    --event-glow: #c99da240;
+  }
+
+  .seasonal-card-party {
+    --event-color: #344b48;
+    --event-glow: #b0c8b838;
+  }
+
+  .seasonal-art {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.75rem;
+    min-height: 10.5rem;
+    padding: 1.25rem 1rem 3.25rem;
+    color: #efd697;
+    background:
+      radial-gradient(ellipse at 50% 30%, var(--event-glow), transparent 70%), var(--event-color);
+  }
+
+  .seasonal-art::before {
+    content: "";
+    position: absolute;
+    inset: 0.65rem;
+    border: 1px solid #e7c98955;
+    border-radius: 0.75rem;
+    pointer-events: none;
+  }
+
+  .seasonal-icon {
+    font-size: 3.5rem;
+    line-height: 1.25;
+  }
+
+  .seasonal-art-spark {
+    font-size: 1.25rem;
+  }
+
+  .seasonal-art-label {
+    position: absolute;
+    inset-inline: 1rem;
+    bottom: 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+
+  .seasonal-poster-link,
+  .seasonal-poster {
+    display: block;
+    width: 100%;
+  }
+
+  .seasonal-poster {
+    height: auto;
+  }
+
+  .seasonal-copy {
+    padding: 1.5rem;
+  }
+
+  .seasonal-label {
+    margin-bottom: 0.5rem;
+    color: var(--event-color);
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+
+  .seasonal-date {
+    margin-bottom: 0.65rem;
+    color: var(--event-color);
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .seasonal-date.is-pending {
+    display: inline-block;
+    padding: 0.3rem 0.65rem;
+    border: 1px solid #e0d4bf;
+    border-radius: 999px;
+    color: #755d50;
+    background: #f5f1e8;
+    font-size: 0.875rem;
+  }
+
+  .seasonal-copy h4 {
+    margin-bottom: 0.75rem;
+    color: var(--event-color);
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+
+  .seasonal-description {
+    color: #755d50;
+    font-size: 1rem;
+    line-height: 1.9;
+    white-space: pre-line;
+  }
+
+  .seasonal-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .seasonal-link,
+  .seasonal-phone {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--event-color);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+  }
+
+  .seasonal-link:hover,
+  .seasonal-phone:hover {
+    text-decoration-thickness: 2px;
+  }
+
+  .seasonal-details {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e0d4bf;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .seasonal-details dt {
+    color: var(--event-color);
+    font-weight: 700;
+  }
+
+  .seasonal-details dd {
+    color: #755d50;
+    white-space: pre-line;
+  }
+
+  @media (max-width: 767px) {
+    .seasonal-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .seasonal-art {
+      min-height: 9rem;
+    }
+  }
+</style>

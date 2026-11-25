@@ -1,3 +1,5 @@
+import { golfTournament2027 } from "./golfTournament";
+
 export const siteContent = {
   business: {
     name: "ともちゃん家",
@@ -374,11 +376,25 @@ export const siteContent = {
     monthlyEvents: [
       { date: "毎月末日", event: "特別メニュー登場", icon: "✨" },
       {
-        date: "2026年11月17日",
-        event: "第5回ゴルフコンペ開催",
+        date: "2026年12月11日（金）〜13日（日）",
+        event: "ともちゃん家 2周年記念イベント",
+        icon: "🥂",
+        isSpecial: true,
+        href: "#shop-anniversary",
+      },
+      {
+        date: "ご予約・ご相談受付中",
+        event: "忘年会のご予約受付中",
+        icon: "🍻",
+        isSpecial: true,
+        href: "#year-end-party",
+      },
+      {
+        date: golfTournament2027.date,
+        event: "2027年 最初のゴルフコンペ",
         icon: "⛳",
         isSpecial: true,
-        href: "#special-event-card",
+        href: `#${golfTournament2027.id}`,
       },
     ],
     holidays: [
@@ -391,58 +407,7 @@ export const siteContent = {
       closedDates: [1, 3, 9, 10, 16, 22, 23, 24, 25],
       specialDates: [],
     },
-    specialEvent: {
-      title: "ゴルフコンペ 第5回",
-      date: "2026年11月17日（火）",
-      description: "ともちゃん家ゴルフコンペ第5回を開催します。",
-      image: "/images/events/golf-tournament.webp",
-      details: [
-        {
-          icon: "📍",
-          label: "会場",
-          value: "ゴールド佐野カントリークラブ（栃木県佐野市岩崎町1616）",
-        },
-        {
-          icon: "🕘",
-          label: "集合時間",
-          value: "7時45分",
-        },
-        {
-          icon: "🏌️",
-          label: "スタート時間",
-          value: "8時00分（4組）",
-        },
-        {
-          icon: "💴",
-          label: "プレイ料金",
-          value: "13,990円",
-        },
-        {
-          icon: "🍻",
-          label: "会費",
-          value: "8,000円（景品代・飲み放題・食事代込み）",
-        },
-        {
-          icon: "🏠",
-          label: "打ち上げ",
-          value: "プレイ終了後、ともちゃん家で開催",
-        },
-        {
-          icon: "🏆",
-          label: "賞品",
-          value: "1位・2位・3位・ブービー賞",
-        },
-        {
-          icon: "⚠️",
-          label: "ルール",
-          value: "スタートフェアウェイ外し500円・新ペリ・ドラコン・ニアピンあり",
-        },
-      ],
-      cta: {
-        label: "詳細・申込はInstagramへ",
-        href: "https://instagram.com/tomochan_house",
-      },
-    },
+    specialEvent: golfTournament2027,
   },
 
   gallery: {
@@ -599,26 +564,31 @@ export const siteContent = {
 
   news: [
     {
+      id: 3,
+      date: "2026-11-25",
+      title: "2027年初コンペ 参加受付中",
+      content:
+        "1月20日（水）、プレステージカントリークラブで開催。集合7時25分・スタート7時56分。プレイ後はともちゃん家で打ち上げ！",
+      icon: "⛳",
+      href: `#${golfTournament2027.id}`,
+    },
+    {
       id: 1,
-      date: "2024-12-13",
-      title: "オープンしました！",
-      content: "ともちゃん家がオープンしました。皆さんのご来店をお待ちしています。",
-      icon: "🎉",
+      date: "2026-11-25",
+      title: "2周年記念イベント",
+      content:
+        "12月11日（金）〜13日（日）の3日間、皆さまと2周年をお祝いします。期間中は、お通しがいつもより豪華に！",
+      icon: "🥂",
+      href: "#shop-anniversary",
     },
     {
       id: 2,
-      date: "2024-12-13",
-      title: "Instagram始めました",
-      content: "最新情報・毎日のおすすめメニューを配信中。フォローお願いします！",
-      icon: "📱",
-    },
-    {
-      id: 3,
-      date: "2025-12-13",
-      title: "一周年を迎えました！",
+      date: "2026-11-25",
+      title: "忘年会のご予約受付中",
       content:
-        "皆様のおかげでともちゃん家一周年を迎えることができました。これからもより楽しんで過ごしてもらえるように頑張ってまいります。\nよろしくお願いします。",
-      icon: "🎉",
+        "一年の締めくくりに乾杯。飲み放題・お食事など、ご希望に合わせてご相談に応じます。DMまたはお電話でどうぞ。",
+      icon: "🍻",
+      href: "#year-end-party",
     },
   ],
 } as const;

@@ -257,6 +257,13 @@ export function buildForecasts(
   standings = buildStandings(championship)
 ): Forecast[] {
   const remainingStages = Math.max(0, championship.totalStages - championship.completedStages);
+  if (
+    championship.status === "upcoming" ||
+    championship.status === "completed" ||
+    remainingStages === 0
+  ) {
+    return [];
+  }
 
   const eligible = standings.filter(
     (standing) => standing.appearances >= MIN_APPEARANCES_FOR_TREND
@@ -420,8 +427,29 @@ export function validateChampionship(championship: Championship) {
   const playerIds = new Set(championship.players.map((player) => player.id));
   const resultKeys = new Set<string>();
 
-  if (!Number.isInteger(championship.totalStages) || championship.totalStages < 1) {
-    errors.push("totalStages must be a positive integer.");
+  const isUpcoming = championship.status === "upcoming";
+  if (
+    !Number.isInteger(championship.totalStages) ||
+    championship.totalStages < (isUpcoming ? 0 : 1)
+  ) {
+    errors.push("totalStages must be a positive integer, or zero for an upcoming season.");
+  }
+  if (
+    isUpcoming &&
+    (championship.completedStages !== 0 ||
+      championship.results.length > 0 ||
+      championship.bonusActions.length > 0)
+  ) {
+    errors.push("An upcoming season cannot contain completed stages, results or bonus actions.");
+  }
+  if (
+    championship.status === "completed" &&
+    (championship.completedStages < 1 ||
+      championship.completedStages !== championship.totalStages ||
+      new Set(championship.results.map((result) => result.stage)).size !==
+        championship.completedStages)
+  ) {
+    errors.push("A completed season must have results for all scheduled stages.");
   }
   if (!Number.isInteger(championship.completedStages) || championship.completedStages < 0) {
     errors.push("completedStages must be a non-negative integer.");

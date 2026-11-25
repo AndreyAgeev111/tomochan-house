@@ -1,0 +1,5 @@
+Mode: built-in ImageGen edit
+Edit target: public/cat-face.webp
+Final asset: public/cat-face-happy-new-year.webp
+
+Use case: identity-preserve. Edit target: the supplied cat-face.webp, a transparent square illustration of Kuuchan's black-and-white cat head. Add only a festive red Santa hat with fluffy white trim and a white pom-pom, plus a small matching red Christmas cape/collar with white fur trim around the neck. Preserve the exact recognizable cat, black-and-white facial markings, green eyes, pink nose, whiskers, friendly expression, front-facing head-only composition and original illustration style. Keep the face unobstructed and all hat details comfortably inside a square frame. No body, scenery, lettering, extra characters or decorative objects. Deliver a clean cutout with a genuinely transparent background, preserving fine fur edges.

@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 
-export default function StickyNav() {
+export default function StickyNav({ pathname = "/" }: { pathname?: string }) {
   const [isMobile, setIsMobile] = useState(false);
-  const [pathname, setPathname] = useState("/");
 
   useEffect(() => {
     const check = () => {
       setIsMobile(window.innerWidth < 768);
-      setPathname(window.location.pathname);
     };
 
     check();
@@ -18,56 +16,63 @@ export default function StickyNav() {
 
   const isHome = pathname === "/";
   const isGolfResults = pathname.startsWith("/golf-results");
+  const isUpcomingSeason = pathname.startsWith("/golf-results/2027");
   const isGolf = isGolfResults || pathname.startsWith("/golf-rules");
   const golfHref = (hash: string) => (isGolfResults ? hash : `/golf-results/${hash}`);
   const homeHref = (hash: string) => (isHome ? hash : `/${hash}`);
 
   // Golf page: only page-relevant actions.
-  const quickLinks = isGolf
+  const quickLinks = isUpcomingSeason
     ? [
-        {
-          label: "ホーム",
-          href: "/",
-          icon: "🏮",
-        },
-        {
-          label: "ランキング",
-          href: golfHref("#leaderboard-title"),
-          icon: "🏆",
-        },
-        {
-          label: "推移",
-          href: golfHref("#analytics-title"),
-          icon: "📈",
-        },
+        { label: "ホーム", href: "/", icon: "🏮" },
+        { label: "2026シーズン", href: "/golf-results/", icon: "🏆" },
+        { label: "ルール", href: "/golf-rules/", icon: "⛳" },
       ]
-    : [
-        {
-          label: "ホーム",
-          href: homeHref("#home"),
-          icon: "🏮",
-        },
-        {
-          label: "メニュー",
-          href: homeHref("#menu"),
-          icon: "🍽️",
-        },
-        {
-          label: "営業カレンダー",
-          href: homeHref("#events"),
-          icon: "📅",
-        },
-        {
-          label: "ゴルフ結果",
-          href: "/golf-results/",
-          icon: "⛳",
-        },
-        {
-          label: "お問い合わせ",
-          href: homeHref("#contact"),
-          icon: "📱",
-        },
-      ];
+    : isGolf
+      ? [
+          {
+            label: "ホーム",
+            href: "/",
+            icon: "🏮",
+          },
+          {
+            label: "ランキング",
+            href: golfHref("#leaderboard-title"),
+            icon: "🏆",
+          },
+          {
+            label: "推移",
+            href: golfHref("#analytics-title"),
+            icon: "📈",
+          },
+        ]
+      : [
+          {
+            label: "ホーム",
+            href: homeHref("#home"),
+            icon: "🏮",
+          },
+          {
+            label: "メニュー",
+            href: homeHref("#menu"),
+            icon: "🍽️",
+          },
+          {
+            label: "営業カレンダー",
+            href: homeHref("#events"),
+            icon: "📅",
+          },
+          {
+            label: "ゴルフ結果",
+            href: "/golf-results/",
+            icon: "⛳",
+          },
+          {
+            label: "お問い合わせ",
+            href: homeHref("#contact"),
+            icon: "📱",
+          },
+        ];
 
   if (isMobile) {
     return (

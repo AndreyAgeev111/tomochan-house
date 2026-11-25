@@ -95,9 +95,11 @@ function Movement({ value, isNew }: { value: number | null; isNew?: boolean }) {
 function Podium({
   standings,
   onOpenPlayer,
+  isCompleted,
 }: {
   standings: Standing[];
   onOpenPlayer: (id: string) => void;
+  isCompleted: boolean;
 }) {
   const reduced = useReducedMotion();
   const topThree = standings.slice(0, 3);
@@ -116,7 +118,7 @@ function Podium({
           id="podium-title"
           className="scroll-mt-24 text-2xl md:text-3xl font-bold text-warm-900 mt-1"
         >
-          現在のトップ3
+          {isCompleted ? "シーズン最終トップ3" : "現在のトップ3"}
         </h2>
       </div>
 
@@ -514,7 +516,7 @@ function Leaderboard({
             id="leaderboard-title"
             className="scroll-mt-24 text-2xl md:text-3xl font-bold text-warm-900"
           >
-            総合ランキング
+            {championship.status === "completed" ? "シーズン最終ランキング" : "総合ランキング"}
           </h2>
           <a
             href="/golf-rules/"
@@ -572,6 +574,14 @@ function Leaderboard({
                           }`}
                         >
                           第{index + 1}戦
+                          {championship.stages.find((stage) => stage.stage === index + 1)?.date && (
+                            <span className="block mt-1 text-sm font-normal">
+                              {championship.stages
+                                .find((stage) => stage.stage === index + 1)
+                                ?.date.slice(5)
+                                .replace("-", "/")}
+                            </span>
+                          )}
                         </th>
                       )
                     )}
@@ -1070,7 +1080,13 @@ export default function GolfChampionship({
   const [visible, setVisible] = useState(() => new Set(eligibleIds));
   const [selected, setSelected] = useState("");
   const [mode, setMode] = useState<Mode>("rank");
-  const [showForecast, setShowForecast] = useState(false);
+  const [forecastRequested, setShowForecast] = useState(false);
+  const isCompleted = championship.status === "completed";
+  const canForecast =
+    championship.status !== "upcoming" &&
+    !isCompleted &&
+    championship.completedStages < championship.totalStages;
+  const showForecast = canForecast && forecastRequested;
   const [hovered, setHovered] = useState<Hovered>(null);
   const [profilePlayerId, setProfilePlayerId] = useState<string | null>(null);
 
@@ -1119,9 +1135,51 @@ export default function GolfChampionship({
     });
   };
 
+  if (standings.length === 0) {
+    return (
+      <section aria-labelledby="season-empty-title" className="px-4 py-12 md:py-16">
+        <div className="mx-auto max-w-3xl rounded-2xl border border-warm-200 bg-white px-6 py-12 text-center shadow-soft md:px-12">
+          <span className="text-5xl" aria-hidden="true">
+            ⛳
+          </span>
+          <p className="mt-6 text-sm font-bold tracking-widest text-forest-800">
+            A NEW SEASON AWAITS
+          </p>
+          <h2
+            id="season-empty-title"
+            className="mt-3 text-2xl font-bold leading-relaxed text-warm-900 md:text-3xl"
+          >
+            {championship.status === "upcoming"
+              ? "新シーズンはまもなく開幕"
+              : "結果はまだありません"}
+          </h2>
+          <p className="mt-4 text-base leading-loose text-warm-700">
+            参加者・大会結果は、決まり次第こちらでお知らせします。
+            <br />
+            シーズンの最初の一打から、みんなの記録を重ねていきましょう。
+          </p>
+          <div className="mt-7 flex flex-wrap justify-center gap-3">
+            <a
+              href="/golf-rules/"
+              className="rounded-full bg-forest-800 px-6 py-3 font-bold text-white hover:bg-forest-900"
+            >
+              ポイントルール
+            </a>
+            <a
+              href="/#events"
+              className="rounded-full border border-warm-300 px-6 py-3 font-bold text-warm-800 hover:bg-warm-50"
+            >
+              イベントのお知らせ
+            </a>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <>
-      <Podium standings={standings} onOpenPlayer={setProfilePlayerId} />
+      <Podium standings={standings} onOpenPlayer={setProfilePlayerId} isCompleted={isCompleted} />
 
       <Leaderboard
         championship={championship}
@@ -1150,11 +1208,12 @@ export default function GolfChampionship({
                     "トレンドは",
                     "2戦以上出場した",
                     "選手だけを表示します。",
-                    "1戦のみの成績から",
-                    "将来推移は作りません。",
+                    ...(canForecast ? ["1戦のみの成績から", "将来推移は作りません。"] : []),
                     "順位は全参加者の総合順位で、",
                     "選手の表示・非表示では変わりません。",
-                    "予測対象外の選手は現在のポイントを維持して比較します。",
+                    ...(canForecast
+                      ? ["予測対象外の選手は現在のポイントを維持して比較します。"]
+                      : []),
                   ]}
                 />
               </p>
@@ -1195,21 +1254,23 @@ export default function GolfChampionship({
                 </button>
               </div>
 
-              <button
-                type="button"
-                onClick={() => {
-                  setHovered(null);
-                  setShowForecast((value) => !value);
-                }}
-                aria-pressed={showForecast}
-                className={`px-4 py-2 rounded-lg text-sm font-bold border focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-dark ${
-                  showForecast
-                    ? "surface-forest text-white border-forest-800"
-                    : "bg-white text-warm-800 border-warm-300"
-                }`}
-              >
-                予測を表示
-              </button>
+              {canForecast && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setHovered(null);
+                    setShowForecast((value) => !value);
+                  }}
+                  aria-pressed={showForecast}
+                  className={`px-4 py-2 rounded-lg text-sm font-bold border focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-dark ${
+                    showForecast
+                      ? "surface-forest text-white border-forest-800"
+                      : "bg-white text-warm-800 border-warm-300"
+                  }`}
+                >
+                  予測を表示
+                </button>
+              )}
             </div>
           </div>
 

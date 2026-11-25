@@ -2,6 +2,8 @@
 import SectionTitle from "../../common/astro/SectionTitle.astro";
 import ScrollReveal from "../../common/astro/ScrollReveal.astro";
 import Calendar from "../react/Calendar";
+import SeasonalAnnouncements from "./SeasonalAnnouncements.astro";
+import GolfTournamentAnnouncement from "../../golf/astro/GolfTournamentAnnouncement.astro";
 import { siteContent } from "../../../content/siteContent";
 
 const { events } = siteContent;
@@ -10,6 +12,8 @@ const { events } = siteContent;
 <section id="events" class="py-12 md:py-20 bg-white">
   <div class="max-w-6xl mx-auto px-4">
     <SectionTitle title="営業カレンダー・イベント" subtitle={events.intro} />
+
+    <SeasonalAnnouncements />
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 mb-8 md:mb-12">
       <ScrollReveal>
@@ -64,57 +68,9 @@ const { events } = siteContent;
       </ScrollReveal>
     </div>
 
-    {
-      events.specialEvent && (
-        <ScrollReveal>
-          <div
-            id="special-event-card"
-            class="bg-gradient-to-br from-accent-50 to-warm-50 rounded-2xl overflow-hidden shadow-soft mb-12"
-          >
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
-              <div class="flex items-center justify-center">
-                <img
-                  src={events.specialEvent.image}
-                  alt={events.specialEvent.title}
-                  loading="lazy"
-                  decoding="async"
-                  width="889"
-                  height="1280"
-                  class="rounded-lg w-full h-auto object-cover shadow-md hover:shadow-lg transition-shadow"
-                />
-              </div>
-
-              <div>
-                <h3 class="text-3xl font-bold text-warm-900 mb-4">{events.specialEvent.title}</h3>
-                <p class="text-lg font-semibold text-warm-900 mb-3">{events.specialEvent.date}</p>
-                <p class="text-warm-700 mb-6 leading-relaxed">{events.specialEvent.description}</p>
-
-                <div class="space-y-3 mb-6">
-                  {events.specialEvent.details.map((detail) => (
-                    <div class="flex gap-3">
-                      <span class="text-xl flex-shrink-0">{detail.icon}</span>
-                      <div>
-                        <p class="font-semibold text-warm-900">{detail.label}</p>
-                        <p class="text-sm text-warm-600">{detail.value}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <a
-                  href={events.specialEvent.cta.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="inline-block bg-accent-dark text-white px-6 py-3 rounded-lg font-semibold hover:bg-warm-800 transition-colors"
-                >
-                  {events.specialEvent.cta.label}
-                </a>
-              </div>
-            </div>
-          </div>
-        </ScrollReveal>
-      )
-    }
+    <ScrollReveal>
+      <GolfTournamentAnnouncement showSeasonLink />
+    </ScrollReveal>
 
     <div class="bg-accent-light rounded-lg p-6 text-center">
       <p class="text-warm-900 font-semibold whitespace-pre-line">{events.note}</p>

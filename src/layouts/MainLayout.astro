@@ -3,6 +3,7 @@ import Header from "../components/layout/astro/Header.astro";
 import Footer from "../components/layout/astro/Footer.astro";
 import StickyNav from "../components/layout/react/StickyNav";
 import StructuredData from "../components/common/astro/StructuredData.astro";
+import NewYearDecor from "../components/common/astro/NewYearDecor.astro";
 import { siteContent } from "../content/siteContent";
 import "../styles/global.css";
 
@@ -83,7 +84,8 @@ const pageUrl = new URL(Astro.url.pathname, siteUrl).href;
 
   <body class:list={["izakaya-site", { "izakaya-home": Astro.url.pathname === "/" }]}>
     <Header />
-    <StickyNav client:load />
+    <NewYearDecor snowfall={Astro.url.pathname === "/"} />
+    <StickyNav client:load pathname={Astro.url.pathname} />
     <main>
       <slot />
     </main>

@@ -40,6 +40,7 @@ export type Championship = {
   id: string;
   title: string;
   season: string;
+  status?: "upcoming" | "active" | "completed";
   completedStages: number;
   totalStages: number;
   players: Player[];
@@ -50,8 +51,10 @@ export type Championship = {
 };
 
 /**
- * REAL TOURNAMENT RESULTS TRANSCRIBED FROM THE TWO SCORE SHEETS SUPPLIED
- * BY THE SITE OWNER.
+ * Real results transcribed from the owner's score sheets. The owner confirmed
+ * four scoring rounds in 2026: May, July, September and November. The earlier
+ * March event is outside this championship. Public players use nicknames or
+ * initials; source sheets and private identity mappings stay outside the site.
  *
  * Championship points are NOT stored here. They are derived from `rank`
  * using FORMULA_POINTS, so changing the scoring system later requires one
@@ -66,8 +69,9 @@ export const golfChampionship: Championship = {
   id: "tomochan-house-2026",
   title: "ともちゃん家 ゴルフチャンピオンシップ",
   season: "2026 SEASON",
-  completedStages: 3,
-  totalStages: 6,
+  status: "completed",
+  completedStages: 4,
+  totalStages: 4,
 
   stages: [
     {
@@ -83,6 +87,11 @@ export const golfChampionship: Championship = {
       stage: 3,
       date: "2026-09-22",
       location: "大宮国際カントリークラブ",
+    },
+    {
+      stage: 4,
+      date: "2026-11-17",
+      location: "ゴールド佐野カントリークラブ",
     },
   ],
 
@@ -106,6 +115,12 @@ export const golfChampionship: Championship = {
     { id: "player-7b2dccb9", name: "ペルー人（社長）" },
     { id: "player-4cb8e3d1", name: "もりし" },
     { id: "player-a7519f20", name: "しんちゃん" },
+    // These November entrants do not match any identity in the owner's
+    // pre-anonymization roster. Keep existing players' histories separate.
+    { id: "player-6b824d0a", name: "AY" },
+    { id: "player-45b18ef2", name: "かんちゃ" },
+    { id: "player-8c37d1a6", name: "じんじん" },
+    { id: "player-c0e294b7", name: "あべちゃん" },
   ],
 
   results: [
@@ -144,6 +159,18 @@ export const golfChampionship: Championship = {
     { stage: 3, playerId: "player-7b2dccb9", rank: 7, gross: 102, handicap: 30.4, net: 71.6 },
     { stage: 3, playerId: "player-83f40e87", rank: 8, gross: 110, handicap: 34.0, net: 76.0 },
     { stage: 3, playerId: "player-2ee84505", rank: 9, gross: 113, handicap: 35.2, net: 77.8 },
+
+    // Stage 4 — 2026-11-17 / ゴールド佐野カントリークラブ (event no. 5).
+    // Preserve the printed order even when NET scores are equal.
+    { stage: 4, playerId: "player-5e5c2cf6", rank: 1, gross: 93, handicap: 21.6, net: 71.4 },
+    { stage: 4, playerId: "player-6b824d0a", rank: 2, gross: 96, handicap: 20.4, net: 75.6 },
+    { stage: 4, playerId: "player-bab3a577", rank: 3, gross: 100, handicap: 24.0, net: 76.0 },
+    { stage: 4, playerId: "player-45b18ef2", rank: 4, gross: 86, handicap: 9.6, net: 76.4 },
+    { stage: 4, playerId: "player-2c5b0a08", rank: 5, gross: 103, handicap: 26.4, net: 76.6 },
+    { stage: 4, playerId: "player-8c37d1a6", rank: 6, gross: 115, handicap: 38.4, net: 76.6 },
+    { stage: 4, playerId: "player-2ee84505", rank: 7, gross: 119, handicap: 39.6, net: 79.4 },
+    { stage: 4, playerId: "player-83f40e87", rank: 8, gross: 112, handicap: 32.4, net: 79.6 },
+    { stage: 4, playerId: "player-c0e294b7", rank: 9, gross: 127, handicap: 44.4, net: 82.6 },
   ],
 
   rewardTiers: [
@@ -170,4 +197,19 @@ export const golfChampionship: Championship = {
   ],
 
   bonusActions: [],
+};
+
+/** Season records remain empty until opening; the announcement is homepage-only. */
+export const golfChampionship2027: Championship = {
+  id: "tomochan-house-2027",
+  title: "ともちゃん家 ゴルフチャンピオンシップ",
+  season: "2027 SEASON",
+  status: "upcoming",
+  completedStages: 0,
+  totalStages: 0,
+  players: [],
+  stages: [],
+  results: [],
+  bonusActions: [],
+  rewardTiers: [],
 };

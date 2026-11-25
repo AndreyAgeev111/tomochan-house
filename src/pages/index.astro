@@ -12,19 +12,33 @@ import Contact from "../components/sections/astro/Contact.astro";
 import Reviews from "../components/sections/astro/Reviews.astro";
 import NewsAlert from "../components/sections/astro/NewsAlert.astro";
 import JobVacancy from "../components/sections/astro/JobVacancy.astro";
+import WinterDivider from "../components/common/astro/WinterDivider.astro";
+import WinterJourney from "../components/common/astro/WinterJourney.astro";
 ---
 
 <MainLayout>
   <Hero />
-  <NewsAlert />
-  <About />
-  <MenuSection />
-  <Events />
-  <YouTube />
-  <Gallery />
-  <Instagram />
-  <Access />
-  <Contact />
-  <Reviews />
-  <JobVacancy />
+  <WinterJourney>
+    <NewsAlert />
+    <WinterDivider />
+    <About />
+    <WinterDivider reverse />
+    <MenuSection />
+    <WinterDivider />
+    <Events />
+    <WinterDivider reverse />
+    <YouTube />
+    <WinterDivider />
+    <Gallery />
+    <WinterDivider />
+    <Instagram />
+    <WinterDivider reverse />
+    <Access />
+    <WinterDivider />
+    <Contact />
+    <WinterDivider reverse />
+    <Reviews />
+    <WinterDivider />
+    <JobVacancy />
+  </WinterJourney>
 </MainLayout>

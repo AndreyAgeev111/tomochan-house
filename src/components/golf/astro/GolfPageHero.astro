@@ -9,6 +9,8 @@ interface Props {
 }
 
 const { championship } = Astro.props;
+const isUpcoming = championship.status === "upcoming";
+const isCompleted = championship.status === "completed";
 ---
 
 <section class="championship-hero relative overflow-hidden pt-28 pb-10 md:pt-32 md:pb-14">
@@ -41,24 +43,44 @@ const { championship } = Astro.props;
 
         <p class="hero-intro mt-4 text-base md:text-lg leading-relaxed max-w-2xl">
           <JapaneseText
-            phrases={["仲間と楽しむゴルフ。", "みんなのポイントと", "順位をチェック！"]}
+            phrases={isUpcoming
+              ? ["新しいシーズンも、", "仲間と楽しむゴルフ。", "まもなく開幕！"]
+              : isCompleted
+                ? [
+                    "一年間の熱戦を振り返る、",
+                    "シーズン最終ランキング。",
+                    "ご参加ありがとうございました！",
+                  ]
+                : ["仲間と楽しむゴルフ。", "みんなのポイントと", "順位をチェック！"]}
           />
         </p>
 
         <div class="mt-6 flex flex-wrap gap-3" aria-label="大会進行状況">
           <div class="bg-white rounded-xl shadow-soft px-5 py-3 min-w-28 text-center">
-            <p class="text-xs text-warm-600">現在</p>
+            <p class="text-sm text-warm-600">{isCompleted ? "最終結果" : "現在"}</p>
             <p class="text-lg md:text-xl font-bold text-warm-900">
-              第{championship.completedStages}戦終了
+              {
+                isUpcoming
+                  ? "開幕前"
+                  : isCompleted
+                    ? "シーズン終了"
+                    : `第${championship.completedStages}戦終了`
+              }
             </p>
           </div>
 
           <div
             class="surface-forest text-white rounded-xl shadow-soft px-5 py-3 min-w-24 text-center"
           >
-            <p class="text-xs text-forest-100">シーズン</p>
+            <p class="text-sm text-forest-100">シーズン</p>
             <p class="text-lg md:text-xl font-bold">
-              全{championship.totalStages}戦
+              {
+                isUpcoming
+                  ? championship.season.replace(" SEASON", "")
+                  : championship.totalStages > 0
+                    ? `全${championship.totalStages}戦`
+                    : "日程準備中"
+              }
             </p>
           </div>
         </div>

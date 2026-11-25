@@ -1,0 +1,106 @@
+---
+import {
+  golfChampionship,
+  golfChampionship2027,
+  type Championship,
+} from "../../../content/golfChampionship";
+
+interface Props {
+  championship: Championship;
+}
+
+const { championship } = Astro.props;
+const seasons = [
+  { year: "2026", href: "/golf-results/", championship: golfChampionship },
+  { year: "2027", href: "/golf-results/2027/", championship: golfChampionship2027 },
+];
+const statusLabel = (season: Championship) =>
+  season.status === "completed" ? "最終結果" : season.status === "upcoming" ? "開幕前" : "大会結果";
+---
+
+<nav aria-label="ゴルフのシーズンを選択" class="season-navigation">
+  <div class="season-navigation-inner">
+    <p class="season-navigation-label">SEASONS</p>
+    <div class="season-navigation-links">
+      {
+        seasons.map((season) => (
+          <a
+            href={season.href}
+            aria-current={championship.id === season.championship.id ? "page" : undefined}
+          >
+            <span class="season-navigation-year">{season.year}</span>
+            <span class="season-navigation-status">{statusLabel(season.championship)}</span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</nav>
+
+<style>
+  .season-navigation {
+    border-block: 1px solid #e5ddd2;
+    background: #fff;
+  }
+
+  .season-navigation-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+    padding: 1rem;
+  }
+
+  .season-navigation-label {
+    color: #57633e;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+
+  .season-navigation-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .season-navigation-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    min-height: 48px;
+    padding: 0.6rem 1.1rem;
+    border: 1px solid #d8cdbb;
+    border-radius: 999px;
+    color: #5d4a42;
+    background: #fff;
+  }
+
+  .season-navigation-links a:hover {
+    background: #f5f3ec;
+  }
+
+  .season-navigation-links a[aria-current="page"] {
+    border-color: #425434;
+    color: #fff;
+    background: #425434;
+  }
+
+  .season-navigation-links a:focus-visible {
+    outline: 3px solid #ad8539;
+    outline-offset: 3px;
+  }
+
+  .season-navigation-year {
+    font-size: 1rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .season-navigation-status {
+    font-size: 0.875rem;
+  }
+</style>

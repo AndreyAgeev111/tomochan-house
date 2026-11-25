@@ -17,13 +17,18 @@ async function moduleUrl(path, imports = {}) {
 }
 
 const contentUrl = await moduleUrl("../src/content/golfChampionship.ts");
-const { golfChampionship, FORMULA_POINTS } = await import(contentUrl);
-const { buildStandings, buildForecasts, buildVisibleChartSeries, validateChampionship } =
-  await import(
-    await moduleUrl("../src/utils/golfChampionshipUtils.ts", {
-      "../content/golfChampionship": contentUrl,
-    })
-  );
+const { golfChampionship, golfChampionship2027, FORMULA_POINTS } = await import(contentUrl);
+const {
+  buildStandings,
+  buildForecasts,
+  buildVisibleChartSeries,
+  championshipPointsForRank,
+  validateChampionship,
+} = await import(
+  await moduleUrl("../src/utils/golfChampionshipUtils.ts", {
+    "../content/golfChampionship": contentUrl,
+  })
+);
 
 function fixture(results, completedStages = 2) {
   return {
@@ -40,10 +45,151 @@ function fixture(results, completedStages = 2) {
       handicap: 18,
       net: 72,
     })),
+    status: "active",
     completedStages,
+    totalStages: 6,
     bonusActions: [],
   };
 }
+
+test("2026 closes after the four agreed scoring rounds, excluding the March event", () => {
+  assert.doesNotThrow(() => validateChampionship(golfChampionship));
+  assert.equal(golfChampionship.status, "completed");
+  assert.equal(golfChampionship.completedStages, 4);
+  assert.equal(golfChampionship.totalStages, 4);
+  assert.deepEqual(
+    golfChampionship.stages.map(({ stage, date }) => [stage, date]),
+    [
+      [1, "2026-05-12"],
+      [2, "2026-07-29"],
+      [3, "2026-09-22"],
+      [4, "2026-11-17"],
+    ]
+  );
+  assert.equal(
+    golfChampionship.stages.find((stage) => stage.stage === 4)?.location,
+    "ゴールド佐野カントリークラブ"
+  );
+  assert.deepEqual(buildForecasts(golfChampionship), []);
+});
+
+test("the November final preserves all nine score-sheet rows and awards rank points", () => {
+  const expected = [
+    [1, 93, 21.6, 71.4, 25],
+    [2, 96, 20.4, 75.6, 18],
+    [3, 100, 24, 76, 15],
+    [4, 86, 9.6, 76.4, 12],
+    [5, 103, 26.4, 76.6, 10],
+    [6, 115, 38.4, 76.6, 8],
+    [7, 119, 39.6, 79.4, 6],
+    [8, 112, 32.4, 79.6, 4],
+    [9, 127, 44.4, 82.6, 2],
+  ];
+  const finalResults = golfChampionship.results
+    .filter((result) => result.stage === 4)
+    .toSorted((a, b) => a.rank - b.rank);
+  assert.equal(finalResults.length, 9);
+  assert.equal(new Set(finalResults.map((result) => result.playerId)).size, 9);
+  assert.deepEqual(
+    finalResults.map(({ rank, gross, handicap, net }) => [rank, gross, handicap, net]),
+    expected.map(([rank, gross, handicap, net]) => [rank, gross, handicap, net])
+  );
+
+  const standings = buildStandings(golfChampionship);
+  for (const [index, result] of finalResults.entries()) {
+    assert.equal(Math.round((result.gross - result.handicap) * 10) / 10, result.net);
+    const points = expected[index][4];
+    assert.equal(championshipPointsForRank(result.rank), points);
+    const standing = standings.find((standing) => standing.player.id === result.playerId);
+    assert.ok(standing);
+    assert.equal(standing.stagePoints[3], points);
+    assert.deepEqual(standing.stageResults[3], result);
+  }
+});
+
+test("confirmed returning players determine the final 2026 podium", () => {
+  const standings = buildStandings(golfChampionship);
+  assert.deepEqual(
+    standings.slice(0, 3).map(({ player, totalPoints }) => [player.id, totalPoints]),
+    [
+      ["player-5e5c2cf6", 80],
+      ["player-15542eac", 65],
+      ["player-bab3a577", 55],
+    ]
+  );
+  assert.deepEqual(standings[0].stagePoints, [15, 15, 25, 25]);
+  assert.deepEqual(standings[1].stagePoints, [25, 25, 15, null]);
+  assert.deepEqual(standings[2].stagePoints, [4, 18, 18, 15]);
+});
+
+test("new November entrants do not inherit unrelated players' earlier points", () => {
+  const standings = buildStandings(golfChampionship);
+  for (const [id, name, points] of [
+    ["player-6b824d0a", "AY", 18],
+    ["player-45b18ef2", "かんちゃ", 12],
+    ["player-8c37d1a6", "じんじん", 8],
+    ["player-c0e294b7", "あべちゃん", 2],
+  ]) {
+    const standing = standings.find((standing) => standing.player.id === id);
+    assert.ok(standing);
+    assert.equal(standing.player.name, name);
+    assert.equal(standing.appearances, 1);
+    assert.equal(standing.totalPoints, points);
+    assert.deepEqual(standing.stagePoints, [null, null, null, points]);
+  }
+  const originalAY = standings.find((standing) => standing.player.id === "player-68ceac43");
+  assert.equal(originalAY.player.name, "AY");
+  assert.deepEqual(originalAY.stagePoints, [18, null, null, null]);
+});
+
+test("2027 starts empty and cannot inherit results or forecasts from 2026", () => {
+  assert.doesNotThrow(() => validateChampionship(golfChampionship2027));
+  assert.equal(golfChampionship2027.status, "upcoming");
+  assert.equal(golfChampionship2027.completedStages, 0);
+  assert.equal(golfChampionship2027.totalStages, 0);
+  for (const key of ["players", "stages", "results", "bonusActions", "rewardTiers"]) {
+    assert.deepEqual(golfChampionship2027[key], []);
+  }
+  assert.deepEqual(buildStandings(golfChampionship2027), []);
+  assert.deepEqual(buildForecasts(golfChampionship2027), []);
+  assert.equal(buildVisibleChartSeries(golfChampionship2027, [], [], [], true).size, 0);
+});
+
+test("a closed season retains earned standings and never projects additional rounds", () => {
+  const data = fixture([
+    [1, "a", 1],
+    [1, "b", 2],
+    [2, "a", 2],
+    [2, "b", 1],
+  ]);
+  const earned = buildStandings(data);
+  data.status = "completed";
+  assert.deepEqual(buildForecasts(data), []);
+  data.totalStages = data.completedStages;
+  assert.doesNotThrow(() => validateChampionship(data));
+  const finalStandings = buildStandings(data);
+  assert.deepEqual(
+    finalStandings.map(({ player, rank, totalPoints }) => [player.id, rank, totalPoints]),
+    earned.map(({ player, rank, totalPoints }) => [player.id, rank, totalPoints])
+  );
+  assert.equal(finalStandings[0].player.id, "b");
+});
+
+test("season state validation rejects premature closure and results before opening", () => {
+  const data = fixture([
+    [1, "a", 1],
+    [2, "a", 2],
+  ]);
+  data.status = "completed";
+  assert.throws(() => validateChampionship(data), /completed season/);
+  data.totalStages = data.completedStages;
+  data.results = data.results.filter((result) => result.stage === 1);
+  assert.throws(() => validateChampionship(data), /completed season/);
+  data.status = "upcoming";
+  assert.throws(() => validateChampionship(data), /upcoming season/);
+  const activeWithoutSchedule = { ...structuredClone(golfChampionship2027), status: "active" };
+  assert.throws(() => validateChampionship(activeWithoutSchedule), /totalStages/);
+});
 
 test("missing rounds stay distinct from participation worth zero points", () => {
   const standings = buildStandings(
@@ -167,26 +313,29 @@ test("chart ranks include one-round opponents and do not change with visibility"
   );
 });
 
-test("all real chart histories match standings and every subset preserves ranks and forecasts", () => {
+test("closed-season chart histories retain final ranks for every visible subset", () => {
   const standings = buildStandings(golfChampionship);
   const forecasts = buildForecasts(golfChampionship, standings);
+  assert.deepEqual(forecasts, []);
   const ids = standings.filter((s) => s.appearances >= 2).map((s) => s.player.id);
-  const all = buildVisibleChartSeries(golfChampionship, standings, forecasts, ids, true);
+  const all = buildVisibleChartSeries(golfChampionship, standings, forecasts, ids, false);
   for (let mask = 0; mask < 2 ** ids.length; mask++) {
     const selected = ids.filter((_, index) => mask & (1 << index));
-    const subset = buildVisibleChartSeries(golfChampionship, standings, forecasts, selected, true);
+    const subset = buildVisibleChartSeries(golfChampionship, standings, forecasts, selected, false);
     assert.equal(subset.size, selected.length);
     for (const id of selected) assert.deepEqual(subset.get(id), all.get(id));
   }
   for (const [id, points] of all) {
     const standing = standings.find((s) => s.player.id === id);
-    for (const point of points.filter((p) => !p.isForecast)) {
+    assert.equal(points.length, golfChampionship.completedStages);
+    for (const point of points) {
+      assert.equal(point.isForecast, false);
       assert.equal(
         point.rank,
         standing.history.find((h) => h.stage === point.stage)?.overallRank ?? null
       );
     }
     assert.equal(points[golfChampionship.completedStages - 1].rank, standing.rank);
-    assert.equal(points.at(-1).rank, forecasts.find((f) => f.playerId === id).projectedRank);
+    assert.equal(points.at(-1).cumulativePoints, standing.totalPoints);
   }
 });

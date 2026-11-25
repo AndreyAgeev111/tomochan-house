@@ -1,0 +1,65 @@
+---
+interface Props {
+  className?: string;
+}
+
+const { className = "" } = Astro.props;
+---
+
+<svg
+  class:list={["winter-tree", className]}
+  viewBox="0 0 88 120"
+  fill="none"
+  aria-hidden="true"
+  focusable="false"
+>
+  <ellipse cx="44" cy="113" rx="42" ry="6" fill="#c5dadd" opacity="0.4"></ellipse>
+  <ellipse cx="44" cy="111" rx="39" ry="6" fill="#fff"></ellipse>
+  <path d="M40 95h8v17h-8z" fill="#8b6650"></path>
+  <path d="M44 14 19 51h12L9 79h15L2 105h84L64 79h15L57 51h12L44 14Z" fill="#315c4a"></path>
+  <path d="m44 14 25 37H57l22 28H64l22 26H44V14Z" fill="#234b3e"></path>
+  <path d="m44 14 14 21-8-3-6 4-6-4-8 3 14-21Z" fill="#f5faf9"></path>
+  <path d="m25 61 8 3 11-4 12 4 8-3 7 9-15-3-12 4-12-4-14 3 7-9Z" fill="#edf5f4"></path>
+  <path d="m16 90 14 3 14-4 14 4 14-3 8 9-22-3-14 4-14-4-22 3 8-9Z" fill="#edf5f4"></path>
+  <path d="M28 48c9 9 21 10 34 8M18 78c17 9 35 9 52 2" stroke="#d2b575" stroke-width="1.5"></path>
+  <path
+    d="m44 3 3.2 6.4 7.1 1-5.1 5 1.2 7-6.4-3.3-6.4 3.3 1.2-7-5.1-5 7.1-1L44 3Z"
+    fill="#e5c679"
+    stroke="#b68d43"
+    stroke-width="0.8"></path>
+  <g class="winter-tree-light winter-tree-light-gold">
+    <circle cx="35" cy="49" r="2.5" fill="#f3d18b"></circle>
+    <circle cx="57" cy="80" r="2.5" fill="#f3d18b"></circle>
+    <circle cx="25" cy="98" r="2.5" fill="#f3d18b"></circle>
+  </g>
+  <g class="winter-tree-light winter-tree-light-red">
+    <circle cx="54" cy="55" r="3" fill="#be6670"></circle>
+    <circle cx="30" cy="80" r="3" fill="#be6670"></circle>
+    <circle cx="64" cy="99" r="3" fill="#be6670"></circle>
+  </g>
+</svg>
+
+<style>
+  .winter-tree {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    :global(.winter-clearing-visible) .winter-tree-light {
+      animation: winter-tree-twinkle 1.5s ease-in-out 2;
+    }
+
+    :global(.winter-clearing-visible) .winter-tree-light-red {
+      animation-delay: 0.35s;
+    }
+  }
+
+  @keyframes winter-tree-twinkle {
+    50% {
+      opacity: 0.35;
+    }
+  }
+</style>

@@ -5,6 +5,7 @@ const { nav } = siteContent;
 const pathname = Astro.url.pathname;
 const isHome = pathname === "/";
 const isGolfResults = pathname.startsWith("/golf-results");
+const isUpcomingSeason = pathname.startsWith("/golf-results/2027");
 const isGolfRules = pathname.startsWith("/golf-rules");
 const isGolfPage = isGolfResults || isGolfRules;
 
@@ -25,9 +26,15 @@ const defaultNavigation = [...nav.slice(0, 4), golfLink, ...nav.slice(4)];
 
 const golfNavigation = [
   { id: "home", label: "ホーム", href: "/" },
-  { id: "top", label: "トップ3", href: "#podium-title" },
-  { id: "ranking", label: "ランキング", href: "#leaderboard-title" },
-  { id: "analytics", label: "推移", href: "#analytics-title" },
+  { id: "season-2026", label: "2026シーズン", href: "/golf-results/" },
+  { id: "season-2027", label: "2027シーズン", href: "/golf-results/2027/" },
+  ...(isUpcomingSeason
+    ? []
+    : [
+        { id: "top", label: "トップ3", href: "#podium-title" },
+        { id: "ranking", label: "ランキング", href: "#leaderboard-title" },
+        { id: "analytics", label: "推移", href: "#analytics-title" },
+      ]),
   { id: "rules", label: "ルール", href: "/golf-rules/" },
 ];
 
@@ -167,7 +174,10 @@ const navigation = isGolfPage ? golfNavigation : defaultNavigation;
       {
         navigation.map((item) => {
           const active =
-            (item.id === "golf" && isGolfResults) || (item.id === "rules" && isGolfRules);
+            (item.id === "golf" && isGolfResults) ||
+            (item.id === "season-2026" && isGolfResults && !isUpcomingSeason) ||
+            (item.id === "season-2027" && isUpcomingSeason) ||
+            (item.id === "rules" && isGolfRules);
 
           return (
             <a
@@ -243,7 +253,10 @@ const navigation = isGolfPage ? golfNavigation : defaultNavigation;
     {
       navigation.map((item) => {
         const active =
-          (item.id === "golf" && isGolfResults) || (item.id === "rules" && isGolfRules);
+          (item.id === "golf" && isGolfResults) ||
+          (item.id === "season-2026" && isGolfResults && !isUpcomingSeason) ||
+          (item.id === "season-2027" && isUpcomingSeason) ||
+          (item.id === "rules" && isGolfRules);
 
         return (
           <a

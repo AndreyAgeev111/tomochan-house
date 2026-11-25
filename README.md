@@ -2,7 +2,7 @@
 
 池袋のカラオケ居酒屋「ともちゃん家」の公式サイト。店舗案内・メニュー・営業カレンダーに加え、ゴルフチャンピオンシップの結果とルールを掲載しています。
 
-Official Japanese-language website for a cozy izakaya in Ikebukuro, Tokyo. Built as three static pages with Astro, React
+Official Japanese-language website for a cozy izakaya in Ikebukuro, Tokyo. Built as four static pages with Astro, React
 islands, and Tailwind CSS.
 
 **Website:** <https://tomochan-house.jp>
@@ -11,11 +11,12 @@ islands, and Tailwind CSS.
 
 ## Pages / ページ
 
-| Route            | Contents                                                                                                                                               |
-|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `/`              | Welcome curtain, restaurant introduction, menu filters, event calendar, gallery/lightbox, YouTube, map, contact links, FAQ, reviews and winking mascot |
-| `/golf-results/` | Championship podium, standings, player details, points/rank charts and optional forecasts                                                              |
-| `/golf-rules/`   | Ranking points, bonus rules and mascot-guided explanation                                                                                              |
+| Route                 | Contents                                                                                                                                               |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `/`                   | Welcome curtain, restaurant introduction, menu filters, event calendar, gallery/lightbox, YouTube, map, contact links, FAQ, reviews and winking mascot |
+| `/golf-results/`      | Championship podium, standings, player details, points/rank charts and optional forecasts                                                              |
+| `/golf-results/2027/` | Upcoming 2027 season: starts soon; schedule, participants and results remain empty                                                                     |
+| `/golf-rules/`        | Ranking points, bonus rules and mascot-guided explanation                                                                                              |
 
 Reservations and inquiries use telephone and Instagram links. There is no booking backend, contact submission form,
 payment system or live review API. Reviews and championship data are maintained in source files.
@@ -59,7 +60,7 @@ Dependency ranges are defined in [package.json](package.json); resolved versions
 in [pnpm-lock.yaml](pnpm-lock.yaml).
 
 | Tool                       | Declared range  | Role                          |
-|----------------------------|-----------------|-------------------------------|
+| -------------------------- | --------------- | ----------------------------- |
 | Astro                      | `^6.1.3`        | Static HTML and asset build   |
 | React / React DOM          | `^18.2.0`       | Interactive islands           |
 | Tailwind CSS               | `^3.4.0`        | Responsive styles and palette |
